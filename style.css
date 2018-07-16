@@ -1,0 +1,63 @@
+*{
+	box-sizing: border-box;
+}
+
+body {
+	height:100%;
+	margin:0;
+	background-size: cover;
+	background: linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));
+}
+
+main {
+	border-color: solid black;
+    border-style: groove;
+    margin-top: 100px;
+}
+
+
+/*index.html*/
+.welcome {
+	text-align: center;
+}
+
+
+/*RulesoftheGame.html*/
+.r1 {
+	text-align: center;
+}
+
+.rules {
+	font-size: 22px;
+	width: 90%;
+    margin: 0 auto;
+}
+
+.return {
+	margin-bottom: 15px;
+}
+
+
+/*signup.html*/ 
+.signup > * {
+	text-align: center;
+	display: block;
+}
+
+#signsheet {
+	display: inline-flex;
+	width: 50%;
+}
+
+#signsheet > input {
+	width: 80%;
+	margin-left: 50px;
+	height: 30px;
+	font-size: 28px;
+}
+
+.create {
+	height: 30px;
+	width: 50%;
+	margin-left: 25%;
+}
