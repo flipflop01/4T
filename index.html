@@ -6,12 +6,16 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header role="banner"></header>
+	<header role="banner">
+		
+	</header>
+
 	<main role="main">
+
 		<div class="welcome">
 			<h1>Welcome!</h1>
 			<p>"4T" combines the fun of TicTacToe with the challenge of Trivia questions</p>
-			<p>For rules on how to play the game click <a href="rules.html">Here</a></p>
+			<p>For rules on how to play the game click <button>Here</button></p>
 			<section class="signup">
 				<div class="login">
 					<p>Already have an account?</p>
@@ -23,9 +27,96 @@
 						<button type="submit">Log In</button>
 					</form>
 				</div>
-				<h3>New here? <a href="signup.html">Sign Up</a></h3>
+				<h3>New here? <button>Sign Up</button></h3>
 			</section>
 		</div>
 	</main>
+	
+	<section class="rules">
+			<div class="r1">
+			<h1>Rules of the Game</h1>
+			<p>Playing is quite simple:</p>
+		</div>
+		<div class="listOfRules">
+			<ul>
+				<li>At the start of the game, you can pick the difficulty and category of questions or have one selected for you at random</li>
+				<li>There are a variety of categories and difficulty ranges from Easy to Medium to Hard</li>
+				<li>At the start your turn, you will be presented with a question based on the chosen category</li>
+				<li>If you answer correctly, you get to pick a position on the board</li>
+				<li>If you don't, you lose your turn</li>
+				<li>First player to line up four slots, wins the round!</li>
+			</ul>
+		</div>
+		<button class="return">Go Back</button>
+	</section>
+
+	<section class="signup">
+		<h2>Create Account</h2>
+		<div class="info">
+			<form>
+				<fieldset id="signsheet">
+					<label>Name</label>
+					<input type="text" name="name" required>
+					<label>Email Address</label>
+					<input type="email" name="email" required>
+					<label>Username</label>
+					<input type="text" name="username" required>
+					<label>Password</label>
+					<input type="text" name="password" required>
+					<button type="submit" class="create">Submit</button>
+				</fieldset>
+			</form>
+			</div>
+	</section>	
+
+	<section class="accountdeets">
+		<img src="">
+		<p>Name:<span>${name}</span></p>
+		<p>Email Address:<span>${email}</span></p>
+		<p>Username:<span>${username}</span></p>
+		<p>Number of games played:<span>${gamesplayed}</span></p>
+		<p>Number of games won:<span>${gameswon}</span></p>
+	</section>	
+
+	<section class="playground">
+		<button class="ready">Ready?</button>
+		<div class="questions">
+			<h3>**Question**</h3>
+			<form>
+				<fieldset class="choices">
+					<label class="answeroption">
+					<input type="radio" name="answer" value="**questionbankanswer1**" required><span>**questionbankanswer1**</span>
+					</label>
+					<label class="answeroption">
+					<input type="radio" name="answer" value="**questionbankanswer2**" required><span>**questionbankanswer2**</span>
+					</label>
+					<label class="answeroption">
+					<input type="radio" name="answer" value="**questionbankanswer3**" required><span>**questionbankanswer3**</span>
+					</label>
+					<label class="answeroption">
+					<input type="radio" name="answer" value="**questionbankanswer4**" required><span>**questionbankanswer4**</span>
+					</label>
+				</fieldset>
+				<button class="answer">Answer</button>
+			</form>
+		</div>
+
+		<div class="playerOne">
+			<h3>PlayerOne</h3>
+			<img src="https://uboachan.net/og/thumb/1376640188344.png">
+		</div>
+		<div class="playerTwo">
+			<h3>AI</h3>
+			<img src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
+		</div>
+		
+		<section class="play">
+			
+		</section>
+
+</section>
+
+		
+	
 </body>
 </html>
