@@ -4,6 +4,7 @@
 	<title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bangers|Permanent+Marker" rel="stylesheet">
 </head>
 <body>
 	<header role="banner">
@@ -14,9 +15,12 @@
 
 		<div class="welcome">
 			<h1>Welcome!</h1>
-			<p>"4T" combines the fun of TicTacToe with the challenge of Trivia questions</p>
-			<p>For rules on how to play the game click <button>Here</button></p>
-			<section class="signup">
+			<p>"4T" combines the fun of Connect-Four with the challenge of Trivia questions</p>
+			<div class="d1">
+				<p>For rules on how to play the game</p>
+				<button class="clickHere">Click Here</button>
+			</div>
+			<div class="signup">
 				<div class="login">
 					<p>Already have an account?</p>
 					<form action="/signup/" method="post">
@@ -24,11 +28,11 @@
 						<input id="username" type="text" name="" required>
 						<label for="password">Password</label>
 						<input type="text" name="" id="email" required>
-						<button type="submit">Log In</button>
+						<button class="clickHere" type="submit">Log In</button>
 					</form>
 				</div>
-				<h3>New here? <button>Sign Up</button></h3>
-			</section>
+			</div>
+			<h3>New here? <button class="clickHere">Sign Up</button></h3>
 		</div>
 	</main>
 	
@@ -47,7 +51,7 @@
 				<li>First player to line up four slots, wins the round!</li>
 			</ul>
 		</div>
-		<button class="return">Go Back</button>
+		<button class="clickHere">Go Back</button>
 	</section>
 
 	<section class="signup">
@@ -63,7 +67,7 @@
 					<input type="text" name="username" required>
 					<label>Password</label>
 					<input type="text" name="password" required>
-					<button type="submit" class="create">Submit</button>
+					<button type="submit" class="clickHere create">Submit</button>
 				</fieldset>
 			</form>
 			</div>
@@ -109,14 +113,10 @@
 			<h3>AI</h3>
 			<img src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
 		</div>
-		
-		<section class="play">
-			
-		</section>
 
 </section>
 
-		
-	
+	<script type="text/javascript" src="index.js"></script>	
+	<script type="text/javascript" src="data.js"></script>	
 </body>
 </html>

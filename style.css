@@ -1,5 +1,10 @@
+/*font-family: 'Permanent Marker', cursive;
+  font-family: 'Bangers', cursive;
+*/
+
 *{
 	box-sizing: border-box;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 body {
@@ -10,17 +15,60 @@ body {
 }
 
 main {
-	border-color: solid black;
-    border-style: groove;
     margin-top: 100px;
 }
 
-
-/*index.html*/
-.welcome {
-	text-align: center;
+p {
+	font-family: 'Bangers', cursive;
 }
 
+
+/*main*/
+.welcome {
+	text-align: center;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 30px;
+}
+
+.welcome p {
+	margin-bottom: 25px;
+} 
+
+.login p {
+	margin-bottom: 0px;
+	margin-top: 30px;
+}
+
+.d1 > * {
+	display: inline;
+	vertical-align: middle;
+}
+.clickHere {
+	height: 30px;
+	width: 100px;
+	font-family: 'Permanent Marker', cursive;
+	vertical-align: middle;
+	border-radius:2em;
+	background-color:#4eb5f1;
+	text-shadow: none;
+}
+
+.clickHere:hover {
+	background-color:#4095c6;
+}
+
+.welcome h3 {
+	margin-top: 30px;
+}
+
+form > * {
+	vertical-align: middle;
+}
+
+form > input {
+	height: 25px;
+	font-size: 15px;
+}
 
 /*RulesoftheGame.html*/
 .r1 {
