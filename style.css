@@ -70,9 +70,21 @@ form > input {
 	font-size: 15px;
 }
 
-/*RulesoftheGame.html*/
+
+
+/*Rules*/
 .r1 {
 	text-align: center;
+}
+
+.r1 h1 {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+
+li {
+	font-family: 'Bangers', cursive;
 }
 
 .rules {
@@ -86,7 +98,9 @@ form > input {
 }
 
 
-/*signup.html*/ 
+
+
+/*signup*/ 
 .signup > * {
 	text-align: center;
 	display: block;
