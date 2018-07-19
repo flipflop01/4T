@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TestTacToe</title>
+	<link rel="stylesheet" type="text/css" href="second.css">
+</head>
+<body>
+<section class="playground">
+	<button class="ready">Ready?</button>
+		<div class="questions">
+			<h3>**Question**</h3>
+			<form>
+				<fieldset class="choices">
+					<label class="answeroption">
+						<input type="radio" name="answer" value="**questionbankanswer1**" required><span>**questionbankanswer1**</span>
+					</label>
+					<label class="answeroption">
+						<input type="radio" name="answer" value="**questionbankanswer2**" required><span>**questionbankanswer2**</span>
+					</label>
+					<label class="answeroption">
+						<input type="radio" name="answer" value="**questionbankanswer3**" required><span>**questionbankanswer3**</span>
+					</label>
+					<label class="answeroption">
+						<input type="radio" name="answer" value="**questionbankanswer4**" required><span>**questionbankanswer4**</span>
+					</label>
+				</fieldset>
+				<button class="answer">Answer</button>
+			</form>
+		</div>
+
+		<div class="playerOne">
+			<h3>PlayerOne</h3>
+			<img src="https://uboachan.net/og/thumb/1376640188344.png">
+		</div>
+		<div class="playerTwo">
+			<h3>AI</h3>
+			<img src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
+		</div>
+		
+		<section class="play">
+			
+		</section>
+
+</section>
+	<button class="restart">New Game</button>
+
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+        window.addEventListener('load', function () {
+            new Game()
+        }, false);</script>
+    <script type="text/javascript" src="index.js"></script>    
+</body>
+</html>

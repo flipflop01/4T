@@ -1,0 +1,24 @@
+*{
+	box-sizing: border-box;
+}
+
+body {
+	height:100%;
+	margin:0;
+	background-size: cover;
+	background: linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));
+}
+
+main {
+	border-color: solid black;
+    border-style: groove;
+    text-align: center;
+}
+
+.questions {
+
+}
+
+.choices {
+	display: inline-flex;
+}
