@@ -37,7 +37,7 @@
 	</main>
 	
 	<section class="rules">
-			<div class="r1">
+		<div class="r1">
 			<h1>Rules of the Game</h1>
 			<p>Playing is quite simple:</p>
 		</div>
@@ -55,7 +55,7 @@
 	</section>
 
 	<section class="signup">
-		<h2>Create Account</h2>
+		<h2 class="ca">Create Account</h2>
 		<div class="info">
 			<form>
 				<fieldset id="signsheet">
@@ -74,48 +74,50 @@
 	</section>	
 
 	<section class="accountdeets">
-		<img src="">
-		<p>Name:<span>${name}</span></p>
-		<p>Email Address:<span>${email}</span></p>
-		<p>Username:<span>${username}</span></p>
-		<p>Number of games played:<span>${gamesplayed}</span></p>
-		<p>Number of games won:<span>${gameswon}</span></p>
+		<img class="profilepic" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
+		<p>Name:&ensp;<span>Alice in Wonderland</span></p>
+		<p>Email Address:&ensp;<span>queenofhearts@gmail.com</span></p>
+		<p>Username:&ensp;<span>Smiley Cat</span></p>
+		<p>Number of games played:&ensp;<span>32</span></p>
+		<p>Number of games won:&ensp;<span>25</span></p>
+		<button class="clickHere play">Let's Play!</button>
 	</section>	
 
 	<section class="playground">
-		<button class="ready">Ready?</button>
+		<button class="clickHere ready">Ready?</button>
 		<div class="questions">
-			<h3>**Question**</h3>
-			<form>
-				<fieldset class="choices">
+			<h3 id="qs">"The Hippogriff, not to be confused with the Griffon, is a magical creature with the front half of an eagle, and the back half of what?"</h3>
+			<form class="choices">
+				<fieldset>
 					<label class="answeroption">
-					<input type="radio" name="answer" value="**questionbankanswer1**" required><span>**questionbankanswer1**</span>
+					<input type="radio" name="answer" value="**questionbankanswer1**" required><span>A Dragon</span>
 					</label>
 					<label class="answeroption">
-					<input type="radio" name="answer" value="**questionbankanswer2**" required><span>**questionbankanswer2**</span>
+					<input type="radio" name="answer" value="**questionbankanswer2**" required><span>A Tiger</span>
 					</label>
 					<label class="answeroption">
-					<input type="radio" name="answer" value="**questionbankanswer3**" required><span>**questionbankanswer3**</span>
+					<input type="radio" name="answer" value="**questionbankanswer3**" required><span>A Horse</span>
 					</label>
 					<label class="answeroption">
-					<input type="radio" name="answer" value="**questionbankanswer4**" required><span>**questionbankanswer4**</span>
+					<input type="radio" name="answer" value="**questionbankanswer4**" required><span>A Lion</span>
 					</label>
 				</fieldset>
-				<button class="answer">Answer</button>
+				<button class="clickHere answer">Answer</button>
 			</form>
 		</div>
 
 		<div class="playerOne">
 			<h3>PlayerOne</h3>
-			<img src="https://uboachan.net/og/thumb/1376640188344.png">
+			<img class="profilepic" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
 		</div>
 		<div class="playerTwo">
 			<h3>AI</h3>
-			<img src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
+			<img class="profilepic" src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
 		</div>
 
 </section>
 
+	<script src="https://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>	
 	<script type="text/javascript" src="data.js"></script>	
 </body>

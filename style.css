@@ -73,9 +73,6 @@ form > input {
 
 
 /*Rules*/
-.r1 {
-	text-align: center;
-}
 
 .r1 h1 {
 	font-family: 'Permanent Marker', cursive;
@@ -85,12 +82,17 @@ form > input {
 
 li {
 	font-family: 'Bangers', cursive;
+	list-style: circle;
+	list-style-position: inside;
+	vertical-align: middle;
+	margin-bottom: 5px;
 }
 
 .rules {
 	font-size: 22px;
 	width: 90%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .return {
@@ -104,6 +106,16 @@ li {
 .signup > * {
 	text-align: center;
 	display: block;
+}
+
+.ca {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 50px;
+}
+
+#signsheet > label {
+	font-family: 'Bangers', cursive;
+	margin-top: 10px;
 }
 
 #signsheet {
@@ -122,4 +134,43 @@ li {
 	height: 30px;
 	width: 50%;
 	margin-left: 25%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+/*Account Details*/
+.accountdeets {
+	text-align: center;
+	margin-top: 100px;
+}
+
+span {
+	color: blue;
+}
+
+.profilepic {
+	border-radius: 80%;
+}
+
+/*Playground*/ 
+.playground {
+	text-align: center;
+	margin-top: 100px;
+}
+
+.ready {
+	height: 60px;
+	width: 200px;
+	font-size: 35px;
+	background-color: #ff4f1e;
+}
+
+#qs {
+	font-family: 'Bangers', cursive;
+	font-size: 30px;
+}
+
+.choices > * {
+	display: inline-flex;
+	text-align: left;
 }
