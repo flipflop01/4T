@@ -15,7 +15,7 @@ body {
 }
 
 main {
-    margin-top: 100px;
+    /*margin-top: 50px;*/
 }
 
 p {
@@ -24,13 +24,14 @@ p {
 
 
 /*main*/
-.welcome {
+#welcome {
 	text-align: center;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 30px;
+	display: ;
 }
 
-.welcome p {
+#welcome p {
 	margin-bottom: 25px;
 } 
 
@@ -57,7 +58,7 @@ p {
 	background-color:#4095c6;
 }
 
-.welcome h3 {
+#welcome h3 {
 	margin-top: 30px;
 }
 
@@ -88,11 +89,12 @@ li {
 	margin-bottom: 5px;
 }
 
-.rules {
+#rules {
 	font-size: 22px;
 	width: 90%;
     margin: 0 auto;
     text-align: center;
+    display: none;
 }
 
 .return {
@@ -103,7 +105,11 @@ li {
 
 
 /*signup*/ 
-.signup > * {
+#signup {
+	display: none;
+}
+
+#signup > * {
 	text-align: center;
 	display: block;
 }
@@ -139,9 +145,10 @@ li {
 }
 
 /*Account Details*/
-.accountdeets {
+#accountdeets {
 	text-align: center;
 	margin-top: 100px;
+	display: none;
 }
 
 span {
@@ -153,15 +160,20 @@ span {
 }
 
 /*Playground*/ 
-.playground {
+#playground {
 	text-align: center;
 	margin-top: 100px;
+	display: none;
 }
 
 .ready {
 	height: 60px;
 	width: 200px;
 	font-size: 35px;
+	background-color: #4eb5f1;
+}
+
+.ready:hover {
 	background-color: #ff4f1e;
 }
 
@@ -170,7 +182,9 @@ span {
 	font-size: 30px;
 }
 
-.choices > * {
-	display: inline-flex;
-	text-align: left;
+
+.answer {
+	text-align: center;
+	width: 150px;
+	height: 40px;
 }

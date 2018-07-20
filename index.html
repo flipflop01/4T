@@ -5,6 +5,11 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Bangers|Permanent+Marker" rel="stylesheet">
+	<script type="text/javascript" charset="utf-8">
+        window.addEventListener('load', function () {
+            new Game()
+        }, false);
+    </script>
 </head>
 <body>
 	<header role="banner">
@@ -13,12 +18,12 @@
 
 	<main role="main">
 
-		<div class="welcome">
+		<div id="welcome">
 			<h1>Welcome!</h1>
 			<p>"4T" combines the fun of Connect-Four with the challenge of Trivia questions</p>
 			<div class="d1">
 				<p>For rules on how to play the game</p>
-				<button class="clickHere">Click Here</button>
+				<button class="clickHere showrules">Click Here</button>
 			</div>
 			<div class="signup">
 				<div class="login">
@@ -32,11 +37,11 @@
 					</form>
 				</div>
 			</div>
-			<h3>New here? <button class="clickHere">Sign Up</button></h3>
+			<h3>New here? <button class="clickHere newAccount">Sign Up</button></h3>
 		</div>
 	</main>
 	
-	<section class="rules">
+	<section id="rules">
 		<div class="r1">
 			<h1>Rules of the Game</h1>
 			<p>Playing is quite simple:</p>
@@ -51,10 +56,10 @@
 				<li>First player to line up four slots, wins the round!</li>
 			</ul>
 		</div>
-		<button class="clickHere">Go Back</button>
+		<button class="clickHere goBack">Go Back</button>
 	</section>
 
-	<section class="signup">
+	<section id="signup">
 		<h2 class="ca">Create Account</h2>
 		<div class="info">
 			<form>
@@ -67,13 +72,13 @@
 					<input type="text" name="username" required>
 					<label>Password</label>
 					<input type="text" name="password" required>
-					<button type="submit" class="clickHere create">Submit</button>
+					<button class="clickHere create">Submit</button>
 				</fieldset>
 			</form>
 			</div>
 	</section>	
 
-	<section class="accountdeets">
+	<section id="accountdeets">
 		<img class="profilepic" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
 		<p>Name:&ensp;<span>Alice in Wonderland</span></p>
 		<p>Email Address:&ensp;<span>queenofhearts@gmail.com</span></p>
@@ -83,7 +88,7 @@
 		<button class="clickHere play">Let's Play!</button>
 	</section>	
 
-	<section class="playground">
+	<section id="playground">
 		<button class="clickHere ready">Ready?</button>
 		<div class="questions">
 			<h3 id="qs">"The Hippogriff, not to be confused with the Griffon, is a magical creature with the front half of an eagle, and the back half of what?"</h3>
@@ -106,6 +111,10 @@
 			</form>
 		</div>
 
+		<section class="canvas">
+		
+		</section>
+
 		<div class="playerOne">
 			<h3>PlayerOne</h3>
 			<img class="profilepic" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
@@ -115,10 +124,10 @@
 			<img class="profilepic" src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
 		</div>
 
-</section>
+	</section>
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="index.js"></script>	
-	<script type="text/javascript" src="data.js"></script>	
 </body>
 </html>

@@ -1,11 +1,11 @@
 function Game(el) {
-    var grid = 5, // number of squares per row
+    var grid = 3, // number of squares per row
         size = 150, // size of each square in pixels
-        intelligence = 2, // intelligence of ai (higher numbers take longer)
+        intelligence = 9, // intelligence of ai (higher numbers take longer)
         // make everything else locals so they compress better
         doc = document,
         body = doc.body,
-        canvas = $(".play").createElement('canvas'),
+        canvas = doc.createElement('canvas'),
         context = canvas.getContext('2d'),
         die = alert,
         combos = [],
@@ -29,7 +29,7 @@ function Game(el) {
             }
             stroke();
         }
-        (el || body).appendChild(canvas);
+        $(".canvas").append(canvas);
 
     // calculate all winning combos
     for (i = 0, c = [], d = []; i < grid; i++) {
