@@ -19,14 +19,14 @@ main {
 }
 
 p {
-	font-family: 'Bangers', cursive;
+	font-family: 'Fredoka One', cursive;
 }
 
 
 /*main*/
 #welcome {
 	text-align: center;
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 30px;
 	display: ;
 }
@@ -47,7 +47,7 @@ p {
 .clickHere {
 	height: 30px;
 	width: 100px;
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	vertical-align: middle;
 	border-radius:2em;
 	background-color:#4eb5f1;
@@ -76,13 +76,13 @@ form > input {
 /*Rules*/
 
 .r1 h1 {
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 50px;
 	margin-bottom: 20px;
 }
 
 li {
-	font-family: 'Bangers', cursive;
+	font-family: 'Fredoka One', cursive;
 	list-style: circle;
 	list-style-position: inside;
 	vertical-align: middle;
@@ -115,12 +115,12 @@ li {
 }
 
 .ca {
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 50px;
 }
 
 #signsheet > label {
-	font-family: 'Bangers', cursive;
+	font-family: 'Fredoka One', cursive;
 	margin-top: 10px;
 }
 
@@ -178,7 +178,7 @@ span {
 }
 
 #qs {
-	font-family: 'Bangers', cursive;
+	font-family: 'Fredoka One', cursive;
 	font-size: 30px;
 }
 
@@ -187,4 +187,22 @@ span {
 	text-align: center;
 	width: 150px;
 	height: 40px;
+}
+
+@media only screen and (max-width: 375px) {
+	body {
+		margin: 10px;
+	}
+
+	h1 {
+		margin: 10px 0px 5px 0px;
+	}
+
+	#welcome p {
+		margin-top: 15px;
+	}
+
+	.d1 p {
+		margin: 0px 0px 0px 0px;
+	}
 }
