@@ -3,13 +3,14 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy" rel="stylesheet">
-	<script type="text/javascript" charset="utf-8">
+	<!--<script type="text/javascript" charset="utf-8">
         window.addEventListener('load', function () {
             new Game()
         }, false);
-    </script>
+    </script>-->
 </head>
 <body>
 	<header role="banner">
@@ -28,12 +29,12 @@
 			<div class="signup">
 				<div class="login">
 					<p>Already have an account?</p>
-					<form action="/signup/" method="post">
+					<form class="l2" action="/signup/" method="post">
 						<label for="username">Username</label>
 						<input id="username" type="text" name="" required>
 						<label for="password">Password</label>
 						<input type="text" name="" id="email" required>
-						<button class="clickHere" type="submit">Log In</button>
+						<button class="clickHere l3" type="submit">Log In</button>
 					</form>
 				</div>
 			</div>
@@ -72,6 +73,8 @@
 					<input type="text" name="username" required>
 					<label>Password</label>
 					<input type="text" name="password" required>
+					<label>Upload Profile Pic</label>
+					<input type="text" name="profilepic">
 					<button class="clickHere create">Submit</button>
 				</fieldset>
 			</form>
@@ -107,23 +110,20 @@
 					<input type="radio" name="answer" value="**questionbankanswer4**" required><span>A Lion</span>
 					</label>
 				</fieldset>
-				<button class="clickHere answer">Answer</button>
 			</form>
+			<button class="clickHere answer">Answer</button>
 		</div>
 
 		<section class="canvas">
 		
 		</section>
-
-		<div class="playerOne">
-			<h3>PlayerOne</h3>
-			<img class="profilepic" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
+		<div class="players">
+				<h3 class="p1">PlayerOne</h3>
+				<img class="profilepic profile" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
+				<p class="vs">VS</p>
+				<img class="profilepic profile" src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
+				<h3 class="p1">AI</h3>
 		</div>
-		<div class="playerTwo">
-			<h3>AI</h3>
-			<img class="profilepic" src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
-		</div>
-
 	</section>
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>

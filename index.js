@@ -30,17 +30,25 @@ function acctCreated() {
 function playStart() {
 	$(".play").click(function() {
 		$("#accountdeets").hide(1000);
-		$("#playground").css("display", "block");
+		$("#playground").css("display", "inline-block");
 	});
 }
+
+function showQuestion() {
+	$(".ready").click(function() {
+		$(".ready").hide(1000);
+		$("#qs, .choices, .answer").css("display", "initial");
+	});
+}
+
 
 $(returnToMain);
 $(newAccount);
 $(acctCreated);
 $(playStart);
+$(showQuestion);
 
-
-function Game(el) {
+/*function Game(el) {
     var grid = 3, // number of squares per row
         size = 150, // size of each square in pixels
         intelligence = 9, // intelligence of ai (higher numbers take longer)
@@ -154,4 +162,4 @@ function Game(el) {
         }
         return depth ? max || 0 : next; // 0 is tie game
     }
-}
+}*/

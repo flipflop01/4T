@@ -20,6 +20,7 @@ main {
 
 p {
 	font-family: 'Fredoka One', cursive;
+	font-size: 30px;
 }
 
 
@@ -109,14 +110,14 @@ li {
 	display: none;
 }
 
-#signup > * {
-	text-align: center;
-	display: block;
-}
-
 .ca {
 	font-family: 'Luckiest Guy', cursive;
 	font-size: 50px;
+	text-align: center;
+}
+
+.info {
+	text-align: center;
 }
 
 #signsheet > label {
@@ -126,12 +127,9 @@ li {
 
 #signsheet {
 	display: inline-flex;
-	width: 50%;
 }
 
 #signsheet > input {
-	width: 80%;
-	margin-left: 50px;
 	height: 30px;
 	font-size: 28px;
 }
@@ -147,23 +145,31 @@ li {
 /*Account Details*/
 #accountdeets {
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 50px;
 	display: none;
 }
 
 span {
 	color: blue;
+	font-style: italic;
 }
 
 .profilepic {
 	border-radius: 80%;
 }
 
+.play {
+	height: 40px;
+	width: 150px;
+	font-size: 20px;
+}
+
 /*Playground*/ 
 #playground {
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 50px;
 	display: none;
+	width: 100%;
 }
 
 .ready {
@@ -180,29 +186,99 @@ span {
 #qs {
 	font-family: 'Fredoka One', cursive;
 	font-size: 30px;
+	display: none;
 }
 
+.choices, .answer {
+	display: none;
+}
 
 .answer {
 	text-align: center;
 	width: 150px;
 	height: 40px;
+	margin-top: 40px;
 }
 
-@media only screen and (max-width: 375px) {
+.players {
+	margin-top: 40px;
+	display: inline-flex;
+}
+
+.p1 {
+	writing-mode: vertical-rl;
+  	text-orientation: upright;
+}
+
+.vs {
+	padding-top: 45px;
+}
+
+
+
+@media only screen and (max-width: 320px) {
 	body {
-		margin: 10px;
+		margin: 30px 10px 10px 10px;
 	}
-
-	h1 {
+	h1, .ca {
 		margin: 10px 0px 5px 0px;
+		font-size: 40px;
 	}
-
 	#welcome p {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		font-size: 20px;
+	}
+	.d1 {
+		margin: 10px 0px 10px 0px;
+	}
+	.login {
+		border: solid black 2px;
+	}
+	.clickHere {
+		height: 25px;
+	}
+	.r1 h1 {
+		font-size: 30px;
+		margin-bottom: 0px;
+	}
+	.l2, #qs {
+		display: inline-grid;
+		font-size: 20px;
+	}
+	h3{
+		font-size: 30px;
+	}
+	.l3 {
+		margin: 5px 0px 10px 45px;
+	}
+	ul {
+		padding: 0;
+	}
+	li {
+		font-size: 16.5px;
+	}
+	#signsheet {
+		width: 90%;
+	}
+	#signsheet > input {
+		margin: 0;
+		width: 100%;
+	}
+	#accountdeets, #playground {
+		margin-top: 10px;
+	}
+	.play {
+		height: 50px;
+		width: 150px;
+		font-size: 20px;
 		margin-top: 15px;
 	}
-
-	.d1 p {
-		margin: 0px 0px 0px 0px;
+	#playground {
+		margin-top:  
 	}
+	.ready {
+		height: 50px;
+	}
+
 }
