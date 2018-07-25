@@ -92,7 +92,9 @@
 	</section>	
 
 	<section id="playground">
-		<button class="clickHere ready">Ready?</button>
+		<div class="startGame">
+			<button class="clickHere ready">Ready?</button>
+		</div>
 		<div class="questions">
 			<h3 id="qs">"The Hippogriff, not to be confused with the Griffon, is a magical creature with the front half of an eagle, and the back half of what?"</h3>
 			<form class="choices">
@@ -113,19 +115,21 @@
 			</form>
 			<button class="clickHere answer">Answer</button>
 		</div>
-
-		<section class="canvas">
-		
-		</section>
 		<div class="players">
+			<div class="player1">
 				<h3 class="p1">PlayerOne</h3>
 				<img class="profilepic profile" src="http://rs178.pbsrc.com/albums/w278/sonne_insomnia/Cheshire-Cat.jpg~c200">
-				<p class="vs">VS</p>
+			</div>
+			<div class="ai">
 				<img class="profilepic profile" src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
-				<h3 class="p1">AI</h3>
-		</div>
+				<h3 class="p2">AI</h3>	
+			</div>
+		</div>	
 	</section>
 
+	<section id="leaderboard">
+		
+	</section>
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="index.js"></script>	

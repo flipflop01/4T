@@ -36,7 +36,7 @@ function playStart() {
 
 function showQuestion() {
 	$(".ready").click(function() {
-		$(".ready").hide(1000);
+		$(".ready, .startGame").hide(800);
 		$("#qs, .choices, .answer").css("display", "initial");
 	});
 }

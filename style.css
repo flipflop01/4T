@@ -20,7 +20,7 @@ main {
 
 p {
 	font-family: 'Fredoka One', cursive;
-	font-size: 30px;
+	font-size: 25px;
 }
 
 
@@ -166,10 +166,14 @@ span {
 
 /*Playground*/ 
 #playground {
-	text-align: center;
 	margin-top: 50px;
 	display: none;
 	width: 100%;
+}
+
+.startGame {
+	width: 100%;
+	text-align: center;
 }
 
 .ready {
@@ -181,6 +185,11 @@ span {
 
 .ready:hover {
 	background-color: #ff4f1e;
+}
+
+.questions {
+	margin-top: 30px;
+	text-align: center;
 }
 
 #qs {
@@ -202,12 +211,22 @@ span {
 
 .players {
 	margin-top: 40px;
+	position: absolute;
+	width: 100%;
+}
+
+.player1 {
 	display: inline-flex;
 }
 
-.p1 {
+.p1, .ai {
 	writing-mode: vertical-rl;
   	text-orientation: upright;
+}
+
+.ai {
+	float: right;
+	display: inline-flex;
 }
 
 .vs {
