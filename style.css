@@ -176,11 +176,16 @@ span {
 	text-align: center;
 }
 
+.options {
+	text-align: center;
+}
+
 .ready {
 	height: 60px;
 	width: 200px;
 	font-size: 35px;
 	background-color: #4eb5f1;
+	margin-top: 20px;
 }
 
 .ready:hover {
@@ -198,7 +203,7 @@ span {
 	display: none;
 }
 
-.choices, .answer {
+.choices, .answer, .restart, .options {
 	display: none;
 }
 
@@ -213,6 +218,7 @@ span {
 	margin-top: 40px;
 	position: absolute;
 	width: 100%;
+	z-index: -1;
 }
 
 .player1 {
@@ -229,8 +235,10 @@ span {
 	display: inline-flex;
 }
 
-.vs {
-	padding-top: 45px;
+.canvas {
+	z-index: 1;
+	text-align: center;
+	display: none;
 }
 
 
@@ -285,19 +293,24 @@ span {
 		width: 100%;
 	}
 	#accountdeets, #playground {
-		margin-top: 10px;
+		margin-top: 0px;
+	}
+	#accountdeets > p {
+		font-size: 20px;
 	}
 	.play {
 		height: 50px;
 		width: 150px;
 		font-size: 20px;
-		margin-top: 15px;
 	}
 	#playground {
 		margin-top:  
 	}
 	.ready {
 		height: 50px;
+	}
+	.choices, .answer, .restart, .canvas {
+		display: none;
 	}
 
 }

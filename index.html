@@ -6,11 +6,11 @@
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy" rel="stylesheet">
-	<!--<script type="text/javascript" charset="utf-8">
+	<script type="text/javascript" charset="utf-8">
         window.addEventListener('load', function () {
             new Game()
         }, false);
-    </script>-->
+    </script>
 </head>
 <body>
 	<header role="banner">
@@ -92,6 +92,24 @@
 	</section>	
 
 	<section id="playground">
+		<div class="options">
+			<label class="">Category:</label>
+			<select name="dropdown" id='query-type' required>
+        		<option value="movies">Entertainment</option>
+       			<option value="books">Science</option>
+    			<option value="authors">Sports</option>
+        		<option value="music">Geography</option>
+        		<option value="shows">Politics</option>
+       			<option value="games">Art</option>
+       			<option value="Random">Randomize Categories</option>
+    		</select>
+    		<label class="">Difficulty</label>
+    		<select>
+    			<option value="movies">Easy</option>
+       			<option value="books">Medium</option>
+    			<option value="authors">Hard</option>
+    		</select> 					
+		</div>
 		<div class="startGame">
 			<button class="clickHere ready">Ready?</button>
 		</div>
@@ -124,12 +142,19 @@
 				<img class="profilepic profile" src="https://vignette.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on%21-avatar-200x200.jpg/revision/latest?cb=20110517050049">
 				<h3 class="p2">AI</h3>	
 			</div>
-		</div>	
+		</div>
 	</section>
-
+	<section class="canvas">
+		
+	</section>
 	<section id="leaderboard">
 		
 	</section>
+
+	<div class="restart">
+		<button class="clickHere newGame">Play Again</button>
+	</div>
+
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="index.js"></script>	
