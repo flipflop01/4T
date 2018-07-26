@@ -1,60 +1,6 @@
-$(document).ready(function(){
-    $(".showrules").click(function(){
-        $("#welcome").hide(1000);
-        $("#rules").css("display", "block");
-    });
-});
-
-function returnToMain() {
-	$(".goBack").click(function() {
-		$("#rules").hide(1000);
-		$("#welcome").show(1000);
-	});
-}
-
-function newAccount() {
-	$(".newAccount").click(function() {
-		$("#welcome").hide(1000);
-		$("#signup").css("display", "block");
-	});
-}
-
-function acctCreated() {
-	$(".create").click(function() {
-		event.preventDefault();
-		$("#signup").hide(1000);
-		$("#accountdeets").css("display", "block");
-	})
-}
-
-function playStart() {
-	$(".play").click(function() {
-		$("#accountdeets").hide(1000);
-		$("#playground").css("display", "inline-block");
-		$(".options").css("display", "block");
-	});
-}
-
-function showQuestion() {
-	$(".ready").click(function() {
-		$(".startGame, .options").hide(800);
-		$("#qs, .choices, .answer").css("display", "initial");
-	});
-}
-
-function showGrid() {
-	$(".answer").click(function() {
-		$(".canvas").css("display", "inherit");
-	});
-}
-
-
-$(returnToMain);
-$(newAccount);
-$(acctCreated);
-$(playStart);
-$(showQuestion);
-$(showGrid);
+/********************************************
+Step 1 define functions and objects
+************************************/
 
 function Game(el) {
     var grid = 3, // number of squares per row
@@ -171,3 +117,44 @@ function Game(el) {
         return depth ? max || 0 : next; // 0 is tie game
     }
 }
+
+$(document).ready(function () {
+    $("#qs, .choices, .answer").hide();
+    $("#playground").hide();
+    $("#accountdeets").hide();
+    $("#signup").hide();
+    $("#rules").hide();
+    $(".options").hide();
+    $(".canvas").hide();
+    $(".newGame").hide();
+
+    $(".answer").click(function() {
+        $(".canvas").show();
+    });
+    $(".ready").click(function() {
+        $(".startGame, .options").hide(800);
+        $("#qs, .choices, .answer").show();
+    });
+    $(".play").click(function() {
+        $("#accountdeets").hide(1000);
+        $("#playground").show();
+        $(".options").show();
+    });
+    $(".create").click(function() {
+        event.preventDefault();
+        $("#signup").hide(1000);
+        $("#accountdeets").show();
+    });
+    $(".newAccount").click(function() {
+        $("#welcome").hide(1000);
+        $("#signup").show();
+    });
+    $(".goBack").click(function() {
+        $("#rules").hide(1000);
+        $("#welcome").show(1000);
+    });
+    $(".showrules").click(function(){
+        $("#welcome").hide(1000);
+        $("#rules").show();
+    });
+})

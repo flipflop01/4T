@@ -29,7 +29,6 @@ p {
 	text-align: center;
 	font-family: 'Luckiest Guy', cursive;
 	font-size: 30px;
-	display: ;
 }
 
 #welcome p {
@@ -95,19 +94,14 @@ li {
 	width: 90%;
     margin: 0 auto;
     text-align: center;
-    display: none;
 }
 
 .return {
 	margin-bottom: 15px;
 }
 
-
-
-
 /*signup*/ 
 #signup {
-	display: none;
 }
 
 .ca {
@@ -146,7 +140,6 @@ li {
 #accountdeets {
 	text-align: center;
 	margin-top: 50px;
-	display: none;
 }
 
 span {
@@ -155,7 +148,10 @@ span {
 }
 
 .profilepic {
-	border-radius: 80%;
+	border-radius: 50%;
+    height: auto;
+    width: auto;
+    max-width: 200px;
 }
 
 .play {
@@ -167,7 +163,6 @@ span {
 /*Playground*/ 
 #playground {
 	margin-top: 50px;
-	display: none;
 	width: 100%;
 }
 
@@ -178,6 +173,14 @@ span {
 
 .options {
 	text-align: center;
+}
+
+.options > label {
+	font-family: 'Fredoka One', cursive;
+}
+
+#query-type {
+	font-family: 'Slabo 27px', serif;
 }
 
 .ready {
@@ -200,11 +203,9 @@ span {
 #qs {
 	font-family: 'Fredoka One', cursive;
 	font-size: 30px;
-	display: none;
 }
 
 .choices, .answer, .restart, .options {
-	display: none;
 }
 
 .answer {
@@ -221,24 +222,23 @@ span {
 	z-index: -1;
 }
 
-.player1 {
-	display: inline-flex;
+.players > * {
+	display: inline-block;
 }
 
-.p1, .ai {
+.p1, .p2 {
 	writing-mode: vertical-rl;
   	text-orientation: upright;
 }
 
 .ai {
 	float: right;
-	display: inline-flex;
 }
 
 .canvas {
 	z-index: 1;
 	text-align: center;
-	display: none;
+	margin-top: 20px;
 }
 
 
@@ -310,7 +310,19 @@ span {
 		height: 50px;
 	}
 	.choices, .answer, .restart, .canvas {
-		display: none;
 	}
 
+}
+
+@media only screen and (max-width: 375px) {
+	.login {
+		border: solid black 2px;
+	}
+	.login p {
+		margin-top: 0px;
+	}
+	.signup {
+		margin-top: 20px;
+	}
+	
 }
