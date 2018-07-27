@@ -324,5 +324,33 @@ span {
 	.signup {
 		margin-top: 20px;
 	}
-	
+	ul {
+		padding-left: 0px;
+	}
+	.ca {
+		font-size: 40px;
+	}
+	#signsheet > input {
+		font-size: 18px;
+	}
+	.profilepic {
+		max-width: 100px;
+	}
+	#accountdeets {
+		margin-top: 20px;
+	}
+	#accountdeets > p {
+		font-size: 20px;
+	}
+	.options {
+		margin: 0px 5px 0px 5px;
+	}
+	.ready {
+		height: 30px;
+		width: 150px;
+		font-size: 18px;
+	}
+	#qs {
+		font-size: 18px;
+	}
 }
