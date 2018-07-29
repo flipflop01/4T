@@ -1,5 +1,5 @@
 ## "4T" | Thinkful Node Capstone
-The 4T app is designed for Theatrical Performers, Theatre Goers, and Theatre enthusiast alike. It allows a User to compile a list of plays by SEEN, PERFORMED, and READ tracking date and location.
+4T is a combination Trivia and Tic-Tac-Toe game app.
 
 ## Screenshots
 
@@ -15,9 +15,7 @@ Delete Entry |
 
 ## User Cases
 This app is for three types of users:
-1. READ - For Theatrical Students, so that they can track Plays that have been read (by title and author, optional edition) by date and include Notes.
-2. SEEN - For Theatre-Goers (enthusiasts, specialists, etc.), so that they can track all the shows the have seen, where and when they have seen them, and any specific Notes they would like to add.
-3. PERFORMED - For Theatrical Artists and Perfomers, so that they can record all shows they have performed in by Role, Location, Date and include Notes (and Lines).
+
 
 ### UI Flow
 ![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
@@ -31,19 +29,20 @@ You can access a working prototype of the app here: https://connect-four-trivia.
 ## Functionality
 The app's functionality includes:
 * Every User has the ability to create an account that stores information unique to them
-* User can Add Entries, Update Entries, and Delete Entries
-* User can sort entries by: Date & Type (Read, Seen, Performed)
+* Users can customize their accounts through a profile pic 
+* Users will be able to keep track of how many games they played, won, or lost and compare themselves with others through a Leaderboard 
+* Users will be able to determine the difficulty and category of the questions 
 
 ## Technology
-* Front-End: HTML5 | CSS3 | JavaScript ES6 | jQuery
+* Front-End: HTML | CSS | JavaScript ES6 | jQuery
 * Back-End: Node.js | Express.js | Mocha | Chai | RESTful API Endpoints | MongoDB | Mongoose
 
 
 
 ## Responsive
-App is strongly built to be usuable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
+The app is built to be usuable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
 
 ## Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
-* Google Maps integrated to view all entries by location
-* Featured Theaters of the World Section
+* A Multiplayer experience 
+* Improved layout, functionality, and a wider assortment of trivia categories. 

@@ -15,3 +15,13 @@ app.use(cors());
 app.use(express.static('public'));
 
 mongoose.Promise = global.Promise;
+
+// ---------------- RUN/CLOSE SERVER --------------------------------------------
+
+
+
+
+// ---------------USER ENDPOINTS-------------------------------------
+
+// POST 
+// creating a new user

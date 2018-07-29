@@ -120,7 +120,6 @@ function Game(el) {
 }
 
 $(document).ready(function () {
-    /*$('#welcome').hide();*/
     $("#qs, .choices, .answer").hide();
     $("#playground").hide();
     $("#accountdeets").hide();
@@ -129,12 +128,20 @@ $(document).ready(function () {
     $(".options").hide();
     $(".canvas").hide();
     $(".newGame").hide();
-
     $(".answer").click(function() {
         $(".canvas").show();
     });
+
+   $(".test").click(function() {
+        getToken();
+        getTrivia();
+    });
+
     $(".ready").click(function() {
-        $(".startGame, .options").hide(800);
+        let category = document.getElementById('query-type').value;
+        let difficulty = document.getElementById('level').value;
+        getTrivia(category, difficulty);
+        $(".startGame, .options").hide(100);
         $("#qs, .choices, .answer").show();
     });
     $(".play").click(function() {
@@ -160,6 +167,41 @@ $(document).ready(function () {
         $("#rules").show();
     });
 })
+
+
+/********************************************
+Trivia Questions API Call
+************************************/
+const triviaUrl = "http://opentdb.com/api.php?amount=20"
+const tokenRequest = "http://opentdb.com/api_token.php?command=request"
+const token = ""
+
+function getToken(tokenRequest) {
+    const tokenSettings = {
+        url: tokenRequest,
+        dataType: 'json',
+        type: 'GET',
+    };
+    $.getJSON(tokenSettings);
+    console.log("Token Acquired");
+}
+
+function getTrivia(category, difficulty, token) {
+    const settings = {
+        url: triviaUrl,
+        data: {
+            category: `${category}`,
+            difficulty: `${difficulty}`,
+            type: "multiple",
+            token: `${token}`,
+        },
+        dataType: 'json',
+        type: 'GET',
+    };
+    $.getJSON(settings);
+    console.log("Q's Retrieved");
+}
+
 
 /********************************************
 Text Animation Trial
