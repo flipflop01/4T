@@ -13,15 +13,11 @@ Add Entry  | Edit Entry
 Delete Entry |
 ![Delete Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/delete-entry.jpg) |
 
-## User Cases
-This app is for three types of users:
-
-
 ### UI Flow
 ![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
 
 ### Wireframe _main
-![Wireframe _Main](https://github.com/KatiLong/node-capstone/blob/master/github-images/wireframe-v1.jpg)
+![Wireframe _Main](https://github.com/flipflop01/4T/blob/master/images/wireframe.jpg)
 
 ## Working Prototype
 You can access a working prototype of the app here: https://connect-four-trivia.herokuapp.com/
