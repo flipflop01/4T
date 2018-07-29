@@ -172,8 +172,8 @@ $(document).ready(function () {
 /********************************************
 Trivia Questions API Call
 ************************************/
-const triviaUrl = "http://opentdb.com/api.php?amount=20"
-const tokenRequest = "http://opentdb.com/api_token.php?command=request"
+const triviaUrl = "https://opentdb.com/api.php?amount=20"
+const tokenRequest = "https://opentdb.com/api_token.php?command=request"
 const token = ""
 
 function getToken(tokenRequest) {
@@ -193,7 +193,7 @@ function getTrivia(category, difficulty, token) {
             category: `${category}`,
             difficulty: `${difficulty}`,
             type: "multiple",
-            token: `${token}`,
+            /*token: `${token}`,*/
         },
         dataType: 'json',
         type: 'GET',

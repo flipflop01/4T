@@ -16,7 +16,7 @@ Delete Entry |
 ### UI Flow
 ![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
 
-### Wireframe _main
+### Wireframe
 ![Wireframe _Main](https://github.com/flipflop01/4T/blob/master/images/wireframe.jpg)
 
 ## Working Prototype
