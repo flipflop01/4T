@@ -58,7 +58,8 @@ function Game(el) {
             next = search(0, 1, -size, size);
             if (next === undef) return die('tie');
             draw(next);
-            if (chk(0) > 0) return die('lost')
+            if (chk(0) > 0) return die('lost');
+            console.log("test");
         }
     };
 
@@ -119,6 +120,7 @@ function Game(el) {
 }
 
 $(document).ready(function () {
+    /*$('#welcome').hide();*/
     $("#qs, .choices, .answer").hide();
     $("#playground").hide();
     $("#accountdeets").hide();
@@ -158,3 +160,8 @@ $(document).ready(function () {
         $("#rules").show();
     });
 })
+
+/********************************************
+Text Animation Trial
+************************************/
+

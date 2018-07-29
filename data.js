@@ -1,4 +1,4 @@
-let dummydata = {
+let dummyData = {
 	name: "Alice in Wonderland",
 	email: "queenofhearts@gmail.com",
 	username: "Smiley Cat",

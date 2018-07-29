@@ -4,14 +4,14 @@
 
 *{
 	box-sizing: border-box;
-	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	text-shadow: -.5px 0 #1e6070, 0 0px #1e6070, 0px 0 #1e6070, 0 -.5px #1e6070;
 }
 
 body {
 	height:100%;
 	margin:0;
 	background-size: cover;
-	background: linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));
+	background: #28147a;/*linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));*/
 }
 
 main {
@@ -19,16 +19,18 @@ main {
 }
 
 p {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Ubuntu', sans-serif;
 	font-size: 25px;
+	color: white;
 }
 
 
 /*main*/
-#welcome {
+#welcome, #messenger {
 	text-align: center;
-	font-family: 'Luckiest Guy', cursive;
+	font-family: 'Russo One', sans-serif;
 	font-size: 30px;
+	color: white;
 }
 
 #welcome p {
@@ -47,15 +49,21 @@ p {
 .clickHere {
 	height: 30px;
 	width: 100px;
-	font-family: 'Luckiest Guy', cursive;
+	font-family: 'Exo', sans-serif;
 	vertical-align: middle;
-	border-radius:2em;
-	background-color:#4eb5f1;
+	/*border-radius:2em;*/
+	background-color:#28147a;
 	text-shadow: none;
+	color: white;
+	text-transform: uppercase;
+ 	transition: all 0.2s ease-in-out;
+ 	border-radius: 4px;
 }
 
 .clickHere:hover {
 	background-color:#4095c6;
+	color: rgba(255, 255, 255, 1);
+ 	box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
 
 #welcome h3 {
@@ -76,17 +84,19 @@ form > input {
 /*Rules*/
 
 .r1 h1 {
-	font-family: 'Luckiest Guy', cursive;
+	font-family: 'Exo', sans-serif;
 	font-size: 50px;
 	margin-bottom: 20px;
+	color: white;
 }
 
 li {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Ubuntu', sans-serif;
 	list-style: circle;
 	list-style-position: inside;
 	vertical-align: middle;
 	margin-bottom: 5px;
+	color: white;
 }
 
 #rules {
@@ -105,9 +115,10 @@ li {
 }
 
 .ca {
-	font-family: 'Luckiest Guy', cursive;
+	font-family: 'Exo', sans-serif;
 	font-size: 50px;
 	text-align: center;
+	color: white;
 }
 
 .info {
@@ -115,8 +126,9 @@ li {
 }
 
 #signsheet > label {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Ubuntu', sans-serif;
 	margin-top: 10px;
+	color: white;
 }
 
 #signsheet {
@@ -176,7 +188,8 @@ span {
 }
 
 .options > label {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Ubuntu', sans-serif;
+	color: white;
 }
 
 #query-type {
@@ -187,12 +200,12 @@ span {
 	height: 60px;
 	width: 200px;
 	font-size: 35px;
-	background-color: #4eb5f1;
+	background-color: #28147a;
 	margin-top: 20px;
 }
 
 .ready:hover {
-	background-color: #ff4f1e;
+	background-color: #43f736;
 }
 
 .questions {
@@ -201,8 +214,9 @@ span {
 }
 
 #qs {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Ubuntu', sans-serif;
 	font-size: 30px;
+	color: white;
 }
 
 .choices, .answer, .restart, .options {
