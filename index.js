@@ -190,7 +190,10 @@ function getTrivia(category, difficulty, token) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://opentdb.com/api.php?amount=10&category=24&difficulty=medium&type=multiple",
+      "url": triviaUrl,
+      "category": category,
+      "difficulty": difficulty,
+      "type": "multiple",
       "method": "GET",
     }
     $.ajax(settings).done(function (response) {
