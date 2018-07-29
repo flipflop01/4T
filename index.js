@@ -193,7 +193,6 @@ function getTrivia(category, difficulty, token) {
         difficulty: `${difficulty}`,
         type: "multiple",
        /*token: `${token}`,*/
-        },
         dataType: 'json',
         type: 'GET',
     };
