@@ -189,11 +189,10 @@ function getToken(tokenRequest) {
 function getTrivia(category, difficulty, token) {
     const settings = {
         url: triviaUrl,
-        data: {
-            category: `${category}`,
-            difficulty: `${difficulty}`,
-            type: "multiple",
-            /*token: `${token}`,*/
+        category: `${category}`,
+        difficulty: `${difficulty}`,
+        type: "multiple",
+       /*token: `${token}`,*/
         },
         dataType: 'json',
         type: 'GET',
