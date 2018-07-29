@@ -199,6 +199,8 @@ function getTrivia(category, difficulty, token) {
     };
     $.getJSON(settings);
     console.log("Q's Retrieved");
+    console.log(category);
+    console.log(difficulty);
 }
 
 
