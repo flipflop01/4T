@@ -3,9 +3,9 @@ Step 1 define functions and objects
 ************************************/
 
 function Game(el) {
-    var grid = 3, // number of squares per row
-        size = 150, // size of each square in pixels
-        intelligence = 9, // intelligence of ai (higher numbers take longer)
+    var grid = 5, // number of squares per row
+        size = 80, // size of each square in pixels
+        intelligence = 2, // intelligence of ai (higher numbers take longer)
         // make everything else locals so they compress better
         doc = document,
         body = doc.body,
