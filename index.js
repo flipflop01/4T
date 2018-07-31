@@ -128,21 +128,19 @@ $(document).ready(function () {
     $(".options").hide();
     $(".canvas").hide();
     $(".newGame").hide();
+    $(".nextQuestion").hide();
     $(".answer").click(function() {
+        event.preventDefault();
         $(".canvas").show();
-    });
-
-   $(".test").click(function() {
-        getToken();
-        getTrivia();
+        console.log("answer");
     });
 
     $(".ready").click(function() {
         let category = document.getElementById('query-type').value;
         let difficulty = document.getElementById('level').value;
         getTrivia(category, difficulty);
-        $(".startGame, .options").hide(100);
-        $("#qs, .choices, .answer").show();
+        $(".startGame, .options").hide();
+        $("#qs, .choices, .answer").show(500);
     });
     $(".play").click(function() {
         $("#accountdeets").hide(1000);
@@ -172,11 +170,11 @@ $(document).ready(function () {
 /********************************************
 Trivia Questions API Call
 ************************************/
-const triviaUrl = "https://opentdb.com/api.php?amount=20"
+const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
 const tokenRequest = "https://opentdb.com/api_token.php?command=request"
 const token = ""
 
-function getToken(tokenRequest) {
+/*function getToken(tokenRequest) {
     const tokenSettings = {
         url: tokenRequest,
         dataType: 'json',
@@ -184,27 +182,63 @@ function getToken(tokenRequest) {
     };
     $.getJSON(tokenSettings);
     console.log("Token Acquired");
-}
+}*/
 
 function getTrivia(category, difficulty, token) {
     var settings = {
       "async": true,
       "crossDomain": true,
       "url": triviaUrl,
-      "category": category,
-      "difficulty": difficulty,
-      "type": "multiple",
+      "category": `${category}`,
+      "difficulty": `${difficulty}`,
       "method": "GET",
     }
     $.ajax(settings).done(function (response) {
+      console.log(category);
+      console.log(difficulty);
+      generateQuestions(response);
       console.log(response);
     });
-    console.log("Q's Retrieved");
-    console.log(category);
-    console.log(difficulty);
 }
 
+function generateQuestions(response) {
+    $('.questions').html(`
+        <h3 id="qs">${response.results[1].question}</h3>
+            <form class="choices">
+                <fieldset>
+                    <label class="answeroption">
+                    <input type="radio" name="answer" value="correct" required><span>${response.results[1].correct_answer}</span>
+                    </label>
+                    <label class="answeroption">
+                    <input type="radio" name="answer" value="**questionbankanswer2**" required><span>${response.results[1].incorrect_answers[0]}</span>
+                    </label>
+                    <label class="answeroption">
+                    <input type="radio" name="answer" value="**questionbankanswer3**" required><span>${response.results[1].incorrect_answers[1]}</span>
+                    </label>
+                    <label class="answeroption">
+                    <input type="radio" name="answer" value="**questionbankanswer4**" required><span>${response.results[1].incorrect_answers[2]}</span>
+                    </label>
+                </fieldset>
+                <button type="submit" class="clickHere answer">Answer</button>
+            </form>
+    `);
+    checkAnswer();
+}
 
+function checkAnswer() {
+    $('.choices').submit(event => {
+        event.preventDefault();
+        let userChoice = $('input[name="answer"]:checked').val();
+        if(userChoice === "correct") {
+            $(".canvas").show();
+            $('.nextQuestion').show();
+        }
+        else{
+            window.alert("Sorry. Wrong Answer");
+            $('.nextQuestion').show();
+        };
+    })
+}
 /********************************************
 Text Animation Trial
 ************************************/
