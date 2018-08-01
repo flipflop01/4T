@@ -125,6 +125,10 @@ li {
 	text-align: center;
 }
 
+#signsheet > * {
+	display: inline-block;
+}
+
 #signsheet > label {
 	font-family: 'Ubuntu', sans-serif;
 	margin-top: 10px;
@@ -132,7 +136,7 @@ li {
 }
 
 #signsheet {
-	display: inline-flex;
+	display: inline-block;
 }
 
 #signsheet > input {
@@ -219,8 +223,7 @@ span {
 	color: white;
 }
 
-.choices, .answer, .restart, .options {
-}
+
 
 .answer {
 	text-align: center;

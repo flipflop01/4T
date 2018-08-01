@@ -189,16 +189,26 @@ function getTrivia(category, difficulty, token) {
       "async": true,
       "crossDomain": true,
       "url": triviaUrl,
-      "category": `${category}`,
-      "difficulty": `${difficulty}`,
+      
+      "data":{
+        "category": 22,  
+        "difficulty": "hard", 
+      },
+      
       "method": "GET",
     }
-    $.ajax(settings).done(function (response) {
-      console.log(category);
-      console.log(difficulty);
-      generateQuestions(response);
-      console.log(response);
-    });
+    $.ajax(settings)
+        .done(function (response) {
+              console.log(category);
+              console.log(difficulty);
+              generateQuestions(response);
+              console.log(response);
+    })
+        .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
 }
 
 function generateQuestions(response) {
@@ -245,3 +255,26 @@ function checkAnswer() {
 Text Animation Trial
 ************************************/
 
+$('#signup-form').submit(event => {
+    event.preventDefault();
+
+    const name = $('#signupName').val();
+    const email = $('#signupEmail').val();
+    const username = $('#signupUsername').val();
+    const password = $('#signupPassword').val();
+
+    //validate inputs
+    if (name == "") {
+        alert('Please add a name');
+    } else if (email == "") {
+        alert('Please add an email address');
+    } else if (username == "") {
+        alert('Please add an user name');
+    } else if (password == "") {
+        alert('Please add a password');
+    }
+
+    //if the input is valid
+
+    
+})
