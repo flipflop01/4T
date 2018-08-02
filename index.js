@@ -184,19 +184,18 @@ const token = ""
     console.log("Token Acquired");
 }*/
 
-function getTrivia(category, difficulty, token) {
-    var settings = {
+function getTrivia(category, difficulty) {
+    let param = {
+        category: category,  
+        difficulty: difficulty,
+    };
+    let settings = {
       "async": true,
       "crossDomain": true,
       "url": triviaUrl,
-      
-      "data":{
-        "category": 22,  
-        "difficulty": "hard", 
-      },
-      
+      "data": param,
       "method": "GET",
-    }
+    };
     $.ajax(settings)
         .done(function (response) {
               console.log(category);
@@ -252,7 +251,7 @@ function checkAnswer() {
 
 
 /********************************************
-Text Animation Trial
+
 ************************************/
 
 $('#signup-form').submit(event => {
@@ -274,7 +273,76 @@ $('#signup-form').submit(event => {
         alert('Please add a password');
     }
 
-    //if the input is valid
+    //if input is valid
+    else {
+        const newUser = {
+            name: name,
+            email: email, 
+            username: username,
+            password: password,
+        };
+        $.ajax({
+            type: "POST",
+            url: '/users/create',
+            data: JSON.stringify(newUser),
+            dataType: 'json',
+        })
+        .done(function(result) {
+            console.log(result);
+            populateUserDetails(result.username);
+            $("#signup").hide(1000);
+            $("#accountdeets").show();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+    };
+});
 
-    
+function populateUserDetails(username) {
+    const userObject = {
+        username: username
+    };
+    $.ajax({
+        type: "GET",
+        url: `/users/${username}`,
+        data: JSON.stringify(userObject),
+        dataType: 'json',
+    });
+}
+
+$('.l2').submit(event => {
+    event.preventDefault();
+
+    //user input
+    const username = $('#username').val();
+    const password = $('#password').val();
+
+    //validate input 
+    if (username == "") {
+        alert('Please enter Username');
+    } else if (password == "") {
+        alert('Please enter Password');
+    }
+
+    //if input is valid
+    else {
+        const loginUser = {
+            username: username,
+            password: password,
+        };
+        $.ajax({
+            type: "POST",
+            url: '/users/login',
+            data: JSON.stringify(loginUser),
+            dataType: 'json',
+        })
+        .done(function(result) {
+            console.log(result);
+            populateUserDetails(result.username);
+            $("#accountdeets").show();
+        })
+    }  
 })
