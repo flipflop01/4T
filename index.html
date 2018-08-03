@@ -5,13 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Russo+One|Exo:400,900|Ubuntu" rel="stylesheet">
-	<script type="text/javascript" charset="utf-8">
-        window.addEventListener('load', function () {
-            new Game()
-        }, false);
-    </script>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<header role="banner">
@@ -114,9 +109,9 @@
     		</select>
     		<label>Difficulty</label>
     		<select id="level">
-    			<option value="Easy">Easy</option>
-       			<option value="Medium">Medium</option>
-    			<option value="Hard">Hard</option>
+    			<option value="easy">Easy</option>
+       			<option value="medium">Medium</option>
+    			<option value="hard">Hard</option>
     		</select> 					
 		</div>
 		<div class="startGame">
@@ -146,6 +141,11 @@
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="data.js"></script>
-	<script type="text/javascript" src="index.js"></script>	
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" charset="utf-8">
+        window.addEventListener('load', function () {
+            new Game()
+        }, false);
+    </script>	
 </body>
 </html>

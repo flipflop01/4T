@@ -185,23 +185,32 @@ const token = ""
 }*/
 
 function getTrivia(category, difficulty) {
+    console.log(category);
+    console.log(difficulty);
+
+    let cat = parseInt(category, 10);
+    let diff = difficulty.toString();
+
     let param = {
-        category: category,  
-        difficulty: difficulty,
-    };
+        "category": cat,  
+        "difficulty": diff
+    }
+
+    console.log(param);
+    let buildUrl = "https://opentdb.com/api.php?amount=10&category="+cat+"&difficulty="+diff+"&type=multiple";
+
+    console.log(buildUrl);
+
     let settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": triviaUrl,
-      "data": param,
+      "url": buildUrl,
+      "dataType": "json",
       "method": "GET",
     };
     $.ajax(settings)
         .done(function (response) {
-              console.log(category);
-              console.log(difficulty);
-              generateQuestions(response);
-              console.log(response);
+            console.log(response);
+            generateQuestions(response);
+              
     })
         .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
