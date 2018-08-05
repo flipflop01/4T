@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Russo+One|Exo:400,900|Ubuntu" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,8 +19,12 @@
 		</div>
 
 		<div id="welcome">
-			<h1>Welcome</h1>
-			<p>"4T" combines the fun of Connect-Four with the challenge of Trivia questions</p>
+
+			<div class="greet">
+				<h1>Welcome</h1>
+				<p>"4T" combines the fun of Connect-Four with the challenge of Trivia questions</p>
+			</div>
+
 			<div class="d1">
 				<p>For rules on how to play the game</p>
 				<button class="clickHere showrules">Click Here</button>
@@ -28,18 +32,17 @@
 			<div class="signup">
 				<div class="login">
 					<p>Already have an account?</p>
-					<form class="l2" action="/signup/" method="post">
+					<form class="w3-container" action="/signup/" method="post">
 						<label for="username">Username</label>
-						<input id="username" type="text" name="" required>
+						<input class="w3-input" type="text" required><br>
 						<label for="password">Password</label>
-						<input type="text" name="" id="password" required>
+						<input type="text" class="w3-input" required><br>
 						<button class="clickHere l3" type="submit">Log In</button>
 					</form>
 				</div>
 			</div>
-			<h3>New here? <button class="clickHere newAccount">Sign Up</button></h3>
+			<h3 class="newHere">New here? <button class="clickHere newAccount">Sign Up</button></h3>
 		</div>
-	</main>
 	
 	<section id="rules">
 		<div class="r1">
@@ -65,15 +68,15 @@
 			<form id="signup-form">
 				<fieldset id="signsheet">
 					<label>Name</label>
-					<input type="name" id="signupName" required>
+					<input type="name" id="signupName" required><br>
 					<label>Email Address</label>
-					<input type="email" id="signupEmail" required>
+					<input type="email" id="signupEmail" required><br>
 					<label>Username</label>
-					<input type="username" id="signupUsername" required>
+					<input type="username" id="signupUsername" required><br>
 					<label>Password</label>
-					<input type="password" id="signupPassword" required>
+					<input type="password" id="signupPassword" required><br>
 					<label>Upload Profile Pic</label>
-					<input type="text" name="profilepic">
+					<input type="text" name="profilepic"><br>
 				</fieldset>
 				<button class="clickHere create">Submit</button>
 			</form>
@@ -121,24 +124,23 @@
 			
 		</div>
 		<div class="players">
-			<div class="player1">
+			<div class="player1 box">
 				<h3 class="p1">PlayerOne</h3>
 				<img class="profilepic profile" src="images/Cheshire-Cat.jpg">
 			</div>
-			<div class="ai">
+			<div class="canvas box">
+		
+			</div>
+			<div class="ai box">
 				<img class="profilepic profile" src="images/K-on!-avatar-200x200.jpg">
 				<h3 class="p2">AI</h3>	
 			</div>
 		</div>
+		<button class="nextQuestion clickHere">Next Question</button>
+		<div class="restart">
+			<button class="clickHere newGame">Play Again</button>
+		</div>
 	</section>
-	<section class="canvas">
-		
-	</section>
-	<button class="nextQuestion clickHere">Next Question</button>
-	<div class="restart">
-		<button class="clickHere newGame">Play Again</button>
-	</div>
-
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="index.js"></script>
@@ -146,6 +148,7 @@
         window.addEventListener('load', function () {
             new Game()
         }, false);
-    </script>	
+    </script>
+    </main>	
 </body>
 </html>

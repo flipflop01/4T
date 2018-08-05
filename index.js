@@ -140,28 +140,28 @@ $(document).ready(function () {
         let difficulty = document.getElementById('level').value;
         getTrivia(category, difficulty);
         $(".startGame, .options").hide();
-        $("#qs, .choices, .answer").show(500);
+        $("#qs, .choices, .answer").show();
     });
     $(".play").click(function() {
-        $("#accountdeets").hide(1000);
+        $("#accountdeets").hide();
         $("#playground").show();
         $(".options").show();
     });
     $(".create").click(function() {
         event.preventDefault();
-        $("#signup").hide(1000);
+        $("#signup").hide();
         $("#accountdeets").show();
     });
     $(".newAccount").click(function() {
-        $("#welcome").hide(1000);
+        $("#welcome").hide();
         $("#signup").show();
     });
     $(".goBack").click(function() {
-        $("#rules").hide(1000);
-        $("#welcome").show(1000);
+        $("#rules").hide();
+        $("#welcome").show();
     });
     $(".showrules").click(function(){
-        $("#welcome").hide(1000);
+        $("#welcome").hide();
         $("#rules").show();
     });
 })

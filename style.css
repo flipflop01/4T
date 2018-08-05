@@ -1,13 +1,3 @@
-/*font-family: 'Permanent Marker', cursive;
-  font-family: 'Bangers', cursive;
-*/
-
-
-/* -------------------------------------
-CSS reset
-Is a short set of CSS rules that resets the styling of all HTML elements to a consistent baseline so the website will look the same on all browsers
-*/
-
 * {
     margin: 0;
     padding: 0;
@@ -53,365 +43,190 @@ Is a short set of CSS rules that resets the styling of all HTML elements to a co
     -o-padding-end: 0px;
 }
 
+/*font-family: 'VT323', monospace;*/
+
+@console-color: #14fdce;
+@console-bg: #031e11;
+
 body {
-	height:100%;
-	margin:0;
-	background-size: cover;
-	background: #28147a;/*linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));*/
-	text-shadow: -.5px 0 #1e6070, 0 0px #1e6070, 0px 0 #1e6070, 0 -.5px #1e6070
+  background: #383838;
+  color: #2ecfe4;
+  font-family: 'VT323';
+  font-size: 24px;
+  -webkit-font-smoothing: none;
+  line-height: 1.2;
 }
 
 main {
-    /*margin-top: 50px;*/
+  background-color: transparent;
+  border-radius: 2rem;
+  border: 1rem solid;
+  border-bottom-color: #121212;
+  border-left-color: #080808;
+  border-right-color: #080808;
+  border-top-color: #020202;
+  box-shadow:
+    inset 0 0 18rem black,
+    inset 0 0 3rem black,
+    0 0 10rem black;
+  height: 96%;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 96%;
+  pointer-events: none;
+}
+#welcome {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: #031e11;
+    position: absolute;
+    padding: 3rem 2rem;
+    pointer-events: auto;
+    text-shadow: 0rem 0.2rem 1rem #0c7b46;
+    z-index: -1;
+}
+.d1,.login,.newHere {
+    margin-top: 30px;
+    vertical-align: middle;
+}
+.newAccount {
+    margin-bottom: 2px;
 }
 
-p {
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 25px;
-	color: white;
-}
-
-
-/*main*/
-#welcome, #messenger {
-	text-align: center;
-	font-family: 'Russo One', sans-serif;
-	font-size: 30px;
-	color: white;
-}
-
-#welcome p {
-	margin-bottom: 25px;
-} 
-
-.login p {
-	margin-bottom: 0px;
-	margin-top: 30px;
-}
-
-.d1 > * {
-	display: inline;
-	vertical-align: middle;
+/*Buttons, Input Fields*/
+#rules,#signup,#accountdeets,#playground,.restart {
+    pointer-events: auto;
 }
 .clickHere {
-	height: 30px;
-	width: 100px;
-	font-family: 'Exo', sans-serif;
-	vertical-align: middle;
-	/*border-radius:2em;*/
-	background-color:#28147a;
-	text-shadow: none;
-	color: white;
-	text-transform: uppercase;
- 	transition: all 0.2s ease-in-out;
- 	border-radius: 4px;
+    font-family: 'VT323';
+    font-size: 20px;
+    padding: 5px 5px 5px 5px;
+    vertical-align: middle;
+    background-color: transparent;
+    text-shadow: none;
+    color: #47e60d;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
 }
-
 .clickHere:hover {
-	background-color:#4095c6;
-	color: rgba(255, 255, 255, 1);
- 	box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    background-color:#47e60d;
+    color: #e60d47;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
-
-#welcome h3 {
-	margin-top: 30px;
-}
-
-form > * {
-	vertical-align: middle;
-}
-
-form > input {
-	height: 25px;
-	font-size: 15px;
-}
-
-
 
 /*Rules*/
-
 .r1 h1 {
-	font-family: 'Exo', sans-serif;
-	font-size: 50px;
-	margin-bottom: 20px;
-	color: white;
+    font-size: 50px;
+    margin-bottom: 20px;
 }
-
 li {
-	font-family: 'Ubuntu', sans-serif;
-	list-style: circle;
-	list-style-position: inside;
-	vertical-align: middle;
-	margin-bottom: 5px;
-	color: white;
+    list-style: circle;
+    list-style-position: inside;
+    vertical-align: middle;
+    margin-bottom: 5px;
 }
-
 #rules {
-	font-size: 22px;
-	width: 90%;
+    font-size: 22px;
+    width: 90%;
     margin: 0 auto;
-    text-align: center;
 }
-
 .return {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 /*signup*/ 
-#signup {
+#signup-form {
+    margin-top: 30px;
 }
-
 .ca {
-	font-family: 'Exo', sans-serif;
-	font-size: 50px;
-	text-align: center;
-	color: white;
+    font-size: 50px;
+    text-align: center;
 }
-
 .info {
-	text-align: center;
+    text-align: center;
 }
-
 #signsheet label {
-	font-family: 'Ubuntu', sans-serif;
-	margin-top: 10px;
-	color: white;
 }
-
 #signsheet * {
-	display: block;
+    display: block;
 }
-
 #signsheet input {
-	height: 30px;
-	font-size: 28px;
-	margin-left: auto;
-	margin-right: auto;
+    height: 30px;
+    font-size: 28px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 .create {
-	height: 30px;
-	width: 50%;
-	margin-left: 25%;
-	margin-top: 15px;
-	margin-bottom: 15px;
+    width: 25%;
 }
 
 /*Account Details*/
 #accountdeets {
-	text-align: center;
-	margin-top: 50px;
+    text-align: center;
+    margin-top: 50px;
 }
-
 span {
-	color: blue;
-	font-style: italic;
 }
-
 .profilepic {
-	border-radius: 50%;
+    border-radius: 50%;
     height: auto;
     width: auto;
     max-width: 200px;
 }
-
 .play {
-	height: 40px;
-	width: 150px;
-	font-size: 20px;
+    font-size: 20px;
 }
 
 /*Playground*/ 
 #playground {
-	margin-top: 50px;
-	width: 100%;
+    width: 100%;
 }
-
 .startGame {
-	width: 100%;
-	text-align: center;
+    text-align: center;
 }
-
 .options {
-	text-align: center;
+    text-align: center;
 }
-
-.options > label {
-	font-family: 'Ubuntu', sans-serif;
-	color: white;
-}
-
-#query-type {
-	font-family: 'Slabo 27px', serif;
-}
-
 .ready {
-	height: 60px;
-	width: 200px;
-	font-size: 35px;
-	background-color: #28147a;
-	margin-top: 20px;
+    font-size: 35px;
+    background-color: transparent;
+    margin-top: 20px;
 }
-
 .ready:hover {
-	background-color: #43f736;
+    background-color: #43f736;
 }
-
 .questions {
-	margin-top: 30px;
-	text-align: center;
+    text-align: center;
 }
-
 #qs {
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 30px;
-	color: white;
+    font-size: 30px;
 }
-
-
-
 .answer {
-	text-align: center;
-	width: 150px;
-	height: 40px;
-	margin-top: 40px;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 40px;
 }
-
 .players {
-	margin-top: 40px;
-	width: 100%;
-	z-index: -1;
+    margin-top: 40px;
+    width: 100%;
+    z-index: -1;
 }
-
 .players * {
-	display: inline-block;
+    display: inline-block;
 }
-
 .p1, .p2 {
-	writing-mode: vertical-rl;
-  	text-orientation: upright;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
-
 .ai {
-	float: right;
+    float: right;
 }
-
 .canvas {
-	z-index: 1;
-	text-align: center;
-	margin-top: 20px;
-}
-
-
-
-@media only screen and (max-width: 320px) {
-	body {
-		margin: 30px 10px 10px 10px;
-	}
-	h1, .ca {
-		margin: 10px 0px 5px 0px;
-		font-size: 40px;
-	}
-	#welcome p {
-		margin-top: 0px;
-		margin-bottom: 0px;
-		font-size: 20px;
-	}
-	.d1 {
-		margin: 10px 0px 10px 0px;
-	}
-	.login {
-		border: solid black 2px;
-	}
-	.clickHere {
-		height: 25px;
-	}
-	.r1 h1 {
-		font-size: 30px;
-		margin-bottom: 0px;
-	}
-	.l2, #qs {
-		display: inline-grid;
-		font-size: 20px;
-	}
-	h3{
-		font-size: 30px;
-	}
-	.l3 {
-		margin: 5px 0px 10px 45px;
-	}
-	ul {
-		padding: 0;
-	}
-	li {
-		font-size: 16.5px;
-	}
-	#signsheet {
-		width: 90%;
-	}
-	#signsheet > input {
-		margin: 0;
-		width: 100%;
-	}
-	#accountdeets, #playground {
-		margin-top: 0px;
-	}
-	#accountdeets > p {
-		font-size: 20px;
-	}
-	.play {
-		height: 50px;
-		width: 150px;
-		font-size: 20px;
-	}
-	#playground {
-		margin-top:  
-	}
-	.ready {
-		height: 50px;
-	}
-	.choices, .answer, .restart, .canvas {
-	}
-
-}
-
-@media only screen and (max-width: 375px) {
-	.login {
-		border: solid black 2px;
-	}
-	.login p {
-		margin-top: 0px;
-	}
-	.signup {
-		margin-top: 20px;
-	}
-	ul {
-		padding-left: 0px;
-	}
-	.ca {
-		font-size: 40px;
-	}
-	#signsheet > input {
-		font-size: 18px;
-	}
-	.profilepic {
-		max-width: 100px;
-	}
-	#accountdeets {
-		margin-top: 20px;
-	}
-	#accountdeets > p {
-		font-size: 20px;
-	}
-	.options {
-		margin: 0px 5px 0px 5px;
-	}
-	.ready {
-		height: 30px;
-		width: 150px;
-		font-size: 18px;
-	}
-	#qs {
-		font-size: 18px;
-	}
+    z-index: 1;
+    margin: 0 auto;
+    border: solid gray .5px;
 }
