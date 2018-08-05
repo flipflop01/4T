@@ -76,6 +76,9 @@ main {
   width: 96%;
   pointer-events: none;
 }
+p {
+    font-size: 30px;
+}
 #signup, #welcome, #rules, #accountdeets, #playground {
     padding: 50px 20px 20px 20px;
     background-color: #031e11;
@@ -84,13 +87,17 @@ main {
     position: absolute;
     z-index: -1;
     text-align: center;
+    text-shadow: 0rem 0.2rem 1rem #0c7b46;
+    pointer-events: auto;
 }
 #welcome {
     text-align: center;
     position: absolute;
     pointer-events: auto;
-    text-shadow: 0rem 0.2rem 1rem #0c7b46;
     z-index: -1;
+}
+.greet h1 {
+    font-size:70px;
 }
 .d1,.login,.newHere {
     margin-top: 30px;
@@ -99,14 +106,13 @@ main {
 .newAccount {
     margin-bottom: 2px;
 }
-
-/*Buttons, Input Fields*/
-#rules,#signup,#accountdeets,#playground,.restart {
-    pointer-events: auto;
+.newHere {
+    font-size: 30px;
 }
+/*Buttons, Input Fields*/
 .clickHere {
     font-family: 'VT323';
-    font-size: 20px;
+    font-size: 25px;
     padding: 5px 5px 5px 5px;
     vertical-align: middle;
     background-color: transparent;
@@ -115,16 +121,28 @@ main {
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
     border-radius: 4px;
+    text-shadow: 0rem 0.1rem .5rem #47e60d;
 }
 .clickHere:hover {
     background-color:#47e60d;
     color: #e60d47;
     box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
-
+input, select {
+    background-color: transparent;
+    border: 3px solid #2ecfe4;
+    opacity: 0.5;
+    width: 20%;
+    color: #47e60d;
+    padding: 0px 5px 0px 5px;
+    font-family: 'VT323';
+}
+.w3-container label {
+    vertical-align: sub;
+}
 /*Rules*/
 .r1 h1 {
-    font-size: 50px;
+    font-size: 60px;
     margin-bottom: 20px;
 }
 li {
@@ -133,13 +151,11 @@ li {
     vertical-align: middle;
     margin-bottom: 5px;
 }
-#rules {
-    font-size: 22px;
-    width: 90%;
-    margin: 0 auto;
-}
 .return {
     margin-bottom: 15px;
+}
+.listOfRules {
+    margin: 20px 20px;
 }
 
 /*signup*/
@@ -147,38 +163,42 @@ li {
     margin-top: 30px;
 }
 .ca {
-    font-size: 50px;
+    font-size: 65px;
     text-align: center;
 }
 .info {
     text-align: center;
 }
-#signsheet label {
+#signsheet input {
+    border: 3px solid #2ecfe4;
+    opacity: 0.5;
+    width: 40%;
 }
 #signsheet * {
     display: block;
 }
 #signsheet input {
-    height: 30px;
     font-size: 28px;
     margin-left: auto;
     margin-right: auto;
 }
-.create {
-    width: 25%;
-}
 
 /*Account Details*/
-span {
+.details {
+    margin-top: 50px;
+}
+.user {
+    margin: 20px 0px 20px 0px;
+}
+.user span {
+    color: #47e60d;
 }
 .profilepic {
     border-radius: 50%;
     height: auto;
     width: auto;
     max-width: 200px;
-}
-.play {
-    font-size: 20px;
+    max-height: 180px;
 }
 
 /*Playground*/ 
@@ -200,11 +220,14 @@ span {
     text-align: center;
 }
 #qs {
-    font-size: 30px;
+    font-size: 35px;
+}
+.choices > fieldset input {
+    width: auto;
 }
 .answer {
     text-align: center;
-    margin-top: 40px;
+    margin: 40px 20px 15px 20px;;
 }
 .players {
     margin-top: 10px;
@@ -230,4 +253,7 @@ span {
     z-index: 1;
     margin: 0 auto;
     border: solid gray .5px;
+}
+.nextQuestion {
+    margin: 20px 20px 15px 20px;
 }

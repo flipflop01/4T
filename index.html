@@ -34,9 +34,9 @@
 					<p>Already have an account?</p>
 					<form class="w3-container" action="/signup/" method="post">
 						<label for="username">Username</label>
-						<input class="w3-input" type="text" required><br>
+						<input class="w3-input" type="text" autofocus required><br>
 						<label for="password">Password</label>
-						<input type="text" class="w3-input" required><br>
+						<input type="text" class="w3-input" autofocus required><br>
 						<button class="clickHere l3" type="submit">Log In</button>
 					</form>
 				</div>
@@ -68,13 +68,13 @@
 			<form id="signup-form">
 				<fieldset id="signsheet">
 					<label>Name</label>
-					<input type="name" id="signupName" required><br>
+					<input type="name" id="signupName" autofocus required><br>
 					<label>Email Address</label>
-					<input type="email" id="signupEmail" required><br>
+					<input type="email" id="signupEmail" autofocus required><br>
 					<label>Username</label>
-					<input type="username" id="signupUsername" required><br>
+					<input type="username" id="signupUsername" autofocus required><br>
 					<label>Password</label>
-					<input type="password" id="signupPassword" required><br>
+					<input type="text" id="signupPassword" autofocus required><br>
 					<label>Upload Profile Pic</label>
 					<input type="text" name="profilepic"><br>
 				</fieldset>
@@ -84,13 +84,16 @@
 	</section>	
 
 	<section id="accountdeets">
-		<img class="profilepic" src="images/Cheshire-Cat.jpg">
-		<p>Name:&ensp;<span>Alice in Wonderland</span></p>
-		<p>Email Address:&ensp;<span>queenofhearts@gmail.com</span></p>
-		<p>Username:&ensp;<span>Smiley Cat</span></p>
-		<p>Number of games played:&ensp;<span>32</span></p>
-		<p>Number of games won:&ensp;<span>25</span></p>
-
+		<div class="details">
+			<img class="profilepic" src="images/ffpip.png">
+				<div class="user">
+					<p>Name:&ensp;<span>John Doe</span></p>
+					<p>Email Address:&ensp;<span>falloutforever@gmail.com</span></p>
+					<p>Username:&ensp;<span>The Wanderer</span></p>
+					<p>Number of games played:&ensp;<span>32</span></p>
+					<p>Number of games won:&ensp;<span>25</span></p>
+				</div>
+		</div>
 		<section id="leaderboard">
 		
 		</section>
@@ -126,13 +129,13 @@
 		<div class="players">
 			<div class="player1 box">
 				<h3 class="p1">PlayerOne</h3>
-				<img class="profilepic profile" src="images/Cheshire-Cat.jpg">
+				<img class="profilepic profile" src="images/ffpip.png">
 			</div>
 			<div class="canvas box">
 		
 			</div>
 			<div class="ai box">
-				<img class="profilepic profile" src="images/yes_man_by_crashdummy24-d393rrn.jpg">
+				<img class="profilepic profile" src="images/93e7d384d944d594561183fd61fa923fc9d09b6a_00.jpg">
 				<h3 class="p2">AI</h3>	
 			</div>
 		</div>
