@@ -1,7 +1,7 @@
 {
     "name": "4T",
     "version": "1.0.0",
-    "description": "The Shakespeare Passport app is designed for Theatrical Performers, Theatre Goers, and Theatre enthusiast alike. It allows a User to compile a list of plays by SEEN, PERFORMED, and READ tracking date and location.",
+    "description": "A combination Connect Four and Trivia entertainment app",
     "main": "server.js",
     "dependencies": {
         "bcrypt": "^0.8.7",

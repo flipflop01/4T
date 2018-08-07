@@ -129,40 +129,45 @@ $(document).ready(function () {
     $(".canvas").hide();
     $(".newGame").hide();
     $(".nextQuestion").hide();
-    $(".answer").click(function() {
-        event.preventDefault();
-        $(".canvas").show();
-        console.log("answer");
-    });
+    $(".players").hide();
 
     $(".ready").click(function() {
         let category = document.getElementById('query-type').value;
         let difficulty = document.getElementById('level').value;
         getTrivia(category, difficulty);
-        $(".startGame, .options").hide();
-        $("#qs, .choices, .answer").show();
+        $(".startGame, .options").fadeOut();
+        $("#qs, .choices, .players, .answer").fadeIn();
     });
     $(".play").click(function() {
-        $("#accountdeets").hide();
-        $("#playground").show();
-        $(".options").show();
+        $("#accountdeets").fadeOut(2000);
+        $("#playground").fadeIn(4000);
+        $(".options").fadeIn(4000);
     });
     $(".create").click(function() {
         event.preventDefault();
-        $("#signup").hide();
-        $("#accountdeets").show();
+        $("#signup").fadeOut(2000);
+        $("#accountdeets").fadeIn(4000);
     });
     $(".newAccount").click(function() {
-        $("#welcome").hide();
-        $("#signup").show();
+        $("#welcome").fadeOut(2000);
+        $("#signup").fadeIn(4000);
     });
     $(".goBack").click(function() {
-        $("#rules").hide();
-        $("#welcome").show();
+        $("#rules").fadeOut(2000);
+        $("#welcome").fadeIn(4000);
+    });
+    $(".goBack2").click(function() {
+        $("#signup").fadeOut(2000);
+        $("#welcome").fadeIn(4000);
     });
     $(".showrules").click(function(){
-        $("#welcome").hide();
-        $("#rules").show();
+        $("#welcome").fadeOut(2000);
+        $("#rules").fadeIn(4000);
+    });
+    $(".nextQuestion").click(function() {
+        console.log("answer");
+        event.preventDefault();
+        $(".canvas, .nextQuestion").fadeOut(2000);
     });
 })
 
@@ -172,17 +177,6 @@ Trivia Questions API Call
 ************************************/
 const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
 const tokenRequest = "https://opentdb.com/api_token.php?command=request"
-const token = ""
-
-/*function getToken(tokenRequest) {
-    const tokenSettings = {
-        url: tokenRequest,
-        dataType: 'json',
-        type: 'GET',
-    };
-    $.getJSON(tokenSettings);
-    console.log("Token Acquired");
-}*/
 
 function getTrivia(category, difficulty) {
     console.log(category);
@@ -259,10 +253,7 @@ function checkAnswer() {
 }
 
 
-/********************************************
-
-************************************/
-
+/*New User Signup*/
 $('#signup-form').submit(event => {
     event.preventDefault();
 
@@ -322,6 +313,7 @@ function populateUserDetails(username) {
     });
 }
 
+/*User Logging In*/
 $('.l2').submit(event => {
     event.preventDefault();
 

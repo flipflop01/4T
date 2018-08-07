@@ -201,12 +201,16 @@ li {
     max-height: 180px;
 }
 
-/*Playground*/ 
+/*Playground*/
+select option {
+    background-color: : #031e11;
+} 
 .startGame {
     text-align: center;
 }
 .options {
     text-align: center;
+    margin-top: 50px;
 }
 .ready {
     font-size: 35px;
@@ -218,6 +222,7 @@ li {
 }
 .questions {
     text-align: center;
+    margin-top: 80px;
 }
 #qs {
     font-size: 35px;
@@ -232,7 +237,6 @@ li {
 .players {
     margin-top: 10px;
     width: 100%;
-    z-index: -1;
 }
 .players * {
     display: inline-block;
