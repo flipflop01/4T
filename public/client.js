@@ -23,17 +23,18 @@ function Game(el) {
     // build the playing area
     canvas.height = canvas.width = grid * size;
     with(context) {
-            strokeStyle = '#666';
-            bn(); // beginPath
-            for (i = 1, h = grid - 1; i <= h * 2; i++) {
-                j = k = 0, l = m = grid * size;
-                i <= h ? j = l = i * size // rows
-                    : k = m = i * size - h * size; // columns
-                mT(j, k), lT(l, m); // moveTo, lineTo
-            }
-            stroke();
+        strokeStyle = '#666';
+        bn(); // beginPath
+        for (i = 1, h = grid - 1; i <= h * 2; i++) {
+            j = k = 0, l = m = grid * size;
+            i <= h ? j = l = i * size // rows
+                :
+                k = m = i * size - h * size; // columns
+            mT(j, k), lT(l, m); // moveTo, lineTo
         }
-        $(".canvas").append(canvas);
+        stroke();
+    }
+    $(".canvas").append(canvas);
 
     // calculate all winning combos
     for (i = 0, c = [], d = []; i < grid; i++) {
@@ -84,7 +85,8 @@ function Game(el) {
             x = i % grid * size, y = ~~(i / grid) * size, c = size / 2, d = size / 3, e = d * 2, lineWidth = 4;
             bn(); // beginPath
             o ? a(x + c, y + c, d / 2, 0, Math.PI * 2, !1) // draw o
-                : (mT(x + d, y + d), lT(x + e, y + e), mT(x + d, y + e), lT(x + e, y + d)); // draw x
+                :
+                (mT(x + d, y + d), lT(x + e, y + e), mT(x + d, y + e), lT(x + e, y + d)); // draw x
             stroke();
             board[i] = o || 1;
         }
@@ -131,40 +133,35 @@ $(document).ready(function () {
     $(".nextQuestion").hide();
     $(".players").hide();
 
-    $(".ready").click(function() {
+    $(".ready").click(function () {
         let category = document.getElementById('query-type').value;
         let difficulty = document.getElementById('level').value;
         getTrivia(category, difficulty);
         $(".startGame, .options").fadeOut();
         $("#qs, .choices, .players, .answer").fadeIn();
     });
-    $(".play").click(function() {
+    $(".play").click(function () {
         $("#accountdeets").fadeOut(2000);
         $("#playground").fadeIn(4000);
         $(".options").fadeIn(4000);
     });
-    $(".create").click(function() {
-        event.preventDefault();
-        $("#signup").fadeOut(2000);
-        $("#accountdeets").fadeIn(4000);
-    });
-    $(".newAccount").click(function() {
+    $(".newAccount").click(function () {
         $("#welcome").fadeOut(2000);
         $("#signup").fadeIn(4000);
     });
-    $(".goBack").click(function() {
+    $(".goBack").click(function () {
         $("#rules").fadeOut(2000);
         $("#welcome").fadeIn(4000);
     });
-    $(".goBack2").click(function() {
+    $(".goBack2").click(function () {
         $("#signup").fadeOut(2000);
         $("#welcome").fadeIn(4000);
     });
-    $(".showrules").click(function(){
+    $(".showrules").click(function () {
         $("#welcome").fadeOut(2000);
         $("#rules").fadeIn(4000);
     });
-    $(".nextQuestion").click(function() {
+    $(".nextQuestion").click(function () {
         console.log("answer");
         event.preventDefault();
         $(".canvas, .nextQuestion").fadeOut(2000);
@@ -186,31 +183,31 @@ function getTrivia(category, difficulty) {
     let diff = difficulty.toString();
 
     let param = {
-        "category": cat,  
+        "category": cat,
         "difficulty": diff
     }
 
     console.log(param);
-    let buildUrl = "https://opentdb.com/api.php?amount=10&category="+cat+"&difficulty="+diff+"&type=multiple";
+    let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
     console.log(buildUrl);
 
     let settings = {
-      "url": buildUrl,
-      "dataType": "json",
-      "method": "GET",
+        "url": buildUrl,
+        "dataType": "json",
+        "method": "GET",
     };
     $.ajax(settings)
         .done(function (response) {
             console.log(response);
             generateQuestions(response);
-              
-    })
+
+        })
         .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            });
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 }
 
 function generateQuestions(response) {
@@ -241,11 +238,10 @@ function checkAnswer() {
     $('.choices').submit(event => {
         event.preventDefault();
         let userChoice = $('input[name="answer"]:checked').val();
-        if(userChoice === "correct") {
+        if (userChoice === "correct") {
             $(".canvas").show();
             $('.nextQuestion').show();
-        }
-        else{
+        } else {
             window.alert("Sorry. Wrong Answer");
             $('.nextQuestion').show();
         };
@@ -277,27 +273,27 @@ $('#signup-form').submit(event => {
     else {
         const newUser = {
             name: name,
-            email: email, 
+            email: email,
             username: username,
-            password: password,
+            password: password
         };
+        console.log(newUser);
         $.ajax({
-            type: "POST",
-            url: '/users/create',
-            data: JSON.stringify(newUser),
-            dataType: 'json',
-        })
-        .done(function(result) {
-            console.log(result);
-            populateUserDetails(result.username);
-            $("#signup").hide(1000);
-            $("#accountdeets").show();
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+                type: "POST",
+                url: '/users/create',
+                data: JSON.stringify(newUser),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                populateUserDetails(username);
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
     };
 });
 
@@ -306,11 +302,22 @@ function populateUserDetails(username) {
         username: username
     };
     $.ajax({
-        type: "GET",
-        url: `/users/${username}`,
-        data: JSON.stringify(userObject),
-        dataType: 'json',
-    });
+            type: "GET",
+            url: `/users/${username}`,
+            data: JSON.stringify(userObject),
+            dataType: 'json',
+        })
+        .done(function (result) {
+            $('.user').html(`
+            <p>Name:&ensp;<span>${result.name}</span></p>
+            <p>Email Address:&ensp;<span>${result.email}</span></p>
+            <p>Username:&ensp;<span>${result.username}</span></p>
+            <p>Number of games played:&ensp;<span>32</span></p>
+            <p>Number of games won:&ensp;<span>25</span></p>
+        `);
+            $("#signup").fadeOut(2000);
+            $("#accountdeets").fadeIn(4000);
+        })
 }
 
 /*User Logging In*/
@@ -321,7 +328,7 @@ $('.l2').submit(event => {
     const username = $('#username').val();
     const password = $('#password').val();
 
-    //validate input 
+    //validate input
     if (username == "") {
         alert('Please enter Username');
     } else if (password == "") {
@@ -335,15 +342,14 @@ $('.l2').submit(event => {
             password: password,
         };
         $.ajax({
-            type: "POST",
-            url: '/users/login',
-            data: JSON.stringify(loginUser),
-            dataType: 'json',
-        })
-        .done(function(result) {
-            console.log(result);
-            populateUserDetails(result.username);
-            $("#accountdeets").show();
-        })
-    }  
+                type: "POST",
+                url: '/users/login',
+                data: JSON.stringify(loginUser),
+                dataType: 'json',
+            })
+            .done(function (result) {
+                console.log(result);
+                populateUserDetails(result.username);
+            })
+    }
 })

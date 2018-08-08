@@ -89,6 +89,7 @@ p {
     text-align: center;
     text-shadow: 0rem 0.2rem 1rem #0c7b46;
     pointer-events: auto;
+    padding-top: 100px;
 }
 #welcome {
     text-align: center;

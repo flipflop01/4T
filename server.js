@@ -19,90 +19,105 @@ mongoose.Promise = global.Promise;
 // ---------------- RUN/CLOSE SERVER --------------------------------------------
 let server = undefined;
 
-function runServer(databaseUrl, port = PORT) {
-  return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, err => {
-      if (err) {
-        return reject(err);
-      }
-      server = app.listen(port, () => {
-        console.log(`Your app is listening on port ${port}`);
-        resolve();
-      })
-        .on('error', err => {
-          mongoose.disconnect();
-          reject(err);
+function runServer(urlToUse) {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(urlToUse, err => {
+            if (err) {
+                return reject(err);
+            }
+            server = app.listen(config.PORT, () => {
+                console.log(`Listening on localhost:${config.PORT}`);
+                resolve();
+            }).on('error', err => {
+                mongoose.disconnect();
+                reject(err);
+            });
         });
     });
-  });
 }
 
 if (require.main === module) {
-  runServer(DATABASE_URL).catch(err => console.error(err));
+    runServer(config.DATABASE_URL).catch(err => console.error(err));
 }
 
 function closeServer() {
-  return mongoose.disconnect().then(() => {
-    return new Promise((resolve, reject) => {
-      console.log('Closing server');
-      server.close(err => {
-        if (err) {
-          return reject(err);
-        }
-        resolve();
-      });
-    });
-  });
+    return mongoose.disconnect().then(() => new Promise((resolve, reject) => {
+        console.log('Closing server');
+        server.close(err => {
+            if (err) {
+                return reject(err);
+            }
+            resolve();
+        });
+    }));
 }
-
-module.exports = { app, runServer, closeServer };
 
 // ---------------USER ENDPOINTS-------------------------------------
 
-// POST 
+// POST
 // creating a new user
 app.post('/users/create', (req, res) => {
 
-	const requiredFields = ['name', 'email', 'username', 'password'];
+    //take the name, username and the password from the ajax api call
+    let name = req.body.name;
+    let email = req.body.email;
+    let username = req.body.username;
+    let password = req.body.password;
 
-	for (let i=0; i<requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`
-      console.error(message);
-      return res.status(400).send(message);
-    }
-    //Grab info from ajax api call
-	let name = req.body.name;
-	let email = req.body.email;
-	let username = req.body.username;
-	let password = req.body.password;
+    //exclude extra spaces from the username,email and password
+    username = username.trim();
+    password = password.trim();
 
-	username = username.trim();
-	password = password.trim();
+    //create an encryption key
+    bcrypt.genSalt(10, (err, salt) => {
 
-	//use the mongoose DB schema, connect to the database and create the new user
-	User.create({
-		name, 
-		email,
-		username,
-		password: hash,
-	}, (err, item) => {
+        //if creating the key returns an error...
+        if (err) {
 
-		//if creating returns an error
-		if(err) {
-			return res.status(500).json({
-				message: 'Internal Service Error'
-			});
-		}
-		//if successfull
-		if(item) {
-			console.log('User \`${username}\' created');
-			return res.json(item);
-		}
-	});
-}
+            //display it
+            return res.status(500).json({
+                message: 'Internal server error'
+            });
+        }
 
+        //using the encryption key above generate an encrypted pasword
+        bcrypt.hash(password, salt, (err, hash) => {
+
+            //if creating the ncrypted pasword returns an error..
+            if (err) {
+
+                //display it
+                return res.status(500).json({
+                    message: 'Internal server error'
+                });
+            }
+
+            //using the mongoose DB schema, connect to the database and create the new user
+            User.create({
+                name,
+                email,
+                username,
+                password: hash,
+            }, (err, item) => {
+
+                //if creating a new user in the DB returns an error..
+                if (err) {
+                    //display it
+                    return res.status(500).json({
+                        message: 'Internal Server Error'
+                    });
+                }
+                //if creating a new user in the DB is succefull
+                if (item) {
+
+                    //display the new user
+                    console.log(`User \`${username}\` created.`);
+                    return res.json(item);
+                }
+            });
+        });
+    });
+});
 // signing in a user
 app.post('/users/login', function (req, res) {
 
