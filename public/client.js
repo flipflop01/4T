@@ -3,8 +3,8 @@ Step 1 define functions and objects
 ************************************/
 
 function Game(el) {
-    var grid = 5, // number of squares per row
-        size = 80, // size of each square in pixels
+    var grid = 3, // number of squares per row
+        size = 100, // size of each square in pixels
         intelligence = 2, // intelligence of ai (higher numbers take longer)
         // make everything else locals so they compress better
         doc = document,
@@ -136,9 +136,9 @@ $(document).ready(function () {
     $(".ready").click(function () {
         let category = document.getElementById('query-type').value;
         let difficulty = document.getElementById('level').value;
+        $(".startGame, .options").fadeOut(2000);
         getTrivia(category, difficulty);
-        $(".startGame, .options").fadeOut();
-        $("#qs, .choices, .players, .answer").fadeIn();
+        $(".questions, .choices, .players, .answer").fadeIn(4000);
     });
     $(".play").click(function () {
         $("#accountdeets").fadeOut(2000);
@@ -252,8 +252,10 @@ function checkAnswer() {
 /*New User Signup*/
 $('#signup-form').submit(event => {
     event.preventDefault();
+    $("#signup").fadeOut(2000);
+    $("#accountdeets").fadeIn(4000);
 
-    const name = $('#signupName').val();
+    /*const name = $('#signupName').val();
     const email = $('#signupEmail').val();
     const username = $('#signupUsername').val();
     const password = $('#signupPassword').val();
@@ -294,7 +296,7 @@ $('#signup-form').submit(event => {
                 console.log(error);
                 console.log(errorThrown);
             });
-    };
+    };*/
 });
 
 function populateUserDetails(username) {
@@ -325,8 +327,8 @@ $('.l2').submit(event => {
     event.preventDefault();
 
     //user input
-    const username = $('#username').val();
-    const password = $('#password').val();
+    const username = $('.loginname').val();
+    const password = $('.loginpass').val();
 
     //validate input
     if (username == "") {
@@ -341,6 +343,7 @@ $('.l2').submit(event => {
             username: username,
             password: password,
         };
+        console.log(loginUser);
         $.ajax({
                 type: "POST",
                 url: '/users/login',

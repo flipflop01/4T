@@ -315,7 +315,7 @@ span {
 		margin: 10px 0px 10px 0px;
 	}
 	.login {
-		border: solid black 2px;
+		border: solid #0c7b46 2px;
 	}
 	.clickHere {
 		height: 25px;
@@ -371,7 +371,7 @@ span {
 
 @media only screen and (max-width: 375px) {
 	.login {
-		border: solid black 2px;
+		border: solid #0c7b46 2px;
 	}
 	.login p {
 		margin-top: 0px;
