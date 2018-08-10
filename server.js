@@ -124,7 +124,6 @@ app.post('/users/login', function (req, res) {
     //take username and pass from the ajax api call
     const username = req.body.username;
     const password = req.body.password;
-
     //using mongoose DB schema, connect to database and user with the same username as above
     User.findOne({
         username: username
@@ -133,13 +132,13 @@ app.post('/users/login', function (req, res) {
         //if error connecting to the DB
         if (err) {
             return res.status(500).json({
-                message: "Internal server error"
+                message: "error connecting to the DB"
             });
         }
         // if there are no users with that username
         if (!items) {
             return res.status(401).json({
-                message: "Not found!"
+                message: "no users with that username"
             });
         }
         //if the username is found
@@ -147,7 +146,9 @@ app.post('/users/login', function (req, res) {
             items.validatePassword(password, function (err, isValid) {
                 //if the connection to the DB to validate the password is not working
                 if (err) {
-                    console.log('Could not connect to the DB to validate the password.');
+                    return res.status(401).json({
+                        message: "connection to the DB to validate the password is not working"
+                    });
                 }
                 //if the password is not valid
                 if (!isValid) {

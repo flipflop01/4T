@@ -136,9 +136,11 @@ $(document).ready(function () {
     $(".ready").click(function () {
         let category = document.getElementById('query-type').value;
         let difficulty = document.getElementById('level').value;
-        $(".startGame, .options").fadeOut(2000);
-        getTrivia(category, difficulty);
-        $(".questions, .choices, .players, .answer").fadeIn(4000);
+        $(".startGame, .options").fadeOut(2000)
+        setTimeout(function () {
+            getTrivia(category, difficulty);
+            $(".questions, .choices, .players, .answer").fadeIn(4000)
+        }, 2000);
     });
     $(".play").click(function () {
         $("#accountdeets").fadeOut(2000);
@@ -255,7 +257,7 @@ $('#signup-form').submit(event => {
     $("#signup").fadeOut(2000);
     $("#accountdeets").fadeIn(4000);
 
-    /*const name = $('#signupName').val();
+    const name = $('#signupName').val();
     const email = $('#signupEmail').val();
     const username = $('#signupUsername').val();
     const password = $('#signupPassword').val();
@@ -289,14 +291,14 @@ $('#signup-form').submit(event => {
             })
             .done(function (result) {
                 console.log(result);
-                populateUserDetails(username);
+                //populateUserDetails(username);
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
                 console.log(error);
                 console.log(errorThrown);
             });
-    };*/
+    };
 });
 
 function populateUserDetails(username) {
@@ -306,10 +308,11 @@ function populateUserDetails(username) {
     $.ajax({
             type: "GET",
             url: `/users/${username}`,
-            data: JSON.stringify(userObject),
+            //data: JSON.stringify(userObject),
             dataType: 'json',
         })
         .done(function (result) {
+            console.log(result);
             $('.user').html(`
             <p>Name:&ensp;<span>${result.name}</span></p>
             <p>Email Address:&ensp;<span>${result.email}</span></p>
@@ -343,16 +346,22 @@ $('.l2').submit(event => {
             username: username,
             password: password,
         };
-        console.log(loginUser);
         $.ajax({
-                type: "POST",
+                type: 'POST',
                 url: '/users/login',
-                data: JSON.stringify(loginUser),
                 dataType: 'json',
+                data: JSON.stringify(loginUser),
+                contentType: 'application/json'
             })
             .done(function (result) {
                 console.log(result);
-                populateUserDetails(result.username);
+                //populateUserDetails(result.username);
             })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert('Incorrect Username or Password');
+            });
     }
 })
