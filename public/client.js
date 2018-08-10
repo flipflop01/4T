@@ -291,7 +291,7 @@ $('#signup-form').submit(event => {
             })
             .done(function (result) {
                 console.log(result);
-                //populateUserDetails(username);
+                populateUserDetails(username);
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
@@ -308,21 +308,27 @@ function populateUserDetails(username) {
     $.ajax({
             type: "GET",
             url: `/users/${username}`,
-            //data: JSON.stringify(userObject),
+            data: JSON.stringify(username),
             dataType: 'json',
+            contentType: 'application/json'
         })
         .done(function (result) {
             console.log(result);
             $('.user').html(`
-            <p>Name:&ensp;<span>${result.name}</span></p>
-            <p>Email Address:&ensp;<span>${result.email}</span></p>
-            <p>Username:&ensp;<span>${result.username}</span></p>
+            <p>Name:&ensp;<span>${result.user[0].name}</span></p>
+            <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>
+            <p>Username:&ensp;<span>${result.user[0].username}</span></p>
             <p>Number of games played:&ensp;<span>32</span></p>
             <p>Number of games won:&ensp;<span>25</span></p>
-        `);
-            $("#signup").fadeOut(2000);
-            $("#accountdeets").fadeIn(4000);
+        `)
         })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+    $("#signup").fadeOut(2000);
+    $("#accountdeets").fadeIn(4000);
 }
 
 /*User Logging In*/
@@ -355,7 +361,7 @@ $('.l2').submit(event => {
             })
             .done(function (result) {
                 console.log(result);
-                //populateUserDetails(result.username);
+                populateUserDetails(result.username);
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);

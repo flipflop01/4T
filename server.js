@@ -166,3 +166,23 @@ app.post('/users/login', function (req, res) {
         };
     });
 })
+
+//GET User details to populate
+app.get('/users/:username', function (req, res) {
+
+    User
+        .find({
+            username: req.params.username
+        })
+        .then(function (user) {
+            res.json({
+                user
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
