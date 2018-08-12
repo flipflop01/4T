@@ -143,9 +143,10 @@ $(document).ready(function () {
         }, 2000);
     });
     $(".play").click(function () {
+        $('#welcome').hide();
         $("#accountdeets").fadeOut(2000);
-        $("#playground").fadeIn(4000);
         $(".options").fadeIn(4000);
+        $("#playground").fadeIn(4000);
     });
     $(".newAccount").click(function () {
         $("#welcome").fadeOut(2000);
@@ -175,7 +176,6 @@ $(document).ready(function () {
 Trivia Questions API Call
 ************************************/
 const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
-const tokenRequest = "https://opentdb.com/api_token.php?command=request"
 
 function getTrivia(category, difficulty) {
     console.log(category);
@@ -291,6 +291,7 @@ $('#signup-form').submit(event => {
             })
             .done(function (result) {
                 console.log(result);
+                $("#signup").fadeOut(2000);
                 populateUserDetails(username);
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -327,7 +328,6 @@ function populateUserDetails(username) {
             console.log(error);
             console.log(errorThrown);
         });
-    $("#signup").fadeOut(2000);
     $("#accountdeets").fadeIn(4000);
 }
 
