@@ -181,7 +181,8 @@ li {
 
 /*signup*/
 
-#signup {
+#signup,
+#updateAccount {
     padding: 20px 20px 20px 20px;
     background-color: #031e11;
     height: 100%;
@@ -193,16 +194,19 @@ li {
     pointer-events: auto;
 }
 
-#signup-form {
+#signup-form,
+#update-form {
     margin-top: 10px;
 }
 
-.ca {
+.ca,
+.ua {
     font-size: 65px;
     text-align: center;
 }
 
-.info {
+.info,
+.newinfo {
     text-align: center;
 }
 
@@ -245,6 +249,10 @@ li {
     max-height: 180px;
 }
 
+.play {
+    margin-top: 20px;
+}
+
 /*Playground*/
 
 select {
@@ -278,6 +286,7 @@ select {
 
 .questions {
     text-align: center;
+    margin-top: 50px;
 }
 
 #qs {
@@ -290,7 +299,7 @@ select {
 
 .answer {
     text-align: center;
-    margin: 40px 20px 15px 20px;
+    margin: 40px 50px 15px 20px;
     ;
 }
 
@@ -326,7 +335,7 @@ select {
 }
 
 .nextQuestion {
-    margin: 20px 20px 15px 20px;
+    margin: 20px 50px 15px 20px;
 }
 
 @media only screen and (max-width: 320px) {

@@ -60,7 +60,6 @@ function Game(el) {
             if (next === undef) return die('tie');
             draw(next);
             if (chk(0) > 0) return die('lost');
-            console.log("test");
         }
     };
 
@@ -127,6 +126,7 @@ $(document).ready(function () {
     $("#accountdeets").hide();
     $("#signup").hide();
     $("#rules").hide();
+    $("#updateAccount").hide();
     $(".options").hide();
     $(".canvas").hide();
     $(".newGame").hide();
@@ -139,8 +139,9 @@ $(document).ready(function () {
         $(".startGame, .options").fadeOut(2000)
         setTimeout(function () {
             getTrivia(category, difficulty);
-            $(".questions, .choices, .players, .answer").fadeIn(4000)
-        }, 2000);
+            $(".questions, .choices").fadeIn(2000)
+            $(".players, .answer").fadeIn(3000)
+        }, 2000, 3000);
     });
     $(".play").click(function () {
         $('#welcome').hide();
@@ -165,9 +166,15 @@ $(document).ready(function () {
         $("#rules").fadeIn(4000);
     });
     $(".nextQuestion").click(function () {
-        console.log("answer");
-        event.preventDefault();
+        qNum++;
         $(".canvas, .nextQuestion").fadeOut(2000);
+        $('.questions').fadeOut(2000);
+        generateQuestions(testBank);
+    });
+    $(".update").click(function () {
+        $('#welcome').hide();
+        $("#accountdeets").fadeOut(2000);
+        $("#updateAccount").fadeIn(2000);
     });
 })
 
@@ -178,8 +185,6 @@ Trivia Questions API Call
 const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
 
 function getTrivia(category, difficulty) {
-    console.log(category);
-    console.log(difficulty);
 
     let cat = parseInt(category, 10);
     let diff = difficulty.toString();
@@ -189,7 +194,7 @@ function getTrivia(category, difficulty) {
         "difficulty": diff
     }
 
-    console.log(param);
+    //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
     console.log(buildUrl);
@@ -202,8 +207,8 @@ function getTrivia(category, difficulty) {
     $.ajax(settings)
         .done(function (response) {
             console.log(response);
-            generateQuestions(response);
-
+            let testBank = response;
+            generateQuestions(testBank);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -212,22 +217,24 @@ function getTrivia(category, difficulty) {
         });
 }
 
+let qNum = 0;
+
 function generateQuestions(response) {
     $('.questions').html(`
-        <h3 id="qs">${response.results[1].question}</h3>
+        <h3 id="qs">${response.results[qNum].question}</h3>
             <form class="choices">
                 <fieldset>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="correct" required><span>${response.results[1].correct_answer}</span>
+                    <input type="radio" name="answer" value="correct" required><span>${response.results[qNum].correct_answer}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer2**" required><span>${response.results[1].incorrect_answers[0]}</span>
+                    <input type="radio" name="answer" value="**questionbankanswer2**" required><span>${response.results[qNum].incorrect_answers[0]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer3**" required><span>${response.results[1].incorrect_answers[1]}</span>
+                    <input type="radio" name="answer" value="**questionbankanswer3**" required><span>${response.results[qNum].incorrect_answers[1]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer4**" required><span>${response.results[1].incorrect_answers[2]}</span>
+                    <input type="radio" name="answer" value="**questionbankanswer4**" required><span>${response.results[qNum].incorrect_answers[2]}</span>
                     </label>
                 </fieldset>
                 <button type="submit" class="clickHere answer">Answer</button>
@@ -281,7 +288,7 @@ $('#signup-form').submit(event => {
             username: username,
             password: password
         };
-        console.log(newUser);
+
         $.ajax({
                 type: "POST",
                 url: '/users/create',
@@ -315,6 +322,9 @@ function populateUserDetails(username) {
         })
         .done(function (result) {
             console.log(result);
+            $('.player1').html(`
+                <h3 class="p1">${result.user[0].username}</h3>
+                <img class="profilepic profile" src="images/ffpip.png">`);
             $('.user').html(`
             <p>Name:&ensp;<span>${result.user[0].name}</span></p>
             <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>
@@ -360,7 +370,8 @@ $('.l2').submit(event => {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                console.log(result);
+                //console.log(result._id);
+                updating(result._id);
                 populateUserDetails(result.username);
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -371,3 +382,49 @@ $('.l2').submit(event => {
             });
     }
 })
+
+//Update Account Details
+function updating(_id) {
+
+    $("#update-form").submit(event => {
+        event.preventDefault();
+        $("#updateAccount").fadeOut(2000);
+        $("#accountdeets").fadeIn(4000);
+
+        let userId = _id;
+        //console.log(userId);
+
+        const name = $('#updateName').val();
+        const email = $('#updateEmail').val();
+        const username = $('#updateUsername').val();
+        const password = $('#updatePassword').val();
+
+        const updateUser = {
+            name: name,
+            email: email,
+            username: username,
+            password: password,
+            _id: userId
+        };
+
+        console.log(updateUser);
+
+        $.ajax({
+                type: "PUT",
+                url: '/users/:_id',
+                data: JSON.stringify(updateUser),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                $("#updateAccount").fadeOut(2000);
+                populateUserDetails(resutlt.username);
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    })
+}

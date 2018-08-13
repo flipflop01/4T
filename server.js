@@ -118,6 +118,7 @@ app.post('/users/create', (req, res) => {
         });
     });
 });
+
 // signing in a user
 app.post('/users/login', function (req, res) {
 
@@ -183,6 +184,33 @@ app.get('/users/:username', function (req, res) {
             console.error(err);
             res.status(500).json({
                 message: 'Internal server error'
+            });
+        });
+});
+
+// PUT --------------------------------------
+app.put('/users/:_id', function (req, res) {
+
+    let toUpdate = {};
+
+    let updateableFields = ['name', 'email', 'username', 'password'];
+
+    updateableFields.forEach(function (field) {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+
+    console.log(toUpdate);
+
+    Users
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate
+        }).exec().then(function () {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
             });
         });
 });
