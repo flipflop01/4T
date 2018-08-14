@@ -203,12 +203,12 @@ function getTrivia(category, difficulty) {
         "url": buildUrl,
         "dataType": "json",
         "method": "GET",
+        "contentType": 'application/json'
     };
     $.ajax(settings)
         .done(function (response) {
             console.log(response);
-            let testBank = response;
-            generateQuestions(testBank);
+            generateQuestions(response);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
