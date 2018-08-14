@@ -132,6 +132,7 @@ $(document).ready(function () {
     $(".newGame").hide();
     $(".nextQuestion").hide();
     $(".players").hide();
+    $(".light").hide();
 
     $(".ready").click(function () {
         let category = document.getElementById('query-type').value;
@@ -139,9 +140,9 @@ $(document).ready(function () {
         $(".startGame, .options").fadeOut(2000)
         setTimeout(function () {
             getTrivia(category, difficulty);
-            $(".questions, .choices").fadeIn(2000)
-            $(".players, .answer").fadeIn(3000)
-        }, 2000, 3000);
+            $(".questions, .choices").fadeIn(2000);
+            $(".players, .answer").fadeIn(3000);
+        }, 2000, 4000);
     });
     $(".play").click(function () {
         $('#welcome').hide();
@@ -164,12 +165,6 @@ $(document).ready(function () {
     $(".showrules").click(function () {
         $("#welcome").fadeOut(2000);
         $("#rules").fadeIn(4000);
-    });
-    $(".nextQuestion").click(function () {
-        qNum++;
-        $(".canvas, .nextQuestion").fadeOut(2000);
-        $('.questions').fadeOut(2000);
-        generateQuestions(testBank);
     });
     $(".update").click(function () {
         $('#welcome').hide();
@@ -207,7 +202,6 @@ function getTrivia(category, difficulty) {
     };
     $.ajax(settings)
         .done(function (response) {
-            console.log(response);
             generateQuestions(response);
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -241,6 +235,7 @@ function generateQuestions(response) {
             </form>
     `);
     checkAnswer();
+    nextQuestion(response);
 }
 
 function checkAnswer() {
@@ -248,8 +243,9 @@ function checkAnswer() {
         event.preventDefault();
         let userChoice = $('input[name="answer"]:checked').val();
         if (userChoice === "correct") {
-            $(".canvas").show();
-            $('.nextQuestion').show();
+            window.alert("Correct");
+            $(".canvas").fadeIn(1000);
+            $('.nextQuestion').fadeIn(1000);
         } else {
             window.alert("Sorry. Wrong Answer");
             $('.nextQuestion').show();
@@ -257,6 +253,18 @@ function checkAnswer() {
     })
 }
 
+function nextQuestion(response) {
+    $(".nextQuestion").click(function () {
+        $('.questions').fadeTo("slow", 0);
+        qNum++;
+        console.log(qNum);
+        setTimeout(function () {
+            $(".canvas, .nextQuestion").fadeOut(2000);
+            generateQuestions(response);
+            $('.questions').fadeTo("slow", 1);
+        }, 2000, 2000, 2000)
+    });
+}
 
 /*New User Signup*/
 $('#signup-form').submit(event => {

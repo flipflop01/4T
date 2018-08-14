@@ -229,10 +229,6 @@ li {
 
 /*Account Details*/
 
-.details {
-    margin-top: 50px;
-}
-
 .user {
     margin: 20px 0px 20px 0px;
 }
@@ -286,7 +282,7 @@ select {
 
 .questions {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #qs {
@@ -336,6 +332,12 @@ select {
 
 .nextQuestion {
     margin: 20px 50px 15px 20px;
+}
+
+.light {
+    width: 20px;
+    height: 20px;
+    background-color: #47e60d;
 }
 
 @media only screen and (max-width: 320px) {
