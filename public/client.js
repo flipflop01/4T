@@ -127,6 +127,8 @@ $(document).ready(function () {
     $("#signup").hide();
     $("#rules").hide();
     $("#updateAccount").hide();
+    $("#deleteAccount").hide();
+    $("#sorry").hide();
     $(".options").hide();
     $(".canvas").hide();
     $(".newGame").hide();
@@ -171,8 +173,13 @@ $(document).ready(function () {
         $("#accountdeets").fadeOut(2000);
         $("#updateAccount").fadeIn(2000);
     });
-})
+    $(".remove").click(function () {
+        $('#welcome').hide();
+        $("#accountdeets").fadeOut(2000);
+        $("#deleteAccount").fadeIn(2000);
+    })
 
+})
 
 /********************************************
 Trivia Questions API Call
@@ -329,7 +336,7 @@ function populateUserDetails(username) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
+            //console.log(result);
             $('.player1').html(`
                 <h3 class="p1">${result.user[0].username}</h3>
                 <img class="profilepic profile" src="images/ffpip.png">`);
@@ -392,14 +399,13 @@ $('.l2').submit(event => {
 })
 
 //Update Account Details
-function updating(_id) {
+function updating(userId) {
 
     $("#update-form").submit(event => {
         event.preventDefault();
         $("#updateAccount").fadeOut(2000);
         $("#accountdeets").fadeIn(4000);
 
-        let userId = _id;
         //console.log(userId);
 
         const name = $('#updateName').val();
@@ -412,22 +418,21 @@ function updating(_id) {
             email: email,
             username: username,
             password: password,
-            _id: userId
+            id: userId
         };
 
-        console.log(updateUser);
+        //console.log(updateUser);
 
         $.ajax({
                 type: "PUT",
-                url: '/users/:_id',
+                url: '/users/' + userId,
                 data: JSON.stringify(updateUser),
                 dataType: 'json',
                 contentType: 'application/json'
             })
             .done(function (result) {
-                console.log(result);
                 $("#updateAccount").fadeOut(2000);
-                populateUserDetails(resutlt.username);
+                populateUserDetails(username);
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
@@ -436,3 +441,38 @@ function updating(_id) {
             });
     })
 }
+
+//Deleting Account
+$('#delete-form').submit(event => {
+    event.preventDefault();
+
+    const username = $('#deleteUsername').val();
+    const password = $('#deletePassword').val();
+
+    const deleteUser = {
+        username: username,
+        password: password
+    };
+
+    $.ajax({
+            type: 'DELETE',
+            url: `/users/${username}`,
+            data: deleteUser,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function () {
+            alert("Account deleted");
+            $('#welcome').hide();
+            $("#deleteAccount").fadeOut(2000);
+            $("#sorry").fadeIn(2000);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+})

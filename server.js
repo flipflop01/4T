@@ -189,28 +189,71 @@ app.get('/users/:username', function (req, res) {
 });
 
 // PUT --------------------------------------
-app.put('/users/:_id', function (req, res) {
+app.put('/users/:id', function (req, res) {
 
-    let toUpdate = {};
+    bcrypt.genSalt(10, (err, salt) => {
 
-    let updateableFields = ['name', 'email', 'username', 'password'];
+        //if creating the key returns an error...
+        if (err) {
 
-    updateableFields.forEach(function (field) {
-        if (field in req.body) {
-            toUpdate[field] = req.body[field];
-        }
-    });
-
-    console.log(toUpdate);
-
-    Users
-        .findByIdAndUpdate(req.params.id, {
-            $set: toUpdate
-        }).exec().then(function () {
-            return res.status(204).end();
-        }).catch(function (err) {
+            //display it
             return res.status(500).json({
-                message: 'Internal Server Error'
+                message: err
             });
+        }
+
+        //using the encryption key above generate an encrypted pasword
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
+
+            //if creating the ncrypted pasword returns an error..
+            if (err) {
+
+                //display it
+                return res.status(500).json({
+                    message: 'Encryption Error'
+                });
+            }
+
+            let toUpdate = {};
+
+            let updateableFields = ['name', 'email', 'username', 'password'];
+
+            updateableFields.forEach(function (field) {
+                if (field in req.body) {
+                    if (field == "password") {
+                        toUpdate[field] = hash;
+                    } else {
+                        toUpdate[field] = req.body[field];
+                    }
+                }
+            });
+
+            console.log(toUpdate);
+
+            User
+                .findByIdAndUpdate(req.params.id, {
+                    $set: toUpdate
+                }).exec().then(function () {
+                    console.log(req.body.username);
+                    return res.status(204).json({
+                        message: req.body.username
+                    });
+                }).catch(function (err) {
+                    return res.status(500).json({
+                        message: 'Update Error'
+                    });
+                });
         });
+    });
+});
+
+// DELETE ----------------------------------------
+app.delete('/users/:username', function (req, res) {
+    Users.findByUserAndRemove(req.params.username).exec().then(function (entry) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
 });

@@ -83,7 +83,8 @@ p {
 #welcome,
 #rules,
 #accountdeets,
-#playground {
+#playground,
+#sorry {
     padding: 50px 20px 20px 20px;
     background-color: #031e11;
     height: 100%;
@@ -182,7 +183,8 @@ li {
 /*signup*/
 
 #signup,
-#updateAccount {
+#updateAccount,
+#deleteAccount {
     padding: 20px 20px 20px 20px;
     background-color: #031e11;
     height: 100%;
@@ -195,12 +197,14 @@ li {
 }
 
 #signup-form,
-#update-form {
+#update-form,
+#deleteSheet {
     margin-top: 10px;
 }
 
 .ca,
-.ua {
+.ua,
+.da {
     font-size: 65px;
     text-align: center;
 }
@@ -227,6 +231,17 @@ li {
     width: 30%;
 }
 
+#deleteSheet * {
+    display: block;
+}
+
+#deleteSheet input {
+    font-size: 28px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
 /*Account Details*/
 
 .user {
@@ -245,7 +260,8 @@ li {
     max-height: 180px;
 }
 
-.play {
+.play,
+.delete {
     margin-top: 20px;
 }
 
