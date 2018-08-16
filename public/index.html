@@ -107,13 +107,13 @@
                 <form id="update-form">
                     <fieldset id="signsheet">
                         <label>Name</label>
-                        <input type="name" id="updateName" autofocus><br>
+                        <input type="name" id="updateName" autofocus required><br>
                         <label>Email Address</label>
-                        <input type="email" id="updateEmail" autofocus><br>
+                        <input type="email" id="updateEmail" autofocus required><br>
                         <label>Username</label>
-                        <input type="username" id="updateUsername" autofocus><br>
+                        <input type="username" id="updateUsername" autofocus required><br>
                         <label>Password</label>
-                        <input type="text" id="updatePassword" autofocus><br>
+                        <input type="text" id="updatePassword" autofocus required><br>
                     </fieldset>
                     <button type="submit" class="clickHere sendUpdate">Submit</button>
                 </form>
@@ -124,12 +124,6 @@
             <h2 class="da">Delete Account</h2>
             <div class="currentInfo">
                 <form id="delete-form">
-                    <fieldset id="deleteSheet">
-                        <label>Username</label>
-                        <input type="username" id="deleteUsername" autofocus required><br>
-                        <label>Password</label>
-                        <input type="text" id="deletePassword" autofocus required><br>
-                    </fieldset>
                     <button type="submit" class="clickHere delete">Are you Sure? -Delete-</button>
                 </form>
                 <button class="clickHere goBack3">I changed my mind -Go Back-</button>
@@ -138,7 +132,7 @@
 
         <section id="sorry">
             <h2 class="ua">Sorry to see you go!</h2>
-            <button class="clickHere goBack">Back to Main</button>
+            <button class="clickHere goBack4">Back to Main</button>
         </section>
 
         <section id="playground">

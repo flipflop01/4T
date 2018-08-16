@@ -248,9 +248,9 @@ app.put('/users/:id', function (req, res) {
 });
 
 // DELETE ----------------------------------------
-app.delete('/users/:username', function (req, res) {
+app.delete('/users/:id', function (req, res) {
     User
-        .findByUserAndRemove(req.params.username).exec().then(function () {
+        .findByIdAndRemove(req.params.id).exec().then(function () {
             return res.status(204).end();
         }).catch(function (err) {
             return res.status(500).json({

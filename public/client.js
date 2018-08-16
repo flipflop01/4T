@@ -164,6 +164,10 @@ $(document).ready(function () {
         $("#signup").fadeOut(2000);
         $("#welcome").fadeIn(4000);
     });
+    $(".goBack4").click(function () {
+        $("#sorry").fadeOut(2000);
+        $("#welcome").fadeIn(4000);
+    });
     $(".showrules").click(function () {
         $("#welcome").fadeOut(2000);
         $("#rules").fadeIn(4000);
@@ -199,7 +203,7 @@ function getTrivia(category, difficulty) {
     //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
-    console.log(buildUrl);
+    //console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
@@ -210,6 +214,7 @@ function getTrivia(category, difficulty) {
     $.ajax(settings)
         .done(function (response) {
             generateQuestions(response);
+            console.log(response);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -387,6 +392,7 @@ $('.l2').submit(event => {
             .done(function (result) {
                 //console.log(result._id);
                 updating(result._id);
+                deleting(result._id);
                 populateUserDetails(result.username);
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -443,36 +449,39 @@ function updating(userId) {
 }
 
 //Deleting Account
-$('#delete-form').submit(event => {
-    event.preventDefault();
+function deleting(userId) {
+    $('#delete-form').submit(event => {
+        event.preventDefault();
 
-    const username = $('#deleteUsername').val();
-    const password = $('#deletePassword').val();
+        /*const username = $('#deleteUsername').val();
+        const password = $('#deletePassword').val();*/
 
-    const deleteUser = {
-        username: username,
-        password: password
-    };
-    //console.log(deleteUser);
-    $.ajax({
-            type: 'DELETE',
-            url: `/users/${username}`,
-            data: JSON.stringify(deleteUser),
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        //if call is succefull
-        .done(function () {
-            alert("Account deleted");
-            $('#welcome').hide();
-            $("#deleteAccount").fadeOut(2000);
-            $("#sorry").fadeIn(2000);
+        const deleteUser = {
+            //username: username,
+            //password: password,
+            id: userId
+        };
+        //console.log(deleteUser);
+        $.ajax({
+                type: 'DELETE',
+                url: `/users/` + userId,
+                data: JSON.stringify(deleteUser),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function () {
+                alert("Account deleted");
+                $('#welcome').hide();
+                $("#deleteAccount").fadeOut(2000);
+                $("#sorry").fadeIn(2000);
 
-        })
-        //if the call is failing
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-})
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    })
+}
