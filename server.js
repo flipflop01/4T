@@ -249,11 +249,12 @@ app.put('/users/:id', function (req, res) {
 
 // DELETE ----------------------------------------
 app.delete('/users/:username', function (req, res) {
-    Users.findByUserAndRemove(req.params.username).exec().then(function (entry) {
-        return res.status(204).end();
-    }).catch(function (err) {
-        return res.status(500).json({
-            message: 'Internal Server Error'
+    User
+        .findByUserAndRemove(req.params.username).exec().then(function () {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
         });
-    });
 });

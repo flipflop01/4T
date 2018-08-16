@@ -344,8 +344,8 @@ function populateUserDetails(username) {
             <p>Name:&ensp;<span>${result.user[0].name}</span></p>
             <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>
             <p>Username:&ensp;<span>${result.user[0].username}</span></p>
-            <p>Number of games played:&ensp;<span>32</span></p>
-            <p>Number of games won:&ensp;<span>25</span></p>
+            <p>Number of games played:&ensp;<span></span></p>
+            <p>Number of games won:&ensp;<span></span></p>
         `)
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -453,11 +453,11 @@ $('#delete-form').submit(event => {
         username: username,
         password: password
     };
-
+    //console.log(deleteUser);
     $.ajax({
             type: 'DELETE',
             url: `/users/${username}`,
-            data: deleteUser,
+            data: JSON.stringify(deleteUser),
             dataType: 'json',
             contentType: 'application/json'
         })
