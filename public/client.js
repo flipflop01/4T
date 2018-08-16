@@ -225,22 +225,53 @@ function getTrivia(category, difficulty) {
 
 let qNum = 0;
 
+function shuffle(array) {
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
 function generateQuestions(response) {
+
+    let one = `${response.results[qNum].correct_answer}`;
+    let two = `${response.results[qNum].incorrect_answers[0]}`;
+    let three = `${response.results[qNum].incorrect_answers[1]}`;
+    let four = `${response.results[qNum].incorrect_answers[2]}`;
+
+    let firstBank = [one, two, three, four];
+    //console.log(firstBank);
+    arr = shuffle(firstBank);
+    console.log(arr);
+
     $('.questions').html(`
         <h3 id="qs">${response.results[qNum].question}</h3>
             <form class="choices">
                 <fieldset>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="correct" required><span>${response.results[qNum].correct_answer}</span>
+                    <input type="radio" name="answer" value="correct" required><span>${arr[0]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer2**" required><span>${response.results[qNum].incorrect_answers[0]}</span>
+                    <input type="radio" name="answer" value="**questionbankanswer2**" required><span>${arr[1]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer3**" required><span>${response.results[qNum].incorrect_answers[1]}</span>
+                    <input type="radio" name="answer" value="**questionbankanswer3**" required><span>${arr[2]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer4**" required><span>${response.results[qNum].incorrect_answers[2]}</span>
+                    <input type="radio" name="answer" value="**questionbankanswer4**" required><span>${arr[3]}</span>
                     </label>
                 </fieldset>
                 <button type="submit" class="clickHere answer">Answer</button>
