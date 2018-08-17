@@ -63,6 +63,8 @@ app.post('/users/create', (req, res) => {
     let email = req.body.email;
     let username = req.body.username;
     let password = req.body.password;
+    let gamesPlayed = req.body.gamesPlayed;
+    let gamesWon = req.body.gamesWon;
 
     //exclude extra spaces from the username,email and password
     username = username.trim();
@@ -97,7 +99,9 @@ app.post('/users/create', (req, res) => {
                 name,
                 email,
                 username,
-                password: hash,
+                gamesPlayed,
+                gamesWon,
+                password: hash
             }, (err, item) => {
 
                 //if creating a new user in the DB returns an error..

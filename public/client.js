@@ -203,7 +203,7 @@ function getTrivia(category, difficulty) {
     //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
-    //console.log(buildUrl);
+    console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
@@ -253,27 +253,30 @@ function generateQuestions(response) {
     let four = `${response.results[qNum].incorrect_answers[2]}`;
 
     let firstBank = [one, two, three, four];
-    //console.log(firstBank);
+    console.log(firstBank);
     arr = shuffle(firstBank);
     console.log(arr);
+
+
 
     $('.questions').html(`
         <h3 id="qs">${response.results[qNum].question}</h3>
             <form class="choices">
                 <fieldset>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="correct" required><span>${arr[0]}</span>
+                    <input class="option" type="radio" name="answer" value="${arr[0]}" required><span>${arr[0]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer2**" required><span>${arr[1]}</span>
+                    <input class="option" type="radio" name="answer" value="${arr[1]}" required><span>${arr[1]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer3**" required><span>${arr[2]}</span>
+                    <input class="option" type="radio" name="answer" value="${arr[2]}" required><span>${arr[2]}</span>
                     </label>
                     <label class="answeroption">
-                    <input type="radio" name="answer" value="**questionbankanswer4**" required><span>${arr[3]}</span>
+                    <input class="option" type="radio" name="answer" value="${arr[3]}" required><span>${arr[3]}</span>
                     </label>
                 </fieldset>
+                <input type="hidden" value="${response.results[qNum].correct_answer}" class="correct_answer">
                 <button type="submit" class="clickHere answer">Answer</button>
             </form>
     `);
@@ -284,12 +287,20 @@ function generateQuestions(response) {
 function checkAnswer() {
     $('.choices').submit(event => {
         event.preventDefault();
-        let userChoice = $('input[name="answer"]:checked').val();
-        if (userChoice === "correct") {
+        let userChoice = $("input[class='option']:checked").val();
+        let correct_answer = $(".correct_answer").val();
+        console.log(userChoice, correct_answer);
+        //validate if User selected
+        if (userChoice == "") {
+            window.alert("Please Select an Answer");
+        } //if choice is correct
+        else if (userChoice == correct_answer) {
             window.alert("Correct");
             $(".canvas").fadeIn(1000);
             $('.nextQuestion').fadeIn(1000);
-        } else {
+        }
+        //incorrect answer
+        else {
             window.alert("Sorry. Wrong Answer");
             $('.nextQuestion').show();
         };
@@ -319,6 +330,8 @@ $('#signup-form').submit(event => {
     const email = $('#signupEmail').val();
     const username = $('#signupUsername').val();
     const password = $('#signupPassword').val();
+    const gPlayed = 0;
+    const gWon = 0;
 
     //validate inputs
     if (name == "") {
@@ -337,7 +350,9 @@ $('#signup-form').submit(event => {
             name: name,
             email: email,
             username: username,
-            password: password
+            password: password,
+            gamesPlayed: gPlayed,
+            gamesWon: gWon
         };
 
         $.ajax({
@@ -380,8 +395,8 @@ function populateUserDetails(username) {
             <p>Name:&ensp;<span>${result.user[0].name}</span></p>
             <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>
             <p>Username:&ensp;<span>${result.user[0].username}</span></p>
-            <p>Number of games played:&ensp;<span></span></p>
-            <p>Number of games won:&ensp;<span></span></p>
+            <p>Number of games played:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
+            <p>Number of games won:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
         `)
         })
         .fail(function (jqXHR, error, errorThrown) {
