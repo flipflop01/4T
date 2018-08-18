@@ -56,9 +56,9 @@
                     <li>At the start of the game, you can pick the difficulty and category of questions or have one selected for you at random</li>
                     <li>There are a variety of categories and difficulty ranges from Easy to Medium to Hard</li>
                     <li>At the start your turn, you will be presented with a question based on the chosen category</li>
-                    <li>If you answer correctly, you get to pick a position on the board</li>
-                    <li>If you don't, you lose your turn</li>
-                    <li>First player to line up four slots, wins the round!</li>
+                    <li>If you answer correctly, you get to pick a position on the board. After each of your moves the board will be disabled and you move on to the next question</li>
+                    <li>If you answer incorrectly, no moves will be made but the Tic-Tac-Toe AI's difficulty will increase. Answer enough questions incorrectly, and winning becomes impossible</li>
+                    <li>First player to line up fo slots, wins the round!</li>
                 </ul>
             </div>
             <button class="clickHere goBack">Go Back</button>
@@ -76,9 +76,7 @@
                         <label>Username</label>
                         <input type="username" id="signupUsername" autofocus required><br>
                         <label>Password</label>
-                        <input type="text" id="signupPassword" autofocus required><br>
-                        <label>Upload Profile Pic</label>
-                        <input type="text" name="profilepic"><br>
+                        <input type="text" id="signupPassword" autofocus required>
                     </fieldset>
                     <button type="submit" class="clickHere create">Submit</button>
                 </form>
@@ -150,13 +148,9 @@
                 <option value="22">Geography</option>
                 <option value="23">History</option>
                 <option value="20">Mythology</option>
-            </select>
-                <label>Difficulty</label>
-                <select id="level">
-                <option value="easy">Easy</option>
-                   <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
+                <option value="26">Celebrities</option>
+                <option value="27">Animals</option>
+                </select>
             </div>
             <div class="startGame">
                 <button class="clickHere ready">Ready?</button>

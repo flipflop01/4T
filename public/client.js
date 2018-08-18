@@ -57,10 +57,13 @@ function Game(el) {
         if (!board[move]) {
             draw(move, -1); // o = -1, x = 1
             if (chk(0) < 0) return die('won');
+            console.log("Won Here");
             next = search(0, 1, -size, size);
             if (next === undef) return die('tie');
+            console.log("Tie Here");
             draw(next);
             if (chk(0) > 0) return die('lost');
+            console.log("Lost Here");
         }
         coverGrid();
         $('.nextQuestion').fadeIn(2000);
@@ -141,10 +144,9 @@ $(document).ready(function () {
 
     $(".ready").click(function () {
         let category = document.getElementById('query-type').value;
-        let difficulty = document.getElementById('level').value;
         $(".startGame, .options").fadeOut(2000)
         setTimeout(function () {
-            getTrivia(category, difficulty);
+            getTrivia(category);
             $(".questions, .choices").fadeIn(2000);
             $(".players, .answer").fadeIn(3000);
         }, 2000, 4000);
@@ -193,10 +195,19 @@ Trivia Questions API Call
 ************************************/
 const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
 
-function getTrivia(category, difficulty) {
+function getTrivia(category) {
+
+    let one = "easy";
+    let two = "medium";
+    let three = "hard";
+
+    let qBank = [one, two, three];
+    //console.log(qBank);
+    qArray = shuffle(qBank);
+    console.log(qArray);
 
     let cat = parseInt(category, 10);
-    let diff = difficulty.toString();
+    let diff = qArray[1];
 
     let param = {
         "category": cat,
@@ -206,7 +217,7 @@ function getTrivia(category, difficulty) {
     //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
-    //console.log(buildUrl);
+    console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
