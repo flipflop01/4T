@@ -1,11 +1,12 @@
 /********************************************
 Step 1 define functions and objects
 ************************************/
+let intel = 1;
 
 function Game(el) {
     var grid = 3, // number of squares per row
         size = 100, // size of each square in pixels
-        intelligence = 2, // intelligence of ai (higher numbers take longer)
+        intelligence = intel, // intelligence of ai (higher numbers take longer)
         // make everything else locals so they compress better
         doc = document,
         body = doc.body,
@@ -61,6 +62,8 @@ function Game(el) {
             draw(next);
             if (chk(0) > 0) return die('lost');
         }
+        coverGrid();
+        $('.nextQuestion').fadeIn(2000);
     };
 
     // method to check if game won
@@ -146,6 +149,7 @@ $(document).ready(function () {
             $(".players, .answer").fadeIn(3000);
         }, 2000, 4000);
     });
+
     $(".play").click(function () {
         $('#welcome').hide();
         $("#accountdeets").fadeOut(2000);
@@ -182,7 +186,6 @@ $(document).ready(function () {
         $("#accountdeets").fadeOut(2000);
         $("#deleteAccount").fadeIn(2000);
     })
-
 })
 
 /********************************************
@@ -203,7 +206,7 @@ function getTrivia(category, difficulty) {
     //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
-    console.log(buildUrl);
+    //console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
@@ -223,7 +226,6 @@ function getTrivia(category, difficulty) {
         });
 }
 
-let qNum = 0;
 
 function shuffle(array) {
     var currentIndex = array.length,
@@ -245,6 +247,8 @@ function shuffle(array) {
     return array;
 }
 
+let qNum = 0;
+
 function generateQuestions(response) {
 
     let one = `${response.results[qNum].correct_answer}`;
@@ -253,11 +257,9 @@ function generateQuestions(response) {
     let four = `${response.results[qNum].incorrect_answers[2]}`;
 
     let firstBank = [one, two, three, four];
-    console.log(firstBank);
+    //console.log(firstBank);
     arr = shuffle(firstBank);
-    console.log(arr);
-
-
+    //console.log(arr);
 
     $('.questions').html(`
         <h3 id="qs">${response.results[qNum].question}</h3>
@@ -289,31 +291,42 @@ function checkAnswer() {
         event.preventDefault();
         let userChoice = $("input[class='option']:checked").val();
         let correct_answer = $(".correct_answer").val();
-        console.log(userChoice, correct_answer);
+        //console.log(userChoice, correct_answer);
         //validate if User selected
         if (userChoice == "") {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
             window.alert("Correct");
-            $(".canvas").fadeIn(1000);
-            $('.nextQuestion').fadeIn(1000);
+            qNum++;
+            $(".canvas").fadeIn(3000);
+            $('.canvas').css({
+                "pointer-events": "all"
+            });
         }
         //incorrect answer
         else {
             window.alert("Sorry. Wrong Answer");
-            $('.nextQuestion').show();
+            $('.nextQuestion').fadeIn(2000);
+            qNum++;
+            intel++;
+            console.log(intel);
         };
     })
+    console.log(qNum);
+}
+
+function coverGrid() {
+    $('.canvas').css({
+        "pointer-events": "none"
+    });
 }
 
 function nextQuestion(response) {
     $(".nextQuestion").click(function () {
         $('.questions').fadeTo("slow", 0);
-        qNum++;
-        console.log(qNum);
+        $('.nextQuestion').fadeOut(3000);
         setTimeout(function () {
-            $(".canvas, .nextQuestion").fadeOut(2000);
             generateQuestions(response);
             $('.questions').fadeTo("slow", 1);
         }, 2000, 2000, 2000)
@@ -354,7 +367,7 @@ $('#signup-form').submit(event => {
             gamesPlayed: gPlayed,
             gamesWon: gWon
         };
-
+        console.log(newUser);
         $.ajax({
                 type: "POST",
                 url: '/users/create',
@@ -439,6 +452,8 @@ $('.l2').submit(event => {
                 //console.log(result._id);
                 updating(result._id);
                 deleting(result._id);
+                updateGamesLogged(result._id);
+                gameTally(result._id);
                 populateUserDetails(result.username);
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -449,6 +464,22 @@ $('.l2').submit(event => {
             });
     }
 })
+
+function startQuiz(userID) {
+
+}
+
+function gameScore(userId) {
+
+}
+
+function gameTally(userId) {
+
+}
+
+function updateGamesLogged(userId) {
+
+}
 
 //Update Account Details
 function updating(userId) {
