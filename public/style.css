@@ -310,7 +310,7 @@ select {
 
 .answer {
     text-align: center;
-    margin: 40px 50px 15px 20px;
+    margin: 20px 50px 15px 20px;
     ;
 }
 
@@ -333,6 +333,10 @@ select {
     text-orientation: upright;
     position: relative;
     vertical-align: top;
+}
+
+.p3 {
+    color: red;
 }
 
 .ai {

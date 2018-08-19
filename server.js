@@ -251,6 +251,10 @@ app.put('/users/:id', function (req, res) {
     });
 });
 
+//Updating Games
+app.put('/users/:username', function (req, res) {})
+
+
 // DELETE ----------------------------------------
 app.delete('/users/:id', function (req, res) {
     User

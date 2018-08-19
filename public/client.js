@@ -1,12 +1,11 @@
 /********************************************
 Step 1 define functions and objects
 ************************************/
-let intel = 1;
 
 function Game(el) {
     var grid = 3, // number of squares per row
         size = 100, // size of each square in pixels
-        intelligence = intel, // intelligence of ai (higher numbers take longer)
+        intelligence = 2, // intelligence of ai (higher numbers take longer)
         // make everything else locals so they compress better
         doc = document,
         body = doc.body,
@@ -136,13 +135,15 @@ $(document).ready(function () {
     $("#deleteAccount").hide();
     $("#sorry").hide();
     $(".options").hide();
-    $(".canvas").hide();
     $(".newGame").hide();
     $(".nextQuestion").hide();
     $(".players").hide();
     $(".light").hide();
 
     $(".ready").click(function () {
+        /*$('.ai').html(`
+            <h3 class="p2">AI Lvl ${intel}</h3>
+            `)*/
         let category = document.getElementById('query-type').value;
         $(".startGame, .options").fadeOut(2000)
         setTimeout(function () {
@@ -215,7 +216,7 @@ function getTrivia(category) {
     }
 
     //console.log(param);
-    let buildUrl = "https://opentdb.com/api.php?amount=10&category=" + cat + "&difficulty=" + diff + "&type=multiple";
+    let buildUrl = "https://opentdb.com/api.php?amount=20&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
     console.log(buildUrl);
 
@@ -228,7 +229,6 @@ function getTrivia(category) {
     $.ajax(settings)
         .done(function (response) {
             generateQuestions(response);
-            console.log(response);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -318,13 +318,12 @@ function checkAnswer() {
         //incorrect answer
         else {
             window.alert("Sorry. Wrong Answer");
+            coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
-            intel++;
-            console.log(intel);
         };
     })
-    console.log(qNum);
+    //console.log(qNum);
 }
 
 function coverGrid() {
@@ -411,7 +410,7 @@ function populateUserDetails(username) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            //console.log(result);
+            console.log(result);
             $('.player1').html(`
                 <h3 class="p1">${result.user[0].username}</h3>
                 <img class="profilepic profile" src="images/ffpip.png">`);
@@ -463,8 +462,7 @@ $('.l2').submit(event => {
                 //console.log(result._id);
                 updating(result._id);
                 deleting(result._id);
-                updateGamesLogged(result._id);
-                gameTally(result._id);
+                //updateGamesLogged(result);
                 populateUserDetails(result.username);
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -488,8 +486,32 @@ function gameTally(userId) {
 
 }
 
-function updateGamesLogged(userId) {
+function updateGamesLogged(result) {
 
+    let played = parseInt(result.gamesPlayed, 10);
+    //let won = parseInt(result.gamesWon, 10);
+    let gPlayed = played++;
+    //let gWon = won++;
+
+    let updateGames = {
+        username: result.username,
+        gamesPlayed: gPlayed,
+        //gamesWon: gWon
+    }
+
+    $.ajax({
+            type: "PUT",
+            url: `/users/${result.username}`,
+            data: JSON.stringify(updateGames),
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {})
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 }
 
 //Update Account Details
