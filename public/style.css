@@ -365,17 +365,21 @@ select {
     background-color: #47e60d;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 321px) {
     body {
         margin: 30px 10px 10px 10px;
     }
     h1,
     .ca {
         margin: 10px 0px 5px 0px;
-        font-size: 40px;
     }
-    #welcome {
-        padding: 25px;
+    .ca,
+    .ua,
+    .da {
+        font-size: 30px;
+    }
+    .clickHere {
+        font-size: 20px;
     }
     #welcome p {
         margin-top: 0px;
@@ -403,8 +407,10 @@ select {
     .l3 {
         margin-top: 5px;
     }
-    #rules {
-        padding: 50px 0px 0px 0px;
+    #welcome,
+    #rules,
+    #accountdeets {
+        padding: 20px 0px 0px 0px;
     }
     #qs {
         font-size: 20px;
@@ -426,15 +432,8 @@ select {
         margin: 0;
         width: 100%;
     }
-    #accountdeets {
-        padding: 0;
-        margin: 0px 0px;
-    }
     .user p {
         font-size: 20px;
-    }
-    .play {
-        font-size: 25px;
     }
     #playground {
         margin: 0px 0px;
@@ -463,30 +462,56 @@ select {
     }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 376px) {
+    main {
+        height: 115%;
+    }
     .login {
         border: solid #0c7b46 2px;
     }
     .login p {
         margin-top: 0px;
     }
+    .l2 {
+        margin: 5px;
+        font-size: 25px;
+    }
+    .l2 input {
+        width: 70%;
+    }
+    .r1 h1 {
+        font-size: 30px;
+    }
+    #welcome,
+    #rules {
+        padding: 20px 10px 10px 10px;
+    }
+    .listOfRules {
+        margin: 10px 10px;
+    }
+    .listOfRules li {
+        font-size: 20px;
+    }
     .signup {
         margin-top: 20px;
-    }
-    ul {
-        padding-left: 0px;
     }
     .ca {
         font-size: 40px;
     }
-    #signsheet > input {
+    #signsheet input {
         font-size: 18px;
+        width: 70%;
     }
     .profilepic {
         max-width: 100px;
     }
     #accountdeets > p {
         font-size: 20px;
+    }
+    .ca,
+    .ua,
+    .da {
+        font-size: 45px;
     }
     .options {
         margin: 50px 5px 0px 5px;

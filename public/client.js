@@ -56,13 +56,10 @@ function Game(el) {
         if (!board[move]) {
             draw(move, -1); // o = -1, x = 1
             if (chk(0) < 0) return die('won');
-            console.log("Won Here");
             next = search(0, 1, -size, size);
             if (next === undef) return die('tie');
-            console.log("Tie Here");
             draw(next);
             if (chk(0) > 0) return die('lost');
-            console.log("Lost Here");
         }
         coverGrid();
         $('.nextQuestion').fadeIn(2000);
@@ -150,7 +147,7 @@ $(document).ready(function () {
             getTrivia(category);
             $(".questions, .choices").fadeIn(2000);
             $(".players, .answer").fadeIn(3000);
-        }, 2000, 4000);
+        }, 2000, 4000, 8000);
     });
 
     $(".play").click(function () {
@@ -166,6 +163,10 @@ $(document).ready(function () {
     $(".goBack").click(function () {
         $("#rules").fadeOut(2000);
         $("#welcome").fadeIn(4000);
+    });
+    $(".goBack5").click(function () {
+        $("#updateAccount").fadeOut(2000);
+        $("#accountdeets").fadeIn(4000);
     });
     $(".goBack2").click(function () {
         $("#signup").fadeOut(2000);
@@ -203,8 +204,8 @@ function getTrivia(category) {
     let three = "hard";
 
     let qBank = [one, two, three];
-    //console.log(qBank);
-    qArray = shuffle(qBank);
+    console.log(qBank);
+    let qArray = shuffle(qBank);
     console.log(qArray);
 
     let cat = parseInt(category, 10);
@@ -218,7 +219,7 @@ function getTrivia(category) {
     //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=20&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
-    console.log(buildUrl);
+    //console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
@@ -269,7 +270,7 @@ function generateQuestions(response) {
 
     let firstBank = [one, two, three, four];
     //console.log(firstBank);
-    arr = shuffle(firstBank);
+    let arr = shuffle(firstBank);
     //console.log(arr);
 
     $('.questions').html(`
@@ -293,11 +294,22 @@ function generateQuestions(response) {
                 <button type="submit" class="clickHere answer">Answer</button>
             </form>
     `);
-    checkAnswer();
+    getRandomInt();
     nextQuestion(response);
 }
 
-function checkAnswer() {
+function getRandomInt(min, max) {
+    min = Math.ceil(0);
+    max = Math.floor(21);
+    let nmbr = Math.floor(Math.random() * (max - min)) + min;
+    checkAnswer(nmbr);
+    //console.log(nmbr);
+}
+
+function checkAnswer(nmbr) {
+
+    console.log(nmbr);
+
     $('.choices').submit(event => {
         event.preventDefault();
         let userChoice = $("input[class='option']:checked").val();
@@ -308,7 +320,7 @@ function checkAnswer() {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            window.alert("Correct");
+            window.alert(winBanter[nmbr]);
             qNum++;
             $(".canvas").fadeIn(3000);
             $('.canvas').css({
@@ -317,7 +329,7 @@ function checkAnswer() {
         }
         //incorrect answer
         else {
-            window.alert("Sorry. Wrong Answer");
+            window.alert(lossBanter[nmbr]);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
