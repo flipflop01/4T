@@ -123,7 +123,7 @@ function Game(el) {
 }
 
 $(document).ready(function () {
-    $('#welcome').fadeIn(2000);
+    $("#welcome").hide().fadeIn(8000);
     $("#qs, .choices, .answer").hide();
     $("#playground").hide();
     $("#accountdeets").hide();
@@ -314,8 +314,6 @@ function getRandomInt(min, max) {
 
 function checkAnswer(nmbr) {
 
-    console.log(nmbr);
-
     $('.choices').submit(event => {
         event.preventDefault();
         let userChoice = $("input[class='option']:checked").val();
@@ -326,7 +324,7 @@ function checkAnswer(nmbr) {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            window.alert(winBanter[nmbr]);
+            $('.popup').html(`<h3>${winBanter[nmbr]}</h3>`).fadeIn(2000);
             qNum++;
             $(".canvas").fadeIn(3000);
             $('.canvas').css({
@@ -335,7 +333,7 @@ function checkAnswer(nmbr) {
         }
         //incorrect answer
         else {
-            window.alert(lossBanter[nmbr]);
+            $('.popup').html(`<h3>${lossBanter[nmbr]}</h3>`).fadeIn(2000);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
