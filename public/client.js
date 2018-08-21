@@ -123,6 +123,7 @@ function Game(el) {
 }
 
 $(document).ready(function () {
+    $('#welcome').fadeIn(2000);
     $("#qs, .choices, .answer").hide();
     $("#playground").hide();
     $("#accountdeets").hide();
@@ -163,14 +164,19 @@ $(document).ready(function () {
     $(".goBack").click(function () {
         $("#rules").fadeOut(2000);
         $("#welcome").fadeIn(4000);
-    });
-    $(".goBack5").click(function () {
-        $("#updateAccount").fadeOut(2000);
-        $("#accountdeets").fadeIn(4000);
+        $("#welcome").scrollTop(0);
     });
     $(".goBack2").click(function () {
         $("#signup").fadeOut(2000);
         $("#welcome").fadeIn(4000);
+    });
+    $(".goBack3").click(function () {
+        $("#deleteAccount").fadeOut(2000);
+        $("#accountdeets").fadeIn(4000);
+    });
+    $(".goBack5").click(function () {
+        $("#updateAccount").fadeOut(2000);
+        $("#accountdeets").fadeIn(4000);
     });
     $(".goBack4").click(function () {
         $("#sorry").fadeOut(2000);
@@ -276,7 +282,7 @@ function generateQuestions(response) {
     $('.questions').html(`
         <h3 id="qs">${response.results[qNum].question}</h3>
             <form class="choices">
-                <fieldset>
+                <fieldset class="fl1">
                     <label class="answeroption">
                     <input class="option" type="radio" name="answer" value="${arr[0]}" required><span>${arr[0]}</span>
                     </label>
@@ -430,8 +436,8 @@ function populateUserDetails(username) {
             <p>Name:&ensp;<span>${result.user[0].name}</span></p>
             <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>
             <p>Username:&ensp;<span>${result.user[0].username}</span></p>
-            <p>Number of games played:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
-            <p>Number of games won:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
+            <p>Games played:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
+            <p>Games won:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
         `)
         })
         .fail(function (jqXHR, error, errorThrown) {

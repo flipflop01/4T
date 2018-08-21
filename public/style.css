@@ -242,6 +242,10 @@ li {
     width: 30%;
 }
 
+.goBack5 {
+    margin-top: 20px;
+}
+
 /*Account Details*/
 
 .user {
@@ -274,7 +278,10 @@ select {
     color: #47e60d;
     padding: 0px 5px 0px 5px;
     font-family: 'VT323';
+}
 
+.category {
+    font-size: 35px;
 }
 
 .startGame {
@@ -365,7 +372,162 @@ select {
     background-color: #47e60d;
 }
 
-@media only screen and (max-width: 321px) {
+fl1 {
+    margin: 10px;
+    border: solid #0c7b46 2px;
+    display: grid;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #welcome,
+    #rules,
+    #playground {
+        padding: 20px 10px 10px 10px;
+    }
+    .listOfRules li {
+        margin-bottom: 15px;
+    }
+    #signsheet input {
+        font-size: 28px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .creat,
+    .goBack2 {
+        margin-top: 20px;
+    }
+    .goBack5 {
+        margin-top: 20px;
+    }
+    .goBack3 {
+        margin-top: 20px;
+    }
+    .profile {
+        display: none;
+    }
+    .p1. .p2 {
+        font-size: 35px;
+    }
+    .answer {
+        margin: 20px 0px 20px 0px;
+    }
+    .nextQuestions {
+        margin: 20px 0px 20px 5px;
+    }
+    .fl1 {
+        margin: 10px;
+        border: solid #0c7b46 2px;
+        display: grid;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    main {
+        height: 115%;
+    }
+    .login {
+        border: solid #0c7b46 2px;
+    }
+    .login p {
+        margin-top: 0px;
+    }
+    .l2 {
+        margin: 5px;
+        font-size: 25px;
+    }
+    .l2 input {
+        width: 70%;
+    }
+    .r1 h1 {
+        font-size: 30px;
+    }
+    #welcome,
+    #rules,
+    #playground {
+        padding: 20px 10px 10px 10px;
+    }
+    .listOfRules {
+        margin: 10px 10px;
+    }
+    .listOfRules li {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .goBack5 {
+        margin-top: 15px;
+    }
+    .signup {
+        margin-top: 20px;
+    }
+    .ca,
+    .ua,
+    .da {
+        font-size: 45px;
+    }
+    .goBack2 {
+        margin-top: 20px;
+    }
+    .goBack3 {
+        margin-top: 20px;
+    }
+    #signsheet input {
+        font-size: 18px;
+        width: 70%;
+    }
+    .profilepic {
+        max-width: 100px;
+    }
+    .create {
+        margin-top: 20px;
+    }
+    #accountdeets > p {
+        font-size: 20px;
+    }
+    .options {
+        margin: 50px 5px 0px 5px;
+    }
+    .category {
+        font-size: 30px;
+    }
+    .ready {
+        font-size: 25px;
+    }
+    #qs {
+        font-size: 25px;
+    }
+    .fl1 {
+        margin: 10px;
+        border: solid #0c7b46 2px;
+        display: grid;
+        text-align: initial;
+    }
+    .answeroption {
+        margin-left: 5px;
+    }
+    .profile {
+        display: none;
+    }
+    .p1,
+    .p2 {
+        writing-mode: initial;
+        padding: 0px 10px;
+    }
+    .answer {
+        margin: 10px 0px 0px 0px;
+    }
+    .nextQuestion {
+        margin: 30px 0px 0px 45px;
+    }
+    .questions {
+        margin-top: 10px;
+        padding: 0px 10px 0px 10px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
     body {
         margin: 30px 10px 10px 10px;
     }
@@ -376,7 +538,7 @@ select {
     .ca,
     .ua,
     .da {
-        font-size: 30px;
+        font-size: 35px;
     }
     .clickHere {
         font-size: 20px;
@@ -412,8 +574,14 @@ select {
     #accountdeets {
         padding: 20px 0px 0px 0px;
     }
+    .create {
+        margin-top: 20px;
+    }
+    .goBack3 {
+        margin-top: 20px;
+    }
     #qs {
-        font-size: 20px;
+        font-size: 25px;
     }
     h3 {
         font-size: 30px;
@@ -428,7 +596,7 @@ select {
     select {
         width: auto;
     }
-    #signsheet > input {
+    #signsheet input {
         margin: 0;
         width: 100%;
     }
@@ -436,8 +604,8 @@ select {
         font-size: 20px;
     }
     #playground {
-        margin: 0px 0px;
-        padding: 0px 10px;
+        margin: 5px 5px 0px 5px;
+        padding: 0px 0px 0px 0px;
     }
     .ready {
         font-size: 25px;
@@ -457,69 +625,20 @@ select {
         margin-right: 10px;
     }
     .p1,
-    p2 {
+    .p2 {
         writing-mode: initial;
     }
-}
-
-@media only screen and (max-width: 376px) {
-    main {
-        height: 115%;
+    .questions {
+        margin-top: 30px;
+        padding: 0px 10px 0px 10px;
     }
-    .login {
+    .fl1 {
+        margin: 10px;
         border: solid #0c7b46 2px;
+        display: grid;
+        text-align: initial;
     }
-    .login p {
-        margin-top: 0px;
-    }
-    .l2 {
-        margin: 5px;
-        font-size: 25px;
-    }
-    .l2 input {
-        width: 70%;
-    }
-    .r1 h1 {
-        font-size: 30px;
-    }
-    #welcome,
-    #rules {
-        padding: 20px 10px 10px 10px;
-    }
-    .listOfRules {
-        margin: 10px 10px;
-    }
-    .listOfRules li {
-        font-size: 20px;
-    }
-    .signup {
-        margin-top: 20px;
-    }
-    .ca {
-        font-size: 40px;
-    }
-    #signsheet input {
-        font-size: 18px;
-        width: 70%;
-    }
-    .profilepic {
-        max-width: 100px;
-    }
-    #accountdeets > p {
-        font-size: 20px;
-    }
-    .ca,
-    .ua,
-    .da {
-        font-size: 45px;
-    }
-    .options {
-        margin: 50px 5px 0px 5px;
-    }
-    .ready {
-        font-size: 25px;
-    }
-    #qs {
-        font-size: 18px;
+    .answer {
+        margin: 5px 0px 0px 0px;
     }
 }
