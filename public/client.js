@@ -143,12 +143,12 @@ $(document).ready(function () {
             <h3 class="p2">AI Lvl ${intel}</h3>
             `)*/
         let category = document.getElementById('query-type').value;
-        $(".startGame, .options").fadeOut(2000)
+        $(".startGame, .options").hide();
         setTimeout(function () {
             getTrivia(category);
             $(".questions, .choices").fadeIn(2000);
             $(".players, .answer").fadeIn(3000);
-        }, 2000, 4000, 8000);
+        }, 2000, 8000, 8000);
     });
 
     $(".play").click(function () {
@@ -308,11 +308,12 @@ function getRandomInt(min, max) {
     min = Math.ceil(0);
     max = Math.floor(21);
     let nmbr = Math.floor(Math.random() * (max - min)) + min;
-    checkAnswer(nmbr);
+    typingWin(nmbr);
+    typingloss(nmbr);
     //console.log(nmbr);
 }
 
-function checkAnswer(nmbr) {
+function checkAnswer() {
 
     $('.choices').submit(event => {
         event.preventDefault();
@@ -324,7 +325,7 @@ function checkAnswer(nmbr) {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            $('.popup').html(`<h3>${winBanter[nmbr]}</h3>`).fadeIn(2000);
+            typingWin(nmbr);
             qNum++;
             $(".canvas").fadeIn(3000);
             $('.canvas').css({
@@ -333,13 +334,37 @@ function checkAnswer(nmbr) {
         }
         //incorrect answer
         else {
-            $('.popup').html(`<h3>${lossBanter[nmbr]}</h3>`).fadeIn(2000);
+            typingloss();
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
         };
     })
     //console.log(qNum);
+}
+
+function typingWin(nmbr) {
+    var i = 0;
+    var txt = String(winBanter[nmbr]);
+    var speed = 50;
+
+    if (i < txt.length) {
+        $("#demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typingWin, speed);
+    }
+}
+
+function typingloss(nmbr) {
+    var x = 0;
+    var insult = String(lossBanter[nmbr]);
+    var speed = 50;
+
+    if (x < insult.length) {
+        $("#demo").innerHTML += insult.charAt(x);
+        x++;
+        setTimeout(typingloss, speed);
+    }
 }
 
 function coverGrid() {
