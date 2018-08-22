@@ -225,16 +225,19 @@ function getTrivia(category) {
     //console.log(param);
     let buildUrl = "https://opentdb.com/api.php?amount=20&category=" + cat + "&difficulty=" + diff + "&type=multiple";
 
-    //console.log(buildUrl);
+    console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
         "dataType": "json",
         "method": "GET",
         "contentType": 'application/json',
-        crossDomain: true,
+        "crossDomain": true,
+        "async": true,
         headers: {
-            'Access-Control-Allow-Origin': "*"
+            "Cache-Control": "no-cache",
+            'Access-Control-Allow-Origin': "*",
+            'Access-Control-Allow-Methods': "GET",
         }
 
     };
