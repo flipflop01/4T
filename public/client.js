@@ -231,7 +231,12 @@ function getTrivia(category) {
         "url": buildUrl,
         "dataType": "json",
         "method": "GET",
-        "contentType": 'application/json'
+        "contentType": 'application/json',
+        crossDomain: true,
+        headers: {
+            'Access-Control-Allow-Origin': "*"
+        }
+
     };
     $.ajax(settings)
         .done(function (response) {
@@ -300,7 +305,8 @@ function generateQuestions(response) {
                 <button type="submit" class="clickHere answer">Answer</button>
             </form>
     `);
-    getRandomInt();
+    let randomNumber = getRandomInt(0, 21);
+    checkAnswer(randomNumber);
     nextQuestion(response);
 }
 
@@ -308,12 +314,11 @@ function getRandomInt(min, max) {
     min = Math.ceil(0);
     max = Math.floor(21);
     let nmbr = Math.floor(Math.random() * (max - min)) + min;
-    typingWin(nmbr);
-    typingloss(nmbr);
+    return nmbr;
     //console.log(nmbr);
 }
 
-function checkAnswer() {
+function checkAnswer(randomNumber) {
 
     $('.choices').submit(event => {
         event.preventDefault();
@@ -325,7 +330,8 @@ function checkAnswer() {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            typingWin(nmbr);
+            window.alert("Hey");
+            typingWin(randomNumber);
             qNum++;
             $(".canvas").fadeIn(3000);
             $('.canvas').css({
@@ -334,7 +340,8 @@ function checkAnswer() {
         }
         //incorrect answer
         else {
-            typingloss();
+            window.alert("Hey you");
+            typingloss(randomNumber);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
@@ -344,6 +351,9 @@ function checkAnswer() {
 }
 
 function typingWin(nmbr) {
+
+    console.log(nmbr, "Win");
+
     var i = 0;
     var txt = String(winBanter[nmbr]);
     var speed = 50;
@@ -356,6 +366,9 @@ function typingWin(nmbr) {
 }
 
 function typingloss(nmbr) {
+
+    console.log(nmbr, "Loss");
+
     var x = 0;
     var insult = String(lossBanter[nmbr]);
     var speed = 50;
