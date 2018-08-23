@@ -234,10 +234,13 @@ function getTrivia(category) {
         "contentType": 'application/json',
         "crossDomain": true,
         "async": true,
+        xhrFields: {
+            withCredentials: true
+        },
         headers: {
             "Cache-Control": "no-cache",
-            'Access-Control-Allow-Origin': "*",
-            'Access-Control-Allow-Methods': "GET",
+            'Access-Control-Allow-Origin': "http://localhost:8080",
+            'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT"
         }
 
     };
