@@ -234,14 +234,14 @@ function getTrivia(category) {
         "contentType": 'application/json',
         "crossDomain": true,
         "async": true,
-        xhrFields: {
+        /*xhrFields: {
             withCredentials: true
         },
         headers: {
             "Cache-Control": "no-cache",
-            'Access-Control-Allow-Origin': "http://localhost:8080",
-            'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT"
-        }
+            'Access-Control-Allow-Origin': "*",
+            //'Access-Control-Allow-Methods': "GET"
+        }*/
 
     };
     $.ajax(settings)
@@ -336,8 +336,8 @@ function checkAnswer(randomNumber) {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            window.alert("Hey");
-            typingWin(randomNumber);
+            //window.alert("Hey");
+            //typingWin(randomNumber);
             qNum++;
             $(".canvas").fadeIn(3000);
             $('.canvas').css({
@@ -346,8 +346,8 @@ function checkAnswer(randomNumber) {
         }
         //incorrect answer
         else {
-            window.alert("Hey you");
-            typingloss(randomNumber);
+            //window.alert("Hey you");
+            //typingloss(randomNumber);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
@@ -356,7 +356,7 @@ function checkAnswer(randomNumber) {
     //console.log(qNum);
 }
 
-function typingWin(nmbr) {
+/*function typingWin(nmbr) {
 
     console.log(nmbr, "Win");
 
@@ -384,7 +384,7 @@ function typingloss(nmbr) {
         x++;
         setTimeout(typingloss, speed);
     }
-}
+}*/
 
 function coverGrid() {
     $('.canvas').css({
