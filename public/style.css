@@ -257,11 +257,11 @@ li {
 }
 
 .profilepic {
-    border-radius: 50%;
+    border-radius: 90%;
     height: auto;
     width: auto;
-    max-width: 200px;
-    max-height: 180px;
+    max-width: 280px;
+    max-height: 200px;
 }
 
 .play,
@@ -317,37 +317,30 @@ select {
 
 .answer {
     text-align: center;
-    margin: 20px 50px 15px 20px;
-    ;
+    margin: 20px 00px 15px 0px;
+}
+
+.contaner {
+    margin-left: 82px;
 }
 
 .players {
     margin-top: 10px;
-    width: 100%;
 }
 
 .players * {
     display: inline-block;
-}
-
-.player1 {
-    float: left;
+    text-align: center;
 }
 
 .p1,
 .p2 {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    position: relative;
-    vertical-align: top;
 }
 
 .p3 {
     color: red;
-}
-
-.ai {
-    float: right;
 }
 
 .canvas {
@@ -356,14 +349,8 @@ select {
     border: solid gray .5px;
 }
 
-.cover {
-    z-index: 1000;
-    height: 100%;
-    width: 100%;
-}
-
 .nextQuestion {
-    margin: 20px 50px 15px 20px;
+    margin: 20px 0px 15px 0px;
 }
 
 .light {
@@ -507,7 +494,11 @@ fl1 {
     .answeroption {
         margin-left: 5px;
     }
-    .profile {
+    .container {
+        margin: 0;
+    }
+    .profile1,
+    profile2 {
         display: none;
     }
     .p1,

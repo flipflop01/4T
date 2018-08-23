@@ -4,7 +4,7 @@ Step 1 define functions and objects
 
 function Game(el) {
     var grid = 3, // number of squares per row
-        size = 100, // size of each square in pixels
+        size = 80, // size of each square in pixels
         intelligence = 2, // intelligence of ai (higher numbers take longer)
         // make everything else locals so they compress better
         doc = document,
@@ -144,11 +144,11 @@ $(document).ready(function () {
             `)*/
         let category = document.getElementById('query-type').value;
         $(".startGame, .options").hide();
+        getTrivia(category);
         setTimeout(function () {
-            getTrivia(category);
             $(".questions, .choices").fadeIn(2000);
             $(".players, .answer").fadeIn(3000);
-        }, 2000, 8000, 8000);
+        }, 2000, 4000);
     });
 
     $(".play").click(function () {
@@ -472,14 +472,12 @@ function populateUserDetails(username) {
         .done(function (result) {
             console.log(result);
             $('.player1').html(`
-                <h3 class="p1">${result.user[0].username}</h3>
-                <img class="profilepic profile" src="images/ffpip.png">`);
+                <img class="profilepic profile1" src="images/glitch.gif">
+                <h3 class="p1">${result.user[0].username}</h3>`);
             $('.user').html(`
             <p>Name:&ensp;<span>${result.user[0].name}</span></p>
             <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>
             <p>Username:&ensp;<span>${result.user[0].username}</span></p>
-            <p>Games played:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
-            <p>Games won:&ensp;<span>${result.user[0].gamesPlayed}</span></p>
         `)
         })
         .fail(function (jqXHR, error, errorThrown) {
