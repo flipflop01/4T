@@ -217,35 +217,25 @@ function getTrivia(category) {
     let cat = parseInt(category, 10);
     let diff = qArray[1];
 
-    let param = {
+    /*let param = {
         "category": cat,
         "difficulty": diff
-    }
+    }*/
 
     //console.log(param);
-    let buildUrl = "https://opentdb.com/api.php?amount=20&category=" + cat + "&difficulty=" + diff + "&type=multiple";
+    let buildUrl = "/trivia/" + cat + "/" + diff;
 
     console.log(buildUrl);
 
     let settings = {
         "url": buildUrl,
         "dataType": "json",
-        "method": "GET",
-        "contentType": 'application/json',
-        "crossDomain": true,
-        "async": true,
-        /*xhrFields: {
-            withCredentials: true
-        },
-        headers: {
-            "Cache-Control": "no-cache",
-            'Access-Control-Allow-Origin': "*",
-            //'Access-Control-Allow-Methods': "GET"
-        }*/
-
+        "type": "GET",
+        "contentType": 'application/json'
     };
     $.ajax(settings)
         .done(function (response) {
+            console.log(response);
             generateQuestions(response);
         })
         .fail(function (jqXHR, error, errorThrown) {

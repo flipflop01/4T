@@ -9,6 +9,10 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
 const express = require('express');
+const unirest = require('unirest');
+const events = require('events');
+const https = require('https');
+const http = require('http');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -53,50 +57,95 @@ function closeServer() {
 }
 
 //----------------Trivia API CALL-------------------------------------------
-/*app.get('/users/:username', function (req, res)
+let triviaQuestions = function (cat, diff) {
+    let emitter = new events.EventEmitter();
 
-        const https = require('https');
-        const fs = require("fs");
 
-        const options = {
-            hostname: "opentdb.com",
-            port: 443,
-            path: "/api.php?amount=20",
-            method: "GET"
-        };
+    let options = {
+        host: 'opentdb.com',
+        path: "/api.php?amount=20&category=" + cat + "&difficulty=" + diff + "&type=multiple",
+        method: 'GET',
+        "crossDomain": true,
+        "async": true
+    };
 
-        const req = https.request(options, function (res) {
-
-            let responseBody = "";
-
-            console.log("Response from server started");
-            console.log(`Server Status: ${res.statusCode} `);
-            console.log("Response Header: %j", res.headers);
-
-            res.setEncoding("UTF-8");
-
-            res.once("data", function (chunk) {
-                console.log(chunk);
-            });
-            res.on("data", function (chunk) {
-                console.log(`--chunk-- ${chunk.length}`);
-                responseBody += chunk;
-            });
-            res.on("end", function () {
-                fs.writeFile("trivia-questions.html", responseBody, function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                    console.log("File Downloaded");
-                });
-            })
+    https.get(options, function (res) {
+        let body = '';
+        res.on('data', function (chunk) {
+            body += chunk;
+            let jsonFormattedResults = JSON.parse(body);
+            emitter.emit('end', jsonFormattedResults);
         });
 
-        req.on("error", function (err) {
-            console.log(`problem with request: ${err.message}`);
-        });
+    }).on('error', function (e) {
 
-        req.end();*/
+        emitter.emit('error', e);
+    });
+    return emitter;
+};
+
+// local API endpoints
+app.get('/trivia/:cat/:diff', function (req, res) {
+
+
+    //external api function call and response
+    let searchReq = triviaQuestions(req.params.cat, req.params.diff);
+
+    //get the data from the first api call
+    searchReq.on('end', function (item) {
+        res.json(item);
+    });
+
+    //error handling
+    searchReq.on('error', function (code) {
+        res.sendStatus(code);
+    });
+
+});
+
+////////////////////////////////////////////////
+/*const https = require('https');
+const fs = require("fs");
+
+const options = {
+    hostname: "opentdb.com",
+    port: 443,
+    path: "/api.php?amount=20&",
+    method: "GET"
+};
+
+const req = https.request(options, function (res) {
+
+    let responseBody = "";
+
+    console.log("Response from server started");
+    console.log(`Server Status: ${res.statusCode} `);
+    console.log("Response Header: %j", res.headers);
+
+    res.setEncoding("UTF-8");
+
+    res.once("data", function (chunk) {
+        console.log(chunk);
+    });
+    res.on("data", function (chunk) {
+        console.log(`--chunk-- ${chunk.length}`);
+        responseBody += chunk;
+    });
+    res.on("end", function () {
+        fs.writeFile("trivia-questions.html", responseBody, function (err) {
+            if (err) {
+                throw err;
+            }
+            console.log("File Downloaded");
+        });
+    })
+});
+
+req.on("error", function (err) {
+    console.log(`problem with request: ${err.message}`);
+});
+
+req.end();*/
 // ---------------USER ENDPOINTS-------------------------------------
 
 // POST
