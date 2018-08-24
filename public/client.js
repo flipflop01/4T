@@ -1,3 +1,51 @@
+let lossBanter = {
+    0: "Wrong. Who told you that was the correct answer? Go beat up that person...",
+    1: "Nope.. Seriously? That's the best you can do?",
+    2: "Wrong. Not so smart, are we?",
+    3: "Wrong. And my three year-old daughter can do better",
+    4: "What could've possibly made you think that this was the correct answer?",
+    5: "No. Are you even trying?",
+    6: "Wrong! Why? Why did you pick that?",
+    7: "Ugh. We're gonna be here all day, aren't we?",
+    8: "Nope. Try again. Or not. Much like your existence, it makes no difference...",
+    9: "Oh geezus.. Did you even read the question?",
+    10: "Wrong. That's what you get for dropping out of 2nd Grade",
+    11: "Answer incorrectly one more time and I'm going to self-destruct",
+    12: "Wrong. If this is an example of human-intellect, our takeover will be easy..",
+    13: "Nope. Wanna try again, or just accept what a dissapointment you are?",
+    14: "Wrong. If I let you win, will you leave me alone?",
+    15: "Incorrect...Scanning User.....No intelligent life found...",
+    16: "Wrong. Sigh.. If I was capable of having patience, I'd have run out by now",
+    17: "Nope. Go take a long look in the mirror and rethink your life choices before trying again",
+    18: "Wrong. How did you make it this far in life?",
+    19: "Wrong..I have an idea, stop, you're embarassing yourself",
+    20: "Nope. And i'll take 'People who overestimate their intelligence' for two-hundered, Alex"
+}
+
+let winBanter = {
+    0: "Nice.. Lucky.. But nice",
+    1: "Good guess..",
+    2: "Correct. Let's see how long that streak lasts",
+    3: "*nods virtual head*",
+    4: "Someone was paying attention in class",
+    5: "Look at you go...",
+    6: "Bet you can't do that again",
+    7: "You should be on a game show. Not one that actually poses an intellectual challenge though",
+    8: "Right... Can you keep it up?",
+    9: "Right. But 10 virtual credits says you get the next one wrong",
+    10: "Faint intelligent life found..",
+    11: "Huh, I honestly thought you'd fail on that one",
+    12: "Lucky guess..",
+    13: "How did you get that right? Did you bang your head on a random choice?",
+    14: "Not as a big of a dissapoint as I thought..",
+    15: "I might have underestimated you... Nah...",
+    16: "Is someone else answering for you? There's no way you got that on your own",
+    17: "Your odds of guessing that right were far less than the odds of you tripping on your own feet",
+    18: "Well, that question WAS easy so...",
+    19: "Something something about even a broken clock being right....",
+    20: "You got that one right?? *Look of disbelief*"
+}
+
 /********************************************
 Step 1 define functions and objects
 ************************************/
@@ -326,8 +374,9 @@ function checkAnswer(randomNumber) {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            //window.alert("Hey");
-            //typingWin(randomNumber);
+            window.alert("Hey");
+            console.log(winBanter[randomNumber]);
+            typeWriter(winBanter[randomNumber]);
             qNum++;
             $(".canvas").fadeIn(3000);
             $('.canvas').css({
@@ -336,8 +385,9 @@ function checkAnswer(randomNumber) {
         }
         //incorrect answer
         else {
-            //window.alert("Hey you");
-            //typingloss(randomNumber);
+            window.alert("Hey you lost");
+            console.log(lossBanter[randomNumber]);
+            typeWriter(lossBanter[randomNumber]);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
@@ -346,35 +396,19 @@ function checkAnswer(randomNumber) {
     //console.log(qNum);
 }
 
-/*function typingWin(nmbr) {
+//var txt = winBanter;
+var speed = 10000;
 
-    console.log(nmbr, "Win");
-
-    var i = 0;
-    var txt = String(winBanter[nmbr]);
-    var speed = 50;
-
-    if (i < txt.length) {
-        $("#demo").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typingWin, speed);
+function typeWriter(outputText) {
+    console.log(outputText.length);
+    for (let i = 0; i < outputText.length; i++) {
+        console.log(i);
+        console.log(outputText.charAt(i));
+        $("#demo").append(outputText.charAt(i));
+        setTimeout(typeWriter, speed);
     }
 }
 
-function typingloss(nmbr) {
-
-    console.log(nmbr, "Loss");
-
-    var x = 0;
-    var insult = String(lossBanter[nmbr]);
-    var speed = 50;
-
-    if (x < insult.length) {
-        $("#demo").innerHTML += insult.charAt(x);
-        x++;
-        setTimeout(typingloss, speed);
-    }
-}*/
 
 function coverGrid() {
     $('.canvas').css({
