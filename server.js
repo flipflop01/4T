@@ -58,8 +58,8 @@ function closeServer() {
 
 //----------------Trivia API CALL-------------------------------------------
 let triviaQuestions = function (cat, diff) {
-    let emitter = new events.EventEmitter();
 
+    let emitter = new events.EventEmitter();
 
     let options = {
         host: 'opentdb.com',
@@ -102,50 +102,6 @@ app.get('/trivia/:cat/:diff', function (req, res) {
     });
 
 });
-
-////////////////////////////////////////////////
-/*const https = require('https');
-const fs = require("fs");
-
-const options = {
-    hostname: "opentdb.com",
-    port: 443,
-    path: "/api.php?amount=20&",
-    method: "GET"
-};
-
-const req = https.request(options, function (res) {
-
-    let responseBody = "";
-
-    console.log("Response from server started");
-    console.log(`Server Status: ${res.statusCode} `);
-    console.log("Response Header: %j", res.headers);
-
-    res.setEncoding("UTF-8");
-
-    res.once("data", function (chunk) {
-        console.log(chunk);
-    });
-    res.on("data", function (chunk) {
-        console.log(`--chunk-- ${chunk.length}`);
-        responseBody += chunk;
-    });
-    res.on("end", function () {
-        fs.writeFile("trivia-questions.html", responseBody, function (err) {
-            if (err) {
-                throw err;
-            }
-            console.log("File Downloaded");
-        });
-    })
-});
-
-req.on("error", function (err) {
-    console.log(`problem with request: ${err.message}`);
-});
-
-req.end();*/
 // ---------------USER ENDPOINTS-------------------------------------
 
 // POST
@@ -157,8 +113,6 @@ app.post('/users/create', (req, res) => {
     let email = req.body.email;
     let username = req.body.username;
     let password = req.body.password;
-    let gamesPlayed = req.body.gamesPlayed;
-    let gamesWon = req.body.gamesWon;
 
     //exclude extra spaces from the username,email and password
     username = username.trim();
@@ -360,3 +314,7 @@ app.delete('/users/:id', function (req, res) {
             });
         });
 });
+
+exports.app = app;
+exports.runServer = runServer;
+exports.closeServer = closeServer;
