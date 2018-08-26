@@ -344,7 +344,7 @@ select {
 
 .cover {
     z-index: 1;
-    background-color: aqua;
+    background-color: #031e11;
     opacity: 1;
 }
 
