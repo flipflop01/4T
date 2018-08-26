@@ -377,6 +377,10 @@ function checkAnswer(randomNumber) {
         else if (userChoice == correct_answer) {
 
             window.alert("Hey you won");
+            setTimeout(function () {
+                $(".cover").fadeOut(2000);
+                $(".cover").fadeIn(4000);
+            }, 1000, 4000);
             //console.log(winBanter[randomNumber]);
             //typeWriter(winBanter[randomNumber]);
             qNum++;
@@ -388,6 +392,11 @@ function checkAnswer(randomNumber) {
         else {
 
             window.alert("Hey you lost");
+            setTimeout(function () {
+                $(".cover").fadeOut(2000);
+                $(".cover").fadeIn(4000);
+            }, 2000, 4000);
+            $(".cover").fadeOut(2000).fadeIn(4000);
             //console.log(lossBanter[randomNumber]);
             //typeWriter(lossBanter[randomNumber]);
             coverGrid();
