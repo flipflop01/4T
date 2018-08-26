@@ -171,6 +171,7 @@ function Game(el) {
 }
 
 $(document).ready(function () {
+    //typeWelcome('Welcome');
     $("#welcome").hide().fadeIn(8000);
     $("#qs, .choices, .answer").hide();
     $("#playground").hide();
@@ -374,20 +375,21 @@ function checkAnswer(randomNumber) {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-            window.alert("Hey");
-            console.log(winBanter[randomNumber]);
-            typeWriter(winBanter[randomNumber]);
+
+            window.alert("Hey you won");
+            //console.log(winBanter[randomNumber]);
+            //typeWriter(winBanter[randomNumber]);
             qNum++;
-            $(".canvas").fadeIn(3000);
             $('.canvas').css({
                 "pointer-events": "all"
             });
         }
         //incorrect answer
         else {
+
             window.alert("Hey you lost");
-            console.log(lossBanter[randomNumber]);
-            typeWriter(lossBanter[randomNumber]);
+            //console.log(lossBanter[randomNumber]);
+            //typeWriter(lossBanter[randomNumber]);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
@@ -396,18 +398,39 @@ function checkAnswer(randomNumber) {
     //console.log(qNum);
 }
 
-//var txt = winBanter;
-var speed = 10000;
 
-function typeWriter(outputText) {
-    console.log(outputText.length);
-    for (let i = 0; i < outputText.length; i++) {
-        console.log(i);
-        console.log(outputText.charAt(i));
-        $("#demo").append(outputText.charAt(i));
-        setTimeout(typeWriter, speed);
+/*var txt = 'Welcome'; /* The text */
+var speed = 5000; /* The speed/duration of the effect in milliseconds*/
+
+/*function typeWelcome() {
+
+    console.log(txt.length);
+
+    for (let x = 0; x < txt.length; x++) {
+        $("#greeting").append(txt.charAt(x));
+        console.log(x);
+        setTimeout(typeWelcome, speed);
     }
-}
+
+    if (x < txt.length) {
+        console.log(txt.length);
+        $("#greeting").append(txt.charAt(x));
+        console.log(x);
+        x++;
+        setTimeout(typeWelcome, speed);
+    }
+}*/
+//var txt = winBanter
+
+/*function typeWelcome(outputText) {
+    setTimeout(function () {
+        for (let i = 0; i < outputText.length; i++) {
+            console.log(i);
+            console.log(outputText.charAt(i));
+            $("#greeting").append(outputText.charAt(i));
+        }
+    }, 3000)
+}*/
 
 
 function coverGrid() {
@@ -495,9 +518,7 @@ function populateUserDetails(username) {
         })
         .done(function (result) {
             console.log(result);
-            $('.player1').html(`
-                <img class="profilepic profile1" src="images/glitch.gif">
-                <h3 class="p1">${result.user[0].username}</h3>`);
+            $('.p1').html(`${result.user[0].username}`);
             $('.user').html(`
             <p>Name:&ensp;<span>${result.user[0].name}</span></p>
             <p>Email Address:&ensp;<span>${result.user[0].email}</span></p>

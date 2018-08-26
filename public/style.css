@@ -256,14 +256,6 @@ li {
     color: #47e60d;
 }
 
-.profilepic {
-    border-radius: 90%;
-    height: auto;
-    width: auto;
-    max-width: 280px;
-    max-height: 200px;
-}
-
 .play,
 .delete {
     margin-top: 20px;
@@ -320,23 +312,55 @@ select {
     margin: 20px 00px 15px 0px;
 }
 
-.contaner {
-    margin-left: 82px;
+.container {
+    width: 60%;
 }
 
 .players {
     margin-top: 10px;
 }
 
-.players * {
+.players div {
     display: inline-block;
-    text-align: center;
+    /*text-align: center;*/
 }
 
-.p1,
+.player1 {
+    float: left;
+}
+
+.ai {
+    float: right;
+
+}
+
+.frontprofile {
+    max-width: 200px;
+}
+
+.profilepic {
+    border-radius: 90%;
+}
+
+.cover {
+    z-index: 1;
+    background-color: aqua;
+    opacity: 1;
+}
+
+img {
+    z-index: -1;
+    position: relative;
+}
+
+/*.p1,
 .p2 {
     writing-mode: vertical-rl;
     text-orientation: upright;
+}*/
+
+.p2 {
+    text-transform: uppercase;
 }
 
 .p3 {
@@ -344,9 +368,10 @@ select {
 }
 
 .canvas {
-    z-index: 1;
     margin: 0 auto;
-    border: solid gray .5px;
+    border: solid #2ecfe4 .5px;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px #0c7b46;
+    width: fit-content;
 }
 
 .nextQuestion {
@@ -390,9 +415,6 @@ fl1 {
     }
     .goBack3 {
         margin-top: 20px;
-    }
-    .profile {
-        display: none;
     }
     .p1. .p2 {
         font-size: 35px;
@@ -618,6 +640,9 @@ fl1 {
     .p1,
     .p2 {
         writing-mode: initial;
+    }
+    .profile2 {
+        display: none;
     }
     .questions {
         margin-top: 30px;
