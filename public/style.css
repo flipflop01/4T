@@ -213,6 +213,7 @@ li {
 .ca,
 .ua,
 .da {
+    margin-top: 50px;
     font-size: 65px;
     text-align: center;
 }
@@ -266,6 +267,10 @@ li {
 
 .play,
 .delete {
+    margin-top: 20px;
+}
+
+.goBack3 {
     margin-top: 20px;
 }
 

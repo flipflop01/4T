@@ -5,9 +5,9 @@
 Home Page View |
 ![Home Page](https://github.com/flipflop01/4T/blob/master/public/images/home.png)
 Rules Page |
-![Rules Page](https://github.com/flipflop01/4T/blob/master/public/images/rules.jpg)
-Add User  | Update User | Account Details | Delete User
-![Add User](https://github.com/flipflop01/4T/blob/master/public/images/create.png) | ![Update User](https://github.com/flipflop01/4T/blob/master/public/images/update.png)  | ![Account Details](https://github.com/flipflop01/4T/blob/master/public/images/details.png) | ![Delete User](https://github.com/flipflop01/4T/blob/master/public/images/delete.png)
+![Rules Page](https://github.com/flipflop01/4T/blob/master/public/images/rules.png)
+Add User | Account Details | Delete User
+![Add User](https://github.com/flipflop01/4T/blob/master/public/images/create.png) | ![Account Details](https://github.com/flipflop01/4T/blob/master/public/images/details.png) | ![Delete User](https://github.com/flipflop01/4T/blob/master/public/images/delete.png)
 
 Game Page |
 ![Game Page](https://github.com/flipflop01/4T/blob/master/public/images/game.png) |
