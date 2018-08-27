@@ -196,6 +196,14 @@ li {
     pointer-events: auto;
 }
 
+.create {
+    margin-top: 20px;
+}
+
+.goBack2 {
+    margin-top: 10px;
+}
+
 #signup-form,
 #update-form,
 #deleteSheet {
