@@ -4,6 +4,6 @@ deploy:
 provider: heroku
 api_key:
 secure:
-app:
+app: https://git.heroku.com/arcane-earth-82999.git
 on:
 repo:
