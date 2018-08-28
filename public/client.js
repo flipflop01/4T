@@ -185,7 +185,6 @@ $(document).ready(function () {
     $(".newGame").hide();
     $(".nextQuestion").hide();
     $(".players").hide();
-    $(".light").hide();
 
     $(".ready").click(function () {
         /*$('.ai').html(`
@@ -197,7 +196,8 @@ $(document).ready(function () {
         setTimeout(function () {
             $(".questions, .choices").fadeIn(2000);
             $(".players, .answer").fadeIn(3000);
-        }, 2000, 4000);
+            $(".newGame").fadeIn(3000);
+        }, 2000, 4000, 2000);
     });
 
     $(".play").click(function () {
@@ -378,8 +378,8 @@ function checkAnswer(randomNumber) {
 
             window.alert("Hey you won");
             setTimeout(function () {
-                $(".cover").fadeOut(2000);
-                $(".cover").fadeIn(4000);
+                $(".cvr1").fadeOut(2000);
+                $(".cvr1").fadeIn(4000);
             }, 1000, 4000);
             //console.log(winBanter[randomNumber]);
             //typeWriter(winBanter[randomNumber]);
@@ -393,8 +393,8 @@ function checkAnswer(randomNumber) {
 
             window.alert("Hey you lost");
             setTimeout(function () {
-                $(".cover").fadeOut(2000);
-                $(".cover").fadeIn(4000);
+                $(".cvr2").fadeOut(2000);
+                $(".cvr2").fadeIn(4000);
             }, 2000, 4000);
             $(".cover").fadeOut(2000).fadeIn(4000);
             //console.log(lossBanter[randomNumber]);
