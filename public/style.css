@@ -335,7 +335,6 @@ select {
 
 .players div {
     display: inline-block;
-    /*text-align: center;*/
 }
 
 .player1 {
@@ -388,7 +387,7 @@ img {
 }
 
 .nextQuestion {
-    margin: 20px 0px 15px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 .light {
@@ -402,6 +401,32 @@ fl1 {
     border: solid #0c7b46 2px;
     display: grid;
     text-align: center;
+}
+
+.newGame {
+    margin-left: 20px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 96%;
+    margin-bottom: 20px;
+}
+
+.popup {
+    bottom: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+    .cover,
+    profile1,
+    profile2 {
+        display: none;
+    }
+    .container {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -443,6 +468,12 @@ fl1 {
         border: solid #0c7b46 2px;
         display: grid;
         text-align: center;
+    }
+    .container {
+        width: 60%;
+    }
+    .cover {
+        display: none;
     }
 }
 

@@ -244,7 +244,11 @@ $(document).ready(function () {
         $('#welcome').hide();
         $("#accountdeets").fadeOut(2000);
         $("#deleteAccount").fadeIn(2000);
-    })
+    });
+    $(".newGame").click(function () {
+        $("#playground").fadeOut(2000);
+        $("#accountdeets").fadeIn(4000);
+    });
 })
 
 /********************************************
@@ -377,12 +381,13 @@ function checkAnswer(randomNumber) {
         else if (userChoice == correct_answer) {
 
             window.alert("Hey you won");
-            setTimeout(function () {
+            $(".cvr1").fadeOut(2000).fadeIn(4000);
+            /*setTimeout(function () {
                 $(".cvr1").fadeOut(2000);
                 $(".cvr1").fadeIn(4000);
-            }, 1000, 4000);
+            }, 1000, 4000);*/
             //console.log(winBanter[randomNumber]);
-            //typeWriter(winBanter[randomNumber]);
+            typeWriter(winBanter[randomNumber]);
             qNum++;
             $('.canvas').css({
                 "pointer-events": "all"
@@ -392,13 +397,13 @@ function checkAnswer(randomNumber) {
         else {
 
             window.alert("Hey you lost");
-            setTimeout(function () {
+            $(".cvr2").fadeOut(2000).fadeIn(4000);
+            /*setTimeout(function () {
                 $(".cvr2").fadeOut(2000);
                 $(".cvr2").fadeIn(4000);
-            }, 2000, 4000);
-            $(".cover").fadeOut(2000).fadeIn(4000);
+            }, 2000, 4000);*/
             //console.log(lossBanter[randomNumber]);
-            //typeWriter(lossBanter[randomNumber]);
+            typeWriter(lossBanter[randomNumber]);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
             qNum++;
@@ -431,15 +436,14 @@ var speed = 5000; /* The speed/duration of the effect in milliseconds*/
 }*/
 //var txt = winBanter
 
-/*function typeWelcome(outputText) {
-    setTimeout(function () {
-        for (let i = 0; i < outputText.length; i++) {
-            console.log(i);
-            console.log(outputText.charAt(i));
-            $("#greeting").append(outputText.charAt(i));
-        }
-    }, 3000)
-}*/
+function typeWriter(outputText) {
+    for (let i = 0; i < outputText.length; i++) {
+        console.log(i);
+        console.log(outputText.charAt(i));
+        $("#demo").append(outputText.charAt(i));
+    };
+    setTimeout(typeWriter, speed);
+}
 
 
 function coverGrid() {
@@ -452,6 +456,7 @@ function nextQuestion(response) {
     $(".nextQuestion").click(function () {
         $('.questions').fadeTo("slow", 0);
         $('.nextQuestion').fadeOut(3000);
+        $('.popup').fadeOut(3000);
         setTimeout(function () {
             generateQuestions(response);
             $('.questions').fadeTo("slow", 1);
@@ -585,46 +590,6 @@ $('.l2').submit(event => {
             });
     }
 })
-
-function startQuiz(userID) {
-
-}
-
-function gameScore(userId) {
-
-}
-
-function gameTally(userId) {
-
-}
-
-function updateGamesLogged(result) {
-
-    let played = parseInt(result.gamesPlayed, 10);
-    //let won = parseInt(result.gamesWon, 10);
-    let gPlayed = played++;
-    //let gWon = won++;
-
-    let updateGames = {
-        username: result.username,
-        gamesPlayed: gPlayed,
-        //gamesWon: gWon
-    }
-
-    $.ajax({
-            type: "PUT",
-            url: `/users/${result.username}`,
-            data: JSON.stringify(updateGames),
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {})
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-}
 
 //Update Account Details
 function updating(userId) {
