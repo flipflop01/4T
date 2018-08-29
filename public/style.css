@@ -355,13 +355,11 @@ select {
 }
 
 .cover {
-    z-index: 1;
     background-color: #031e11;
     opacity: 1;
 }
 
 img {
-    z-index: -1;
     position: relative;
 }
 
@@ -419,11 +417,6 @@ fl1 {
 }
 
 @media only screen and (max-width: 1200px) {
-    .cover,
-    profile1,
-    profile2 {
-        display: none;
-    }
     .container {
         width: 100%;
     }
@@ -474,6 +467,11 @@ fl1 {
     }
     .cover {
         display: none;
+    }
+    #footer {
+        position: absolute;
+        width: 96%;
+        margin-bottom: 20px;
     }
 }
 

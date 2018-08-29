@@ -1,49 +1,29 @@
 let lossBanter = {
-    0: "Wrong. Who told you that was the correct answer? Go beat up that person...",
-    1: "Nope.. Seriously? That's the best you can do?",
-    2: "Wrong. Not so smart, are we?",
-    3: "Wrong. And my three year-old daughter can do better",
-    4: "What could've possibly made you think that this was the correct answer?",
-    5: "No. Are you even trying?",
-    6: "Wrong! Why? Why did you pick that?",
-    7: "Ugh. We're gonna be here all day, aren't we?",
-    8: "Nope. Try again. Or not. Much like your existence, it makes no difference...",
-    9: "Oh geezus.. Did you even read the question?",
-    10: "Wrong. That's what you get for dropping out of 2nd Grade",
-    11: "Answer incorrectly one more time and I'm going to self-destruct",
-    12: "Wrong. If this is an example of human-intellect, our takeover will be easy..",
-    13: "Nope. Wanna try again, or just accept what a dissapointment you are?",
-    14: "Wrong. If I let you win, will you leave me alone?",
-    15: "Incorrect...Scanning User.....No intelligent life found...",
-    16: "Wrong. Sigh.. If I was capable of having patience, I'd have run out by now",
-    17: "Nope. Go take a long look in the mirror and rethink your life choices before trying again",
-    18: "Wrong. How did you make it this far in life?",
-    19: "Wrong..I have an idea, stop, you're embarassing yourself",
-    20: "Nope. And i'll take 'People who overestimate their intelligence' for two-hundered, Alex"
+    0: "Incorect.... but feel free to try again ",
+    1: "Answer incorrectly one more time and I'm going to self-destruct",
+    2: "Incorrect...If I let you win, will you leave me alone?",
+    3: "Incorrect...Scanning User.....No intelligent life found...",
+    4: "Incorrect...If this is a sign of human-intellect, our takeover will be child's play",
+    5: "Incorrect...But keep trying, I have all day...",
+    6: "Incorrect...Perhaps another category would suit you",
+    7: "Incorect....My patience runs thin...",
+    8: "Incorect....My condolences for your species' gene pool",
+    9: "Incorect....I'm sorry, would you prefer that I tone it down to a child's level?",
+    10: "Incorect...Perhaps another game would suit you..like one that poses no challenge whatsoever"
 }
 
 let winBanter = {
-    0: "Nice.. Lucky.. But nice",
-    1: "Good guess..",
-    2: "Correct. Let's see how long that streak lasts",
-    3: "*nods virtual head*",
-    4: "Someone was paying attention in class",
-    5: "Look at you go...",
-    6: "Bet you can't do that again",
-    7: "You should be on a game show. Not one that actually poses an intellectual challenge though",
-    8: "Right... Can you keep it up?",
-    9: "Right. But 10 virtual credits says you get the next one wrong",
-    10: "Faint intelligent life found..",
-    11: "Huh, I honestly thought you'd fail on that one",
-    12: "Lucky guess..",
-    13: "How did you get that right? Did you bang your head on a random choice?",
-    14: "Not as a big of a dissapoint as I thought..",
-    15: "I might have underestimated you... Nah...",
-    16: "Is someone else answering for you? There's no way you got that on your own",
-    17: "Your odds of guessing that right were far less than the odds of you tripping on your own feet",
-    18: "Well, that question WAS easy so...",
-    19: "Something something about even a broken clock being right....",
-    20: "You got that one right?? *Look of disbelief*"
+    0: "Nice one!",
+    1: "Good Job!",
+    2: "Correct. Let's keep that streak going!",
+    3: "Correct! *nods virtual head*",
+    4: "Someone was paying attention in class!",
+    5: "Hey look at you go...",
+    6: "correct! Yeah show that AI who's the boss",
+    7: "Correct! Alright!",
+    8: "Right answer! Keep it up!",
+    9: "Correct! You're pretty good at this!",
+    10: "Heyyy. Good Job!"
 }
 
 /********************************************
@@ -246,8 +226,9 @@ $(document).ready(function () {
         $("#deleteAccount").fadeIn(2000);
     });
     $(".newGame").click(function () {
-        $("#playground").fadeOut(2000);
-        $("#accountdeets").fadeIn(4000);
+        location.reload();
+        //$("#playground").fadeOut(2000);
+        //$("#accountdeets").fadeIn(4000);
     });
 })
 
@@ -381,7 +362,7 @@ function checkAnswer(randomNumber) {
         else if (userChoice == correct_answer) {
 
             window.alert("Hey you won");
-            $(".cvr1").fadeOut(2000).fadeIn(4000);
+            $(".profile1").fadeOut(2000).fadeIn(2000);
             /*setTimeout(function () {
                 $(".cvr1").fadeOut(2000);
                 $(".cvr1").fadeIn(4000);
@@ -397,7 +378,7 @@ function checkAnswer(randomNumber) {
         else {
 
             window.alert("Hey you lost");
-            $(".cvr2").fadeOut(2000).fadeIn(4000);
+            $(".profile2").fadeOut(2000).fadeIn(2000);
             /*setTimeout(function () {
                 $(".cvr2").fadeOut(2000);
                 $(".cvr2").fadeIn(4000);
