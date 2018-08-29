@@ -16,14 +16,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    gamesPlayed: {
-        type: String,
-        required: false
-    },
-    gamesWon: {
-        type: String,
-        required: false
-    },
     password: {
         type: String,
         required: false

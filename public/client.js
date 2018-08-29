@@ -26,10 +26,6 @@ let winBanter = {
     10: "'Heyyy. Good Job!'"
 }
 
-/********************************************
-Step 1 define functions and objects
-************************************/
-
 function Game(el) {
     var grid = 3, // number of squares per row
         size = 80, // size of each square in pixels
@@ -150,6 +146,8 @@ function Game(el) {
     }
 }
 
+///////////Triggers & Functions//////////
+
 $(document).ready(function () {
     //typeWelcome('Welcome');
     $("#welcome").hide().fadeIn(8000);
@@ -167,9 +165,6 @@ $(document).ready(function () {
     $(".players").hide();
 
     $(".ready").click(function () {
-        /*$('.ai').html(`
-            <h3 class="p2">AI Lvl ${intel}</h3>
-            `)*/
         let category = document.getElementById('query-type').value;
         $(".startGame, .options").hide();
         getTrivia(category);
@@ -227,58 +222,8 @@ $(document).ready(function () {
     });
     $(".newGame").click(function () {
         location.reload();
-        //$("#playground").fadeOut(2000);
-        //$("#accountdeets").fadeIn(4000);
     });
 })
-
-/********************************************
-Trivia Questions API Call
-************************************/
-const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
-
-function getTrivia(category) {
-
-    let one = "easy";
-    let two = "medium";
-    let three = "hard";
-
-    let qBank = [one, two, three];
-    console.log(qBank);
-    let qArray = shuffle(qBank);
-    console.log(qArray);
-
-    let cat = parseInt(category, 10);
-    let diff = qArray[1];
-
-    /*let param = {
-        "category": cat,
-        "difficulty": diff
-    }*/
-
-    //console.log(param);
-    let buildUrl = "/trivia/" + cat + "/" + diff;
-
-    console.log(buildUrl);
-
-    let settings = {
-        "url": buildUrl,
-        "dataType": "json",
-        "type": "GET",
-        "contentType": 'application/json'
-    };
-    $.ajax(settings)
-        .done(function (response) {
-            console.log(response);
-            generateQuestions(response);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-}
-
 
 function shuffle(array) {
     var currentIndex = array.length,
@@ -315,26 +260,26 @@ function generateQuestions(response) {
     //console.log(arr);
 
     $('.questions').html(`
-        <h3 id="qs">${response.results[qNum].question}</h3>
-            <form class="choices">
-                <fieldset class="fl1">
-                    <label class="answeroption">
-                    <input class="option" type="radio" name="answer" value="${arr[0]}" required><span>${arr[0]}</span>
-                    </label>
-                    <label class="answeroption">
-                    <input class="option" type="radio" name="answer" value="${arr[1]}" required><span>${arr[1]}</span>
-                    </label>
-                    <label class="answeroption">
-                    <input class="option" type="radio" name="answer" value="${arr[2]}" required><span>${arr[2]}</span>
-                    </label>
-                    <label class="answeroption">
-                    <input class="option" type="radio" name="answer" value="${arr[3]}" required><span>${arr[3]}</span>
-                    </label>
-                </fieldset>
-                <input type="hidden" value="${response.results[qNum].correct_answer}" class="correct_answer">
-                <button type="submit" class="clickHere answer">Answer</button>
-            </form>
-    `);
+<h3 id="qs">${response.results[qNum].question}</h3>
+<form class="choices">
+<fieldset class="fl1">
+<label class="answeroption">
+<input class="option" type="radio" name="answer" value="${arr[0]}" required><span>${arr[0]}</span>
+</label>
+<label class="answeroption">
+<input class="option" type="radio" name="answer" value="${arr[1]}" required><span>${arr[1]}</span>
+</label>
+<label class="answeroption">
+<input class="option" type="radio" name="answer" value="${arr[2]}" required><span>${arr[2]}</span>
+</label>
+<label class="answeroption">
+<input class="option" type="radio" name="answer" value="${arr[3]}" required><span>${arr[3]}</span>
+</label>
+</fieldset>
+<input type="hidden" value="${response.results[qNum].correct_answer}" class="correct_answer">
+<button type="submit" class="clickHere answer">Answer</button>
+</form>
+`);
     let randomNumber = getRandomInt(0, 11);
     checkAnswer(randomNumber);
     nextQuestion(response);
@@ -354,18 +299,13 @@ function checkAnswer(randomNumber) {
         event.preventDefault();
         let userChoice = $("input[class='option']:checked").val();
         let correct_answer = $(".correct_answer").val();
-        //console.log(userChoice, correct_answer);
+
         //validate if User selected
         if (userChoice == "") {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
             $(".profile1").fadeOut(2000).fadeIn(2000).fadeOut(2000).fadeIn(2000);
-            /*setTimeout(function () {
-                $(".cvr1").fadeOut(2000);
-                $(".cvr1").fadeIn(4000);
-            }, 1000, 4000);*/
-            //console.log(winBanter[randomNumber]);
             typeWriter(winBanter[randomNumber]);
             qNum++;
             $('.nextQuestion').fadeIn(2000);
@@ -376,11 +316,6 @@ function checkAnswer(randomNumber) {
         //incorrect answer
         else {
             $(".profile2").fadeOut(2000).fadeIn(2000).fadeOut(2000).fadeIn(2000);
-            /*setTimeout(function () {
-                $(".cvr2").fadeOut(2000);
-                $(".cvr2").fadeIn(4000);
-            }, 2000, 4000);*/
-            //console.log(lossBanter[randomNumber]);
             typeWriter(lossBanter[randomNumber]);
             coverGrid();
             $('.nextQuestion').fadeIn(2000);
@@ -389,40 +324,6 @@ function checkAnswer(randomNumber) {
     })
     //console.log(qNum);
 }
-
-
-/*var txt = 'Welcome'; /* The text */
-var speed = 5000; /* The speed/duration of the effect in milliseconds*/
-
-/*function typeWelcome() {
-
-    console.log(txt.length);
-
-    for (let x = 0; x < txt.length; x++) {
-        $("#greeting").append(txt.charAt(x));
-        console.log(x);
-        setTimeout(typeWelcome, speed);
-    }
-
-    if (x < txt.length) {
-        console.log(txt.length);
-        $("#greeting").append(txt.charAt(x));
-        console.log(x);
-        x++;
-        setTimeout(typeWelcome, speed);
-    }
-}*/
-//var txt = winBanter
-
-/*function typeWriter(outputText) {
-    for (let i = 0; i < outputText.length; i++) {
-        console.log(i);
-        console.log(outputText.charAt(i));
-        $("#demo").append(outputText.charAt(i));
-    };
-    setTimeout(typeWriter, speed);
-
-}*/
 
 function typeWriter(outputText) {
     setTimeout(function () {
@@ -450,6 +351,47 @@ function nextQuestion(response) {
         }, 500, 1000, 1000, 1000, 1000);
     });
     $('#demo').html("");
+}
+
+/////////////Trivia Questions API Call and CRUD Ops/////////////////
+
+const triviaUrl = "https://opentdb.com/api.php?amount=20&type=multiple"
+
+function getTrivia(category) {
+
+    let one = "easy";
+    let two = "medium";
+    let three = "hard";
+
+    let qBank = [one, two, three];
+    console.log(qBank);
+    let qArray = shuffle(qBank);
+    console.log(qArray);
+
+    let cat = parseInt(category, 10);
+    let diff = qArray[1];
+
+    //console.log(param);
+    let buildUrl = "/trivia/" + cat + "/" + diff;
+
+    console.log(buildUrl);
+
+    let settings = {
+        "url": buildUrl,
+        "dataType": "json",
+        "type": "GET",
+        "contentType": 'application/json'
+    };
+    $.ajax(settings)
+        .done(function (response) {
+            console.log(response);
+            generateQuestions(response);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 }
 
 /*New User Signup*/
@@ -483,8 +425,6 @@ $('#signup-form').submit(event => {
             email: email,
             username: username,
             password: password,
-            gamesPlayed: gPlayed,
-            gamesWon: gWon
         };
         console.log(newUser);
         $.ajax({

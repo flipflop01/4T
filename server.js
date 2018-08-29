@@ -1,5 +1,4 @@
 const User = require('./models/user');
-const Entry = require('./models/entry');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -147,8 +146,6 @@ app.post('/users/create', (req, res) => {
                 name,
                 email,
                 username,
-                gamesPlayed,
-                gamesWon,
                 password: hash
             }, (err, item) => {
 
@@ -220,7 +217,7 @@ app.post('/users/login', function (req, res) {
     });
 })
 
-//GET User details to populate
+//GET User details to populate Account details
 app.get('/users/:username', function (req, res) {
 
     User
@@ -247,8 +244,6 @@ app.put('/users/:id', function (req, res) {
 
         //if creating the key returns an error...
         if (err) {
-
-            //display it
             return res.status(500).json({
                 message: err
             });
@@ -259,8 +254,6 @@ app.put('/users/:id', function (req, res) {
 
             //if creating the ncrypted pasword returns an error..
             if (err) {
-
-                //display it
                 return res.status(500).json({
                     message: 'Encryption Error'
                 });
