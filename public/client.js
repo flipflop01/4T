@@ -1,29 +1,29 @@
 let lossBanter = {
-    0: "Incorect.... but feel free to try again ",
-    1: "Answer incorrectly one more time and I'm going to self-destruct",
-    2: "Incorrect...If I let you win, will you leave me alone?",
-    3: "Incorrect...Scanning User.....No intelligent life found...",
-    4: "Incorrect...If this is a sign of human-intellect, our takeover will be child's play",
-    5: "Incorrect...But keep trying, I have all day...",
-    6: "Incorrect...Perhaps another category would suit you",
-    7: "Incorect....My patience runs thin...",
-    8: "Incorect....My condolences for your species' gene pool",
-    9: "Incorect....I'm sorry, would you prefer that I tone it down to a child's level?",
-    10: "Incorect...Perhaps another game would suit you..like one that poses no challenge whatsoever"
+    0: "'Incorect.... but feel free to try again'",
+    1: "'Answer incorrectly one more time and I'm going to self-destruct'",
+    2: "'Incorrect...If I let you win, will you leave me alone?'",
+    3: "'Incorrect...Scanning User.....No intelligent life found...",
+    4: "'Incorrect...If this is a sign of human-intellect, our takeover will be child's play'",
+    5: "'Incorrect...But keep trying, I have all day...'",
+    6: "'Incorrect...Perhaps another category would suit you'",
+    7: "'Incorect....My patience runs thin...'",
+    8: "'Incorect....My condolences for your species' gene pool'",
+    9: "'Incorect....I'm sorry, would you prefer that I tone it down to a child's level?'",
+    10: "'Incorect...Perhaps another game would suit you..like one that poses no challenge whatsoever'"
 }
 
 let winBanter = {
-    0: "Nice one!",
-    1: "Good Job!",
-    2: "Correct. Let's keep that streak going!",
-    3: "Correct! *nods virtual head*",
-    4: "Someone was paying attention in class!",
-    5: "Hey look at you go...",
-    6: "correct! Yeah show that AI who's the boss",
-    7: "Correct! Alright!",
-    8: "Right answer! Keep it up!",
-    9: "Correct! You're pretty good at this!",
-    10: "Heyyy. Good Job!"
+    0: "'Nice one!'",
+    1: "'Good Job!'",
+    2: "'Correct. Let's keep that streak going!'",
+    3: "'Correct! *nods virtual head*'",
+    4: "'Someone was paying attention in class!'",
+    5: "'Hey look at you go...'",
+    6: "'Correct! Yeah show that AI who's the boss'",
+    7: "'Correct! Alright!'",
+    8: "'Right answer! Keep it up!'",
+    9: "'Correct! You're pretty good at this!'",
+    10: "'Heyyy. Good Job!'"
 }
 
 /********************************************
@@ -335,14 +335,14 @@ function generateQuestions(response) {
                 <button type="submit" class="clickHere answer">Answer</button>
             </form>
     `);
-    let randomNumber = getRandomInt(0, 21);
+    let randomNumber = getRandomInt(0, 11);
     checkAnswer(randomNumber);
     nextQuestion(response);
 }
 
 function getRandomInt(min, max) {
     min = Math.ceil(0);
-    max = Math.floor(21);
+    max = Math.floor(11);
     let nmbr = Math.floor(Math.random() * (max - min)) + min;
     return nmbr;
     //console.log(nmbr);
@@ -360,9 +360,7 @@ function checkAnswer(randomNumber) {
             window.alert("Please Select an Answer");
         } //if choice is correct
         else if (userChoice == correct_answer) {
-
-            window.alert("Hey you won");
-            $(".profile1").fadeOut(2000).fadeIn(2000);
+            $(".profile1").fadeOut(2000).fadeIn(2000).fadeOut(2000).fadeIn(2000);
             /*setTimeout(function () {
                 $(".cvr1").fadeOut(2000);
                 $(".cvr1").fadeIn(4000);
@@ -370,15 +368,14 @@ function checkAnswer(randomNumber) {
             //console.log(winBanter[randomNumber]);
             typeWriter(winBanter[randomNumber]);
             qNum++;
+            $('.nextQuestion').fadeIn(2000);
             $('.canvas').css({
                 "pointer-events": "all"
             });
         }
         //incorrect answer
         else {
-
-            window.alert("Hey you lost");
-            $(".profile2").fadeOut(2000).fadeIn(2000);
+            $(".profile2").fadeOut(2000).fadeIn(2000).fadeOut(2000).fadeIn(2000);
             /*setTimeout(function () {
                 $(".cvr2").fadeOut(2000);
                 $(".cvr2").fadeIn(4000);
@@ -417,13 +414,21 @@ var speed = 5000; /* The speed/duration of the effect in milliseconds*/
 }*/
 //var txt = winBanter
 
-function typeWriter(outputText) {
+/*function typeWriter(outputText) {
     for (let i = 0; i < outputText.length; i++) {
         console.log(i);
         console.log(outputText.charAt(i));
         $("#demo").append(outputText.charAt(i));
     };
     setTimeout(typeWriter, speed);
+
+}*/
+
+function typeWriter(outputText) {
+    setTimeout(function () {
+        $("#demo").append(outputText);
+        $('.popup').fadeIn(3000);
+    }, 2000, 1000);
 }
 
 
@@ -435,14 +440,16 @@ function coverGrid() {
 
 function nextQuestion(response) {
     $(".nextQuestion").click(function () {
-        $('.questions').fadeTo("slow", 0);
-        $('.nextQuestion').fadeOut(3000);
-        $('.popup').fadeOut(3000);
         setTimeout(function () {
+            $('.questions').fadeTo("slow", 0);
+            $('.popup').fadeOut(3000);
+            $('.nextQuestion').fadeOut(3000);
             generateQuestions(response);
             $('.questions').fadeTo("slow", 1);
-        }, 2000, 2000, 2000)
+            $('#demo').html("");
+        }, 500, 1000, 1000, 1000, 1000);
     });
+    $('#demo').html("");
 }
 
 /*New User Signup*/

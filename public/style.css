@@ -325,6 +325,10 @@ select {
     margin: 20px 00px 15px 0px;
 }
 
+.answeroption span {
+    margin-left: 5px;
+}
+
 .container {
     width: 60%;
 }
@@ -414,11 +418,18 @@ fl1 {
 
 .popup {
     bottom: 0;
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 1200px) {
     .container {
         width: 100%;
+    }
+    .player1 {
+        margin-left: 50px;
+    }
+    .ai {
+        margin-right: 50px;
     }
 }
 
