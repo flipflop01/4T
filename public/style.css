@@ -434,6 +434,9 @@ fl1 {
 }
 
 @media only screen and (max-width: 768px) {
+    main {
+        height: 110%;
+    }
     #welcome,
     #rules,
     #playground {
@@ -462,7 +465,7 @@ fl1 {
         font-size: 35px;
     }
     .answer {
-        margin: 20px 0px 20px 0px;
+        margin: 0px 0px 10px 0px;
     }
     .nextQuestions {
         margin: 20px 0px 20px 5px;
@@ -473,22 +476,45 @@ fl1 {
         display: grid;
         text-align: center;
     }
-    .container {
-        width: 60%;
+    .players {
+        margin-top: 0;
     }
-    .cover {
-        display: none;
+    .container {
+        width: 80%;
+    }
+    .profile1,
+    .profile2 {
+        max-width: 100px;
+    }
+    .profile1 {
+        margin-top: 10px;
+    }
+    .ai,
+    .player1 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .p2 {
+        float: inherit;
+    }
+    .ai,
+    player1 {
+        height: 150px;
+        display: grid;
     }
     #footer {
         position: absolute;
         width: 96%;
         margin-bottom: 20px;
     }
+    .popup {
+        margin-top: 20px;
+    }
 }
 
 @media only screen and (max-width: 375px) {
     main {
-        height: 115%;
+        height: 150%;
     }
     .login {
         border: solid #0c7b46 2px;
@@ -571,10 +597,17 @@ fl1 {
     }
     .container {
         margin: 0;
+        width: 100%;
     }
-    .profile1,
-    profile2 {
-        display: none;
+    .player1,
+    .ai {
+        width: 100%;
+    }
+    .ai {
+        float: none;
+    }
+    .cvr2 {
+        margin-top: 10px;
     }
     .p1,
     .p2 {
@@ -582,14 +615,23 @@ fl1 {
         padding: 0px 10px;
     }
     .answer {
-        margin: 10px 0px 0px 0px;
+        margin: 10px 0px 10px 0px;
     }
     .nextQuestion {
-        margin: 30px 0px 0px 45px;
+        margin: 10px 0px 0px 0px;
     }
     .questions {
         margin-top: 10px;
         padding: 0px 10px 0px 10px;
+    }
+    .popup {
+        margin-top: 10px;
+    }
+    .newGame {
+        margin-left: 0px;
+    }
+    #demo {
+        font-size: 22px;
     }
 }
 
@@ -680,22 +722,22 @@ fl1 {
         display: inline-grid;
         margin-top: 50px;
     }
-    .box img {
-        display: none;
+    .players {
+        margin-top: 10px;
     }
     h3 {
-        font-size:
-    }
-    .box {
-        margin-left: 10px;
-        margin-right: 10px;
+        font-size: 20px;
     }
     .p1,
     .p2 {
         writing-mode: initial;
     }
-    .profile2 {
-        display: none;
+    .profile2,
+    profile1 {
+        max-width: 75px;
+    }
+    .ai {
+        height: 100px;
     }
     .questions {
         margin-top: 30px;
@@ -709,5 +751,8 @@ fl1 {
     }
     .answer {
         margin: 5px 0px 0px 0px;
+    }
+    .popup {
+        margin-top: 30px;
     }
 }
